@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-<body>
-    <?php echo "es mi branch";  ?>
-    <?php echo "es mi branch hola ";  ?>
-</body>
+require "Config/Autoload.php";
+require "Config/Config.php";
 
-</html>
+use Config\Autoload as Autoload;
+use Config\Router     as Router;
+use Config\Request     as Request;
+
+Autoload::start();
+
+session_start();
+
+//require_once(VIEWS_PATH."header.php");
+
+Router::Route(new Request());
+
+	//require_once(VIEWS_PATH."footer.php");
