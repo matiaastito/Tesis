@@ -24,11 +24,21 @@
         <header id= "linea"><header >
         <input type="email" class="field field--animate" id="emailadress" placeholder="Email:">
 
-        <button type="submit" class="buttonFlecha"><img src="imagenes/boton violeta de inicio.png" class="boton" alt=""></button>
+        <form action = "perfil.php" >
+             <input type = "submit" class="buttonFlecha" value= "">
+        </form>
 
-        <button type="submit" class="buttonCampus"><img src="imagenes/utn campus boton.png" class="botonCampus" alt=""></button>
-        <button type="submit" class="buttonIg"><img src="imagenes/instagaram boton .png" class="botonInstagram" alt=""></button>
-        <button type="submit" class="buttonTwitter"><img src="imagenes/twitter boton.png" class="botonTwitter" alt=""></button>
+
+        <form action = "https://mdp.utn.edu.ar/" >
+             <input type = "submit" class="buttonCampus" value= "">
+        </form>
+        <form action = "https://www.instagram.com/utnmardelplata/" >
+             <input type = "submit" class="buttonIg" value= "">
+        </form>
+        <form action = "https://twitter.com/UTNMardelPlata" >
+             <input type = "submit" class="buttonTwitter" value= "">
+        </form>
+
         
 
     </div>
@@ -40,3 +50,4 @@
     
 </body>
 </html>
+
