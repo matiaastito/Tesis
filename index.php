@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style = "background-color:#7B68EE">
+<body class ="fondo">
 <span><img src="imagenes/logo UTN con UTN.png" class="logo" alt=""></span>
 
 <div class="container">
