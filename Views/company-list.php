@@ -1,5 +1,5 @@
 <?php
-require_once('nav.php');
+//require_once('nav.php');
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
@@ -18,10 +18,10 @@ require_once('nav.php');
                     foreach ($companyList as $company) {
                     ?>
                         <tr>
-                            <td><?php echo $company->getCUIT() ?></td>
+                            <td><?php echo $company->getCUIL() ?></td>
                             <td><?php echo $company->getLegalName() ?></td>
-                            <td><?php echo $company->getAddres() ?></td>
-                            <td><?php echo $company->getNumber() ?></td>
+                            <td><?php echo $company->getAddress() ?></td>
+                            <td><?php echo $company->getContactNumber() ?></td>
                             <td><?php echo $company->getEmail() ?></td>
                         </tr>
                     <?php

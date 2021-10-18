@@ -3,24 +3,21 @@
 namespace DAO;
 
 use DAO\IStudentDAO as IStudentDAO;
-use Models\Student as Student;
+use Classes\Users\Student as Student;
 
 class StudentDAO implements IStudentDAO
 {
     private $studentList = array();
     private $fileName = ROOT . "Data/students.json";
 
-    /*  public function Add(CellPhone $cellPhone)
-        {
-            $this->RetrieveData();
-            
-            $cellPhone->setId($this->GetNextId());
-            
-            array_push($this->cellPhoneList, $cellPhone);
+    public function Add(Student $student)
+    {
+        $this->RetrieveData();
 
-            $this->SaveData();
-        }
-        */
+        array_push($this->studentList, $student);
+
+        $this->SaveData();
+    }
 
     public function GetAll()
     {
@@ -29,17 +26,21 @@ class StudentDAO implements IStudentDAO
         return $this->studentList;
     }
 
-    /* public function Remove($id)
-        {            
-            $this->RetrieveData();
-            
-            $this->cellPhoneList = array_filter($this->cellPhoneList, function($cellPhone) use($id){                
-                return $cellPhone->getId() != $id;
-            });
-            
-            $this->SaveData();
-        }
-        */
+    public function GetByEmail($email)
+    {
+        $student = null;
+
+        $this->RetrieveData();
+
+        $student = array_filter($this->studentList, function ($student) use ($email) {
+            return $student->getEmail() == $email;
+        });
+
+        $student = array_values($student); //Reordering array indexes
+
+        return (count($student) > 0) ? $student[0] : null;
+    }
+
 
     private function RetrieveData()
     {
@@ -51,13 +52,19 @@ class StudentDAO implements IStudentDAO
             $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
 
             foreach ($contentArray as $content) {
+
                 $student = new Student();
-                /* $cellPhone->setId($content["id"]);
-                     $cellPhone->setCode($content["code"]);
-                     $cellPhone->setBrand($content["brand"]);
-                     $cellPhone->setModel($content["model"]);
-                     $cellPhone->setPrice($content["price"]);
-                     */
+                $student->setStudentId($content["studentId"]);
+                $student->setCareerId($content["careerId"]);
+                $student->setName($content["firstName"]);
+                $student->setLastName($content["lastName"]);
+                $student->setDni($content["dni"]);
+                $student->setFileNumber($content["fileNumber"]);
+                $student->setGender($content["gender"]);
+                $student->setBirthDate($content["birthDate"]);
+                $student->setEmail($content["email"]);
+                $student->setPhoneNumber($content["phoneNumber"]);
+                $student->setActive($content["active"]);
 
                 array_push($this->studentList, $student);
             }
@@ -70,12 +77,17 @@ class StudentDAO implements IStudentDAO
 
         foreach ($this->studentList as $student) {
             $valuesArray = array();
-            /* $valuesArray["id"] = $cellPhone->getId();
-                $valuesArray["code"] = $cellPhone->getCode();
-                $valuesArray["brand"] = $cellPhone->getBrand();
-                $valuesArray["model"] = $cellPhone->getModel();
-                $valuesArray["price"] = $cellPhone->getPrice();
-                */
+            $valuesArray["studentId"] = $student->getStudentId();
+            $valuesArray["careerId"] = $student->getCareerId();
+            $valuesArray["firstName"] = $student->getName();
+            $valuesArray["lastName"] = $student->getLastName();
+            $valuesArray["dni"] = $student->getDni();
+            $valuesArray["fileNumber"] = $student->getFileNumber();
+            $valuesArray["gender"] = $student->getGender();
+            $valuesArray["birthDate"] = $student->getBirthDate();
+            $valuesArray["email"] = $student->getEmail();
+            $valuesArray["phoneNumber"] = $student->getPhoneNumber();
+            $valuesArray["active"] = $student->getActive();
             array_push($arrayToEncode, $valuesArray);
         }
 
@@ -83,17 +95,4 @@ class StudentDAO implements IStudentDAO
 
         file_put_contents($this->fileName, $fileContent);
     }
-
-    /*  private function GetNextId()
-        {
-            $enrrolment = 0;
-
-            foreach($this->studentList as $student)
-            {
-                $enrrolment = ($student->getEnrrolment() > $enrrolment) ? $student->getEnrrolment() : $enrrolment;
-            }
-
-            return $enrrolment + 1;
-        }
-        */
 }

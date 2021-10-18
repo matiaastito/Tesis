@@ -2,43 +2,52 @@
 
 namespace DAO;
 
-use DAO\IUserDAO as IUserDAO;
-use Models\User as User;
+use Classes\Users\user;
+use DAO\IUserDAo as IUserDAO;
+use DAO\StudentDAO as StudentDAO;
 
 class UserDAO implements IUserDAO
 {
+
     private $userList = array();
-    private $fileName = ROOT . "Data/Users.json";
+    private $studentDAO;
+    private $adminDAO;
+    private $found;
+
+    public function __construct()
+    {
+        $this->studentDAO = new StudentDAO();
+        $this->adminDAO = new AdminDAO();
+        $this->found = false;
+    }
+
+
 
     public function GetByEmail($email)
     {
         $user = null;
+        $userList = $this->studentDAO->GetAll();
 
-        $this->RetrieveData();
+        echo $this->found;
+        $user = array_filter($userList, function ($user) use ($email) {
 
-        $users = array_filter($this->userList, function ($user) use ($email) {
+            if ($user->getEmail() == $email) {
+                $this->found = true;
+            }
+
             return $user->getEmail() == $email;
         });
 
-        $users = array_values($users); //Reordering array indexes
 
-        return (count($users) > 0) ? $users[0] : null;
-    }
-
-    private function RetrieveData()
-    {
-        $this->userList = array();
-
-        if (file_exists($this->fileName)) {
-            $jsonToDecode = file_get_contents($this->fileName);
-
-            $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
-
-            foreach ($contentArray as $content) {
-                $user = new User();
-                $user->setEmail($content["email"]);
-                array_push($this->userList, $user);
-            }
+        if ($this->found == false) {
+            $userList = $this->adminDAO->GetAll();
+            $user = array_filter($userList, function ($user) use ($email) {
+                return $user->getEmail() == $email;
+            });
         }
+
+        $user = array_values($user); //Reordering array indexes
+
+        return (count($user) > 0) ? $user[0] : null;
     }
 }

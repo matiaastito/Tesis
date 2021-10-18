@@ -1,0 +1,22 @@
+[
+    {
+        "idAdmin":"1",
+        "firstName": "Matias",
+        "lastName": "Tito",
+        "dni": "40-017-540",
+        "gender": "Masculine",
+        "birthDate": "1996-10-27T00:00:00",
+        "email": "matias.tito@gmail.com",
+        "phoneNumber": "223-6136940"
+    },
+    {
+        "idAdmin":"2",
+        "firstName": "Damian",
+        "lastName": "Sartorio",
+        "dni": "11-111-111",
+        "gender": "Masculine",
+        "birthDate": "1111-11-11T00:00:00",
+        "email": "damian.sartorio@gmail.com",
+        "phoneNumber": "223-111111"
+    }
+]

@@ -3,38 +3,44 @@
 namespace Controllers;
 
 use DAO\UserDAO as UserDAO;
-use Models\User as User;
 
 class HomeController
 {
-    private $userDAO;
+    private $UserDAO;
+
 
     public function __construct()
     {
-        $this->userDAO = new UserDAO();
+        $this->UserDAO = new UserDAO();
     }
 
     public function Index($message = "")
     {
-        require_once(VIEWS_PATH . "home.php");
+        require_once(VIEWS_PATH . "index.php");
     }
 
-    public function ShowAddView()
+
+    public function ShowCompanyListView()
     {
         require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "add-company.php");
-        require_once(VIEWS_PATH . "add-laboralOffer.php");
+        require_once(VIEWS_PATH . "company-list.php");
     }
 
     public function Login($email)
     {
-        $user = $this->userDAO->GetByEmail($email);
 
-        if ($user != null) {
+
+        $user = $this->UserDAO->GetByEmail($email);
+
+
+        if (($user != null)) {
             $_SESSION["loggedUser"] = $user;
-            $this->ShowAddView();
-        } else
-            $this->Index("Email incorrecto");
+            $this->ShowCompanyListView();
+        } else {
+            echo "<script> if(confirm('Verifique que los datos ingresados sean correctos'));";
+            echo "window.location = '../index.php';
+		</script>";
+        }
     }
 
     public function Logout()

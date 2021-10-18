@@ -2,11 +2,12 @@
 
 namespace DAO;
 
-use Models\Student as Student;
+use Classes\Users\Student as Student;
 
 interface IStudentDAO
 {
-    function Add(Student $student);
+
     function GetAll();
-    function Remove($enrollment);
+    function GetByEmail($email);
+    function Add(Student $student);
 }

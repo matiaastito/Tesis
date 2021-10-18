@@ -2,9 +2,7 @@
 
 namespace DAO;
 
-use Models\User as User;
-
-interface IUserDAO
+interface IUSerDAO
 {
-    function getByEmail($email);
+    function GetByEmail($email);
 }

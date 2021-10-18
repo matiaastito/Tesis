@@ -1,0 +1,32 @@
+ [
+        {
+         "id":"1",
+         "CUIL":"17-1564651-0",
+         "legalName":"Adidas",
+        "address":"Marconi 2622",
+        "contactNumber":"12345678",
+        "email":"asfsafd@gmail.com"},
+        { 
+            "id":"2",
+            "CUIL":"17-67845834-0",
+            "legalName":"Nike",
+            "address":"asdfsadf 123",
+            "contactNumber":"54657896",
+            "email":"sfdsdf@hotmail.com"
+        },
+        {
+             "id":"3",
+             "CUIL":"17-345543453-0",
+            "legalName":"Topper",
+            "address":"sdfadsf 456",
+            "contactNumber":"15224145",
+            "email":"sdfsadf@yahoo.com.ar"},
+        { 
+            "id":"4",
+            "CUIL":"17-3452345341-0",
+            "legalName":"Puma",
+            "address":"asdfsadf 545",
+            "contactNumber":"45645656",
+            "email":"asdfasdfsdf@gmail.com"
+        }
+]
