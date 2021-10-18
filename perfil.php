@@ -115,11 +115,20 @@
          <! –– Parte inferior del perfil (Muro de publicaciones) ––>
     </div>
 
-    <div contenteditable class="caja"  oninput="document.querySelector('#description').textContent = this.innerText"></div>
+    <div contenteditable class="caja" oninput="document.querySelector('#description').textContent = this.innerText"></div>
             
-            <textarea id="description"></textarea>
-          
-            <input type="submit" value="Enviar">
+    <ul>
+        
+    </ul>
+    <ul>
+          <h4 class= "lineaDelMuroDeTexto"></h4>
+          <button type="submit" class="agregar" value="Agregar">Agregar</button>
+    </ul>
+    <ul>
+         <h5 class="cajaMuro"> </h5>
+
+    </ul>
+            
 
 
 
