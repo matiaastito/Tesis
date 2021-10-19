@@ -37,12 +37,6 @@
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
               <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
-                Propuestas
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
                 Notificaciones
               </a>
@@ -73,40 +67,28 @@
             <img class="foto" src="imagenes/foto default de usuario.png" alt="">
             </li>
             <li class="userName">
-           <h1>Nombre Apellido</h1>
+           <h1>Administrador</h1>
             </li>
             <li>
             <h2 class="linea"></h2>
             </li>
             
-          <ul class="opcionesDePerfil">
+          <ul class="opcionesDePerfilAdmin">
             <li>
                 <a href="#" class="nav-link text-white">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                   Ver CV
+                   Agregar 
               </a>
             </li>
             <li>
                 <a href="#" class="nav-link text-white">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                   GitHub
+                   Remover
               </a>
             <li>
                 <a href="#" class="nav-link text-white">
                     <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                   Informacion
-              </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                   Imagenes
-              </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link text-white">
-                    <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                   Videos
+                   Enlistar
               </a>
             </li>
             </ul>
@@ -114,18 +96,8 @@
 
          <! –– Parte inferior del perfil (Muro de publicaciones) ––>
     </div>
-
-    <div contenteditable class="caja" oninput="document.querySelector('#description').textContent = this.innerText"></div>
-            
     <ul>
-        
-    </ul>
-    <ul>
-          <h4 class= "lineaDelMuroDeTexto"></h4>
-          <button type="submit" class="agregar" value="Agregar">Agregar</button>
-    </ul>
-    <ul>
-         <h5 class="cajaMuro"> </h5>
+         <h5 class="cajaMuroAdmin"> </h5>
 
     </ul>
             
