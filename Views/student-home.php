@@ -1,6 +1,7 @@
 <?php
 
 require_once("validate-session.php");
+require_once("nav-student.php");
 ?>
 <!-- ################################################################################################ -->
 <div class="wrapper row2 bgded" style="background-image:url('../images/demo/backgrounds/1.png');">
@@ -18,7 +19,19 @@ require_once("validate-session.php");
     <main class="container clear">
         <div class="content">
             <div id="comments">
-                <!--aca iria la pagina inicial del admin-->
+                <?php
+                foreach ($studentList as $student) {
+                    if ($student->getStudentId() == $_SESSION['loggedUser']->getStudentId()) {
+                ?>
+                        <?php echo $student->getName()  ?>
+                        <?php echo $student->getLastName() ?>
+                        <?php echo 'DNI:' . $student->getDni() . "<br>"; ?>
+                        <?php echo 'Birth Date: ' . $student->getBirthDate() . "<br>"; ?>
+
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </main>

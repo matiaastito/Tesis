@@ -23,7 +23,7 @@ include('nav.php');
                         <thead>
                             <tr>
                                 <th>CUIL</th>
-                                <th>Nomnbre legal</th>
+                                <th>Nombre legal</th>
                                 <th>Direccion fisica</th>
                                 <th>Numero de contacto</th>
                                 <th>Email de contacto</th>

@@ -107,6 +107,40 @@ class CompanyDAO implements ICompanyDAO
         }
     }
 
+    public function Modify()
+    {
+
+        try {
+            if ($_POST['legalName']) {
+                $query = "UPDATE $this->tableName SET legal_name = '$_POST[legalName]' WHERE CUIL = $_POST[cuil]";
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->Execute($query);
+            }
+            if ($_POST['address']) {
+                $query = "UPDATE $this->tableName SET address='$_POST[address]' WHERE CUIL = $_POST[cuil]";
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->Execute($query);
+            }
+            if ($_POST['contactNumber']) {
+                $query = "UPDATE $this->tableName SET contact_number='$_POST[contactNumber]' WHERE CUIL = $_POST[cuil]";
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->Execute($query);
+            }
+            if ($_POST['email']) {
+                $query = "UPDATE $this->tableName SET email='$_POST[email]' WHERE CUIL = $_POST[cuil]";
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->Execute($query);
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+
     public function SearchByNombre($nombre)
     {
 

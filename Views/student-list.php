@@ -5,6 +5,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 } else {
     require_once('nav-student.php');
 }
+
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">

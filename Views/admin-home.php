@@ -11,7 +11,19 @@ include('nav.php');
     <main class="container clear">
         <div class="content">
             <div id="comments">
-                <!--aca iria la pagina inicial del admin-->
+                <?php
+                foreach ($adminList as $admin) {
+                    if ($admin->getIdAdmin() == $_SESSION['loggedUser']->getIdAdmin()) {
+                ?>
+                        <?php echo $admin->getName()  ?>
+                        <?php echo $admin->getLastName() ?>
+                        <?php echo 'DNI:' . $admin->getDni() . "<br>"; ?>
+                        <?php echo 'Birth Date: ' . $admin->getBirthDate() . "<br>"; ?>
+
+                <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </main>

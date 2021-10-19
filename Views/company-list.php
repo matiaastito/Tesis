@@ -49,7 +49,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                         </form>
 
                         <form action="<?php echo FRONT_ROOT . "Company/Modify" ?>" method="post">
-
+                            <input type="number" name="CUIL" id="CUIL" placeholder="CUIL">
                             <button class="" type="submit" name="">Modificar</button>
 
                         </form>

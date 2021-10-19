@@ -3,15 +3,21 @@
 namespace Controllers;
 
 use DAO\UserDAO as UserDAO;
+use DAO\StudentDAO as StudentDAO;
+use DAO\AdminDAO as AdminDAO;
 
 class HomeController
 {
     private $UserDAO;
+    private $studentDAO;
+    private $adminDAO;
 
 
     public function __construct()
     {
         $this->UserDAO = new UserDAO();
+        $this->studentDAO = new StudentDAO();
+        $this->adminDAO = new AdminDAO();
     }
 
     public function Index($message = "")
@@ -21,6 +27,7 @@ class HomeController
 
     public function ShowAdminView()
     {
+        $adminList = $this->adminDAO->GetAll();
         require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "admin-home.php");
     }
@@ -29,6 +36,7 @@ class HomeController
     public function ShowStudentView()
     {
 
+        $studentList = $this->studentDAO->GetAll();
         require_once(VIEWS_PATH . "validate-session.php");
         require_once(VIEWS_PATH . "student-home.php");
     }
@@ -56,8 +64,11 @@ class HomeController
 
     public function Logout()
     {
+
         session_destroy();
 
-        $this->Index("");
+        echo "<script> if(confirm('Sesion terminada'));";
+        echo "window.location = '../index.php';
+		</script>";
     }
 }

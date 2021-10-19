@@ -44,6 +44,11 @@ class AdminDAO implements IAdminDAO
             foreach ($contentArray as $content) {
                 $Admin = new Admin();
                 $Admin->setEmail($content["email"]);
+                $Admin->setName($content["firstName"]);
+                $Admin->setLastName($content["lastName"]);
+                $Admin->setIdAdmin($content["idAdmin"]);
+                $Admin->setDni($content["dni"]);
+                $Admin->setBirthDate($content["birthDate"]);
                 $Admin->setUserType("admin");
                 array_push($this->AdminList, $Admin);
             }

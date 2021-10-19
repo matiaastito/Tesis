@@ -45,7 +45,19 @@ class CompanyController
 
     public function Modify($CUIL)
     {
-        //agregar funcion para modificar
+
+        $companyList = $this->companyDAO->GetAll();
+        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH . "modify-company.php");
+    }
+
+    public function ModifyAttribute($legalName, $address, $contactNumber, $email, $cuil)
+    {
+
+        $this->companyDAO->Modify();
+        $companyList = $this->companyDAO->GetAll();
+        require_once(VIEWS_PATH . "validate-session.php");
+        require_once(VIEWS_PATH . "company-list.php");
     }
 
     public function Add($CUIL, $legalName, $address, $contactNumber, $email)
