@@ -34,6 +34,8 @@ for ($i = 0; $i < 20; $i++) {
         $arrayToDecode[$i]['email'],
         $arrayToDecode[$i]['phoneNumber'],
         $arrayToDecode[$i]['active'],
+        "student",
     );
+    
 }
 */

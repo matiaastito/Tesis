@@ -36,7 +36,7 @@ class StudentController
     }
 
 
-    public function Add($studentId, $careerId, $firstName, $lastName, $dni, $fileNumber, $gender, $birthDate, $email, $phoneNumber, $active)
+    public function Add($studentId, $careerId, $firstName, $lastName, $dni, $fileNumber, $gender, $birthDate, $email, $phoneNumber, $active, $userType)
     {
         $student = new Student();
         $student->setStudentId($studentId);
@@ -50,6 +50,7 @@ class StudentController
         $student->setEmail($email);
         $student->setPhoneNumber($phoneNumber);
         $student->setActive($active);
+        $student->setUserType($userType);
 
 
         $this->studentDAO->Add($student);

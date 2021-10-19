@@ -11,16 +11,14 @@ use Classes\Company as Company;
 class AdminController
 {
     private $adminDAO;
+    private $companyDAO;
+    private $studentDAO;
 
     public function __construct()
     {
         $this->adminDAO = new AdminDAO();
-    }
-
-    public function ShowAddView()
-    {
-
-        require_once(VIEWS_PATH . "company-add.php");
+        $this->companyDAO = new CompanyDAO();
+        $this->studentDAO = new StudentDAO();
     }
 
     public function ShowCompanyListView()
@@ -32,8 +30,7 @@ class AdminController
 
     public function ShowStudentListView()
     {
-        $studentList = $this->studetnDAO->GetAll();
-
+        $studentList = $this->studentDAO->GetAll();
         require_once(VIEWS_PATH . "student-list.php");
     }
 

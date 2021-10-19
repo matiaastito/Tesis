@@ -14,6 +14,7 @@ class Person
     private $birthDate;
     private $email;
     private $phoneNumber;
+    private $userType;
 
     /**
      * Get the value of name
@@ -137,6 +138,24 @@ class Person
     public function setPhoneNumber($phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userType
+     */
+    public function getUserType()
+    {
+        return $this->userType;
+    }
+
+    /**
+     * Set the value of userType
+     */
+    public function setUserType($userType): self
+    {
+        $this->userType = $userType;
 
         return $this;
     }

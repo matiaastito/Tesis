@@ -65,6 +65,7 @@ class StudentDAO implements IStudentDAO
                 $student->setEmail($content["email"]);
                 $student->setPhoneNumber($content["phoneNumber"]);
                 $student->setActive($content["active"]);
+                $student->setUserType("student");
 
                 array_push($this->studentList, $student);
             }
@@ -88,6 +89,7 @@ class StudentDAO implements IStudentDAO
             $valuesArray["email"] = $student->getEmail();
             $valuesArray["phoneNumber"] = $student->getPhoneNumber();
             $valuesArray["active"] = $student->getActive();
+            $valuesArray["userType"] = "student";
             array_push($arrayToEncode, $valuesArray);
         }
 

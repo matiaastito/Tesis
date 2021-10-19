@@ -10,7 +10,8 @@
         "birthDate": "2021-06-28T00:00:00",
         "email": "ddouthwaite0@goo.gl",
         "phoneNumber": "849-713-4523",
-        "active": false
+        "active": false,
+        "userType": "student"
     },
     {
         "studentId": 2,
@@ -23,7 +24,8 @@
         "birthDate": "2021-02-23T00:00:00",
         "email": "wlorant1@sbwire.com",
         "phoneNumber": "171-448-9062",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 3,
@@ -36,7 +38,8 @@
         "birthDate": "2021-07-03T00:00:00",
         "email": "aseemmonds2@upenn.edu",
         "phoneNumber": "961-404-8720",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 4,
@@ -49,7 +52,8 @@
         "birthDate": "2020-09-29T00:00:00",
         "email": "ediben3@multiply.com",
         "phoneNumber": "337-480-1652",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 5,
@@ -62,7 +66,8 @@
         "birthDate": "2021-03-14T00:00:00",
         "email": "dhasely4@blinklist.com",
         "phoneNumber": "936-600-0486",
-        "active": false
+        "active": false,
+        "userType": "student"
     },
     {
         "studentId": 6,
@@ -75,7 +80,8 @@
         "birthDate": "2020-09-25T00:00:00",
         "email": "walelsandrowicz5@nasa.gov",
         "phoneNumber": "328-137-1386",
-        "active": false
+        "active": false,
+        "userType": "student"
     },
     {
         "studentId": 7,
@@ -88,7 +94,8 @@
         "birthDate": "2021-09-15T00:00:00",
         "email": "kwitheford6@salon.com",
         "phoneNumber": "525-769-1695",
-        "active": false
+        "active": false,
+        "userType": "student"
     },
     {
         "studentId": 8,
@@ -101,7 +108,8 @@
         "birthDate": "2021-09-06T00:00:00",
         "email": "iaberdalgy7@mlb.com",
         "phoneNumber": "977-660-8938",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 9,
@@ -114,7 +122,8 @@
         "birthDate": "2021-08-30T00:00:00",
         "email": "gcastle8@hexun.com",
         "phoneNumber": "904-335-2660",
-        "active": false
+        "active": false,
+        "userType": "student"
     },
     {
         "studentId": 10,
@@ -127,7 +136,8 @@
         "birthDate": "2021-03-13T00:00:00",
         "email": "sforrington9@webnode.com",
         "phoneNumber": "720-205-4748",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 11,
@@ -140,7 +150,8 @@
         "birthDate": "2021-03-14T00:00:00",
         "email": "sjanteta@businessinsider.com",
         "phoneNumber": "860-103-9915",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 12,
@@ -153,7 +164,8 @@
         "birthDate": "2021-04-12T00:00:00",
         "email": "jdoringb@un.org",
         "phoneNumber": "414-609-3692",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 13,
@@ -166,7 +178,8 @@
         "birthDate": "2021-03-09T00:00:00",
         "email": "jyaxleyc@ifeng.com",
         "phoneNumber": "595-862-1690",
-        "active": false
+        "active": false,
+        "userType": "student"
     },
     {
         "studentId": 14,
@@ -179,7 +192,8 @@
         "birthDate": "2020-10-02T00:00:00",
         "email": "slaxsond@squarespace.com",
         "phoneNumber": "174-737-9358",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 15,
@@ -192,7 +206,8 @@
         "birthDate": "2021-06-24T00:00:00",
         "email": "bvandaalene@sphinn.com",
         "phoneNumber": "267-278-5971",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 16,
@@ -205,7 +220,8 @@
         "birthDate": "2021-08-09T00:00:00",
         "email": "acrannagef@baidu.com",
         "phoneNumber": "126-254-6195",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 17,
@@ -218,7 +234,8 @@
         "birthDate": "2021-07-05T00:00:00",
         "email": "fgorvetteg@list-manage.com",
         "phoneNumber": "152-846-1928",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 18,
@@ -231,7 +248,8 @@
         "birthDate": "2021-08-19T00:00:00",
         "email": "owebburnh@google.co.uk",
         "phoneNumber": "598-324-4986",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 19,
@@ -244,7 +262,8 @@
         "birthDate": "2021-05-11T00:00:00",
         "email": "tpeterseni@nydailynews.com",
         "phoneNumber": "138-603-2531",
-        "active": true
+        "active": true,
+        "userType": "student"
     },
     {
         "studentId": 20,
@@ -257,6 +276,7 @@
         "birthDate": "2020-09-27T00:00:00",
         "email": "jbruntonj@imageshack.us",
         "phoneNumber": "241-206-2755",
-        "active": false
+        "active": false,
+        "userType": "student"
     }
 ]

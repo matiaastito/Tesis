@@ -7,7 +7,8 @@
         "gender": "Masculine",
         "birthDate": "1996-10-27T00:00:00",
         "email": "matias.tito@gmail.com",
-        "phoneNumber": "223-6136940"
+        "phoneNumber": "223-6136940",
+        "userType":"admin"
     },
     {
         "idAdmin":"2",
@@ -17,6 +18,7 @@
         "gender": "Masculine",
         "birthDate": "1111-11-11T00:00:00",
         "email": "damian.sartorio@gmail.com",
-        "phoneNumber": "223-111111"
+        "phoneNumber": "223-111111",
+        "userType":"admin"
     }
 ]
