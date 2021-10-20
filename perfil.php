@@ -49,14 +49,14 @@
             </li>
             <li>
               <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
-                Inicio
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
+                Mi cuenta
               </a>
             </li>
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
-                Mi cuenta
+                LogOut
               </a>
             </li>
             
@@ -115,11 +115,20 @@
          <! –– Parte inferior del perfil (Muro de publicaciones) ––>
     </div>
 
-    <div contenteditable class="caja"  oninput="document.querySelector('#description').textContent = this.innerText"></div>
+    <div contenteditable class="caja" oninput="document.querySelector('#description').textContent = this.innerText"></div>
             
-            <textarea id="description"></textarea>
-          
-            <input type="submit" value="Enviar">
+    <ul>
+        
+    </ul>
+    <ul>
+          <h4 class= "lineaDelMuroDeTexto"></h4>
+          <button type="submit" class="agregar" value="Agregar">Agregar</button>
+    </ul>
+    <ul>
+         <h5 class="cajaMuro"> </h5>
+
+    </ul>
+            
 
 
 
