@@ -24,7 +24,7 @@
         <header id= "linea"><header >
         <input type="email" class="field field--animate" id="emailadress" placeholder="Email:">
 
-        <form action = "perfilAdmin.php" >
+        <form action = "perfil.php" >
              <input type = "submit" class="buttonFlecha" value= "">
         </form>
 

@@ -1,9 +1,6 @@
 
 .fondo{
-    
-   
-    
-    
+
     background-image: url("imagenes/pasilloBlur.jpg");
     background-position-x:center;
    
@@ -80,11 +77,14 @@ p {
 
 .buttonFlecha   {
 
-    background: url("imagenes/boton\ violeta\ de\ inicio.png") center;
+    background: url("imagenes/Boton\ Violetaa.png") center;
     background-size: 100% 100%;
     border: none;
     width: 150px;
     height: 150px;
+    border-radius: 10px 10px 10px 10px; 
+    -moz-border-radius: 10px 10px 10px 10px; 
+    -webkit-border-radius: 10px 10px 10px 10px; 
     border-color: #F8F8FF;
     background-color: #F8F8FF;
     margin-left: 120px;
