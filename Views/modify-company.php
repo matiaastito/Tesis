@@ -1,7 +1,7 @@
 <?php
 require_once("validate-session.php");
 
-require_once('nav.php');
+require_once('header.php');
 
 ?>
 <main class="py-5">

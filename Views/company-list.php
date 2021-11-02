@@ -2,7 +2,7 @@
 require_once("validate-session.php");
 
 if ($_SESSION['loggedUser']->getUserType() == "admin") {
-    require_once('nav.php');
+    require_once('header.php');
 } else {
     require_once('nav-student.php');
 }
