@@ -78,19 +78,14 @@
 
     <! –– Parte superior del perfil ––>
 
-      <div class="header">
-        <ul>
-          <li>
-            <img class="foto" src="imagenes/foto default de usuario.png" alt="">
-          </li>
-          <li class="userName">
-            <h1>Nombre Apellido</h1>
-          </li>
-          <li>
-            <h2 class="linea"></h2>
-          </li>
-
-          <ul class="opcionesDePerfil">
+    <div class="header">
+      <div>
+        <img class="foto" src="imagenes/foto default de usuario.png" alt="">
+        <h1>Nombre Apellido</h1>
+      </div>
+      <hr>
+       <nav>
+       <ul class="opcionesDePerfil">
             <li>
               <a href="#" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
@@ -130,8 +125,16 @@
                 Videos
               </a>
             </li>
+<<<<<<< HEAD
           </ul>
         </ul>
+=======
+            </ul>
+       </nav>
+            
+          
+       
+>>>>>>> upstream/Pilula
 
         <! –– Parte inferior del perfil (Muro de publicaciones) ––>
       </div>

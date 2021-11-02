@@ -13,7 +13,6 @@ use Config\Request     as Request;
 
 Autoload::start();
 
-
 //sacr esto, va en otro lado
 session_start();
 

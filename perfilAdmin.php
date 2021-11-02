@@ -62,9 +62,12 @@
     <! –– Parte superior del perfil ––>
 
     <div class="header">
+      <div>
+          <img class="foto" src="imagenes/foto default de usuario.png" alt="">
+      </div>
         <ul>
             <li>
-            <img class="foto" src="imagenes/foto default de usuario.png" alt="">
+            
             </li>
             <li class="userName">
            <h1>Administrador</h1>
