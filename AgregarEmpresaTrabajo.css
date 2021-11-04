@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  font: 100% sans-serif;
+  color: #f8f8ff;
+}
+
+#cuadrado {
+  border: 1px solid #f8f8ff;
+  width: 800px;
+  height: 1000px;
+  padding: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.searchBar,
+.searchBar:focus {
+  background-color: transparent;
+  box-shadow: none;
+  border: 1px solid #f8f8ff;
+
+  font: 100% sans-serif;
+  color: #f8f8ff;
+}
+
+.cuadrado-de-opciones,
+.cuadrado-de-opciones:focus {
+  background-color: transparent;
+  box-shadow: none;
+
+  border: 1px solid #f8f8ff;
+  width: 200px;
+  margin: none;
+  padding: 10px;
+
+  font: 100% sans-serif;
+  color: #f8f8ff;
+}

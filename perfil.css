@@ -21,25 +21,12 @@
 }
 
 .searchBar {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #1b131f;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color #fff 0.15s ease-in-out,
-    box-shadow #fff 0.15s ease-in-out;
+  background-color: transparent;
+  box-shadow: none;
+  border: 1px solid #f8f8ff;
 
-  position: relative;
-  right: 600px;
+  font: 100% sans-serif;
+  color: #f8f8ff;
 }
 
 .form-control-dark {
