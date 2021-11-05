@@ -66,7 +66,7 @@
       <nav class="mb-5">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a href="jobOffer.php" class="nav-link text-white">
+            <a href="AddEmpresa.php" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>
@@ -89,7 +89,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link text-white">
+            <a href="AddJobOffer.php" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>

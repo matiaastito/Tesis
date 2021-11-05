@@ -18,6 +18,7 @@
   margin-bottom: 50px;
 
   display: flex;
+  text-align: center;
 
   justify-content: center;
 }
@@ -34,7 +35,6 @@
 
 .cuadrado-de-opciones,
 .cuadrado-de-opciones:focus {
-  background-color: transparent;
   box-shadow: none;
 
   border: 1px solid #f8f8ff;
@@ -44,4 +44,32 @@
 
   font: 100% sans-serif;
   color: #f8f8ff;
+}
+
+#linea {
+  width: 700px;
+  height: 1px;
+  background: #f8f8ff;
+  margin-top: 40px;
+}
+
+.h1 {
+  font: 100% sans-serif;
+  color: #f8f8ff;
+}
+
+#margenesa {
+  margin-bottom: 50px;
+
+  margin-left: 50px;
+
+  width: 200px;
+}
+
+#margenesb {
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: 50px;
+
+  width: 200px;
 }

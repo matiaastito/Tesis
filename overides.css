@@ -6,8 +6,18 @@
   box-shadow: none;
   border-color: #f8f8ff;
   width: 500px;
-  margin: 20px;
 
-  font: 100% sans-serif;
   color: #f8f8ff;
+}
+
+.form-range {
+  width: 650px;
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+  margin-top: 30px;
+  position: relative;
+  right: 205px;
 }
