@@ -2,12 +2,11 @@
 
 namespace DAO;
 
-use Classes\Company as Company;
+use Classes\Enterprise\Company as Company;
 
-interface ICompanyDAO
+interface IJobPositionDAO
 {
     function Add(Company $company);
     function GetAll();
-    function getByCuil($cuil);
     function Remove($cuil);
 }

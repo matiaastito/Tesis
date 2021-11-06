@@ -7,8 +7,8 @@
             <ul class="clear">
                 <li class="active"><a class="drop" href="#">Actions</a>
                     <ul>
-                        <li><a href="<?php echo  FRONT_ROOT . "Home/ShowStudentView " ?>">HOME</a></li>
-                        <li><a href="<?php echo  FRONT_ROOT . "Home/Logout " ?>">LOGOUT</a></li>
+                        <li><a href="<?php echo  FRONT_ROOT . "/Home/ShowStudentView " ?>">HOME</a></li>
+                        <li><a href="<?php echo  FRONT_ROOT . "/Home/Logout " ?>">LOGOUT</a></li>
                     </ul>
         </nav>
     </header>

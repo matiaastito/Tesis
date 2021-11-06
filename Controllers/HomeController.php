@@ -22,14 +22,14 @@ class HomeController
 
     public function Index($message = "")
     {
-        require_once(VIEWS_PATH . "index.php");
+        require_once(VIEWS_PATH . "/index.php");
     }
 
     public function ShowAdminView()
     {
         $adminList = $this->adminDAO->GetAll();
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "admin-home.php");
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/admin-home.php");
     }
 
 
@@ -37,8 +37,8 @@ class HomeController
     {
 
         $studentList = $this->studentDAO->GetAll();
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "student-home.php");
+        require_once(VIEWS_PATH . "/validate-session.php"); //implementar una clase para la validacion de sesion / creacion / destroy, etc
+        require_once(VIEWS_PATH . "/student-home.php");
     }
 
     public function Login($email)

@@ -11,7 +11,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
     <section id="listado" class="mb-5">
         <div class="container">
             <h2 class="mb-4">Listado de empresas</h2>
-            <form action="<?php echo FRONT_ROOT . "Company/SearchByName" ?>" method="post">
+            <form action="<?php echo FRONT_ROOT . "/Company/SearchByName" ?>" method="post">
                 <input type="text" placeholder="Nombre..." name="nombre">
                 <button name="" type="submit">Buscar</button>
             </form>
@@ -42,13 +42,13 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                     }
                     ?>
                     <?php if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
-                        <form action="<?php echo FRONT_ROOT . "Company/Remove" ?>" method="post">
+                        <form action="<?php echo FRONT_ROOT . "/Company/Remove" ?>" method="post">
                             <input type="number" name="CUIL" id="CUIL" placeholder="CUIL">
                             <button class="" type="submit" name="">Eliminar</button>
 
                         </form>
 
-                        <form action="<?php echo FRONT_ROOT . "Company/Modify" ?>" method="post">
+                        <form action="<?php echo FRONT_ROOT . "/Company/Modify" ?>" method="post">
                             <input type="number" name="CUIL" id="CUIL" placeholder="CUIL">
                             <button class="" type="submit" name="">Modificar</button>
 

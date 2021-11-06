@@ -37,7 +37,7 @@ require_once('header.php');
                     }
                     ?>
 
-                    <form action="<?php echo FRONT_ROOT . "Company/ModifyAttribute" ?>" method="post">
+                    <form action="<?php echo FRONT_ROOT . "/Company/ModifyAttribute" ?>" method="post">
                         <ul>
                             <li> Nombre Legal
                                 <input type="text" name="legalName" id="legalName" placeholder="Nombre empresa..">

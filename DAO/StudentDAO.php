@@ -4,97 +4,94 @@ namespace DAO;
 
 use DAO\IStudentDAO as IStudentDAO;
 use Classes\Users\Student as Student;
+use DAO\Connection as Connection;
+use \Exception as Exception;
 
 class StudentDAO implements IStudentDAO
 {
     private $studentList = array();
-    private $fileName = ROOT . "Data/students.json";
+    private $tableName = "student";
+    
 
     public function Add(Student $student)
     {
-        $this->RetrieveData();
+        try {
+            $query = "INSERT INTO " . $this->tableName . " (id, first_name, career_id, file_number, active, last_name, dni, gender, birth_date, email, phone_number, user_type) VALUES (:id, :first_name, :career_id, :file_number, :active, :last_name, :dni, :gender, :birth_date, :email, :phone_number, :user_type);";
+            $parameters["id"] = $student->getStudentId();
+            $parameters["first_name"] = $student->getName();
+            $parameters["career_id"] = $student->getCareerId();
+            $parameters["file_number"] = $student->getFileNumber();
+            $parameters["active"] = $student->getActive();
+            $parameters["last_name"] = $student->getLastName();
+            $parameters["dni"] = $student->getDni();
+            $parameters["gender"] = $student->getGender();
+            $parameters["birth_date"] = $student->getBirthDate();
+            $parameters["email"] = $student->getEmail();
+            $parameters["phone_number"] = $student->getPhoneNumber();
+            $parameters["user_type"] = $student->getUserType();
+            
+            
+            $this->connection = Connection::GetInstance();
 
-        array_push($this->studentList, $student);
-
-        $this->SaveData();
-    }
-
-    public function GetAll()
-    {
-        $this->RetrieveData();
-
-        return $this->studentList;
+            $this->connection->ExecuteNonQuery($query, $parameters);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
     }
 
     public function GetByEmail($email)
     {
         $student = null;
+        try {
+            $query = "SELECT * FROM $this->tableName WHERE email like '$email%'";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
 
-        $this->RetrieveData();
+            if ($resultSet != null) {
+               $student = $resultSet;
+                }
+            return $student;
+        } catch (Exception $ex) {
 
-        $student = array_filter($this->studentList, function ($student) use ($email) {
-            return $student->getEmail() == $email;
-        });
-
-        $student = array_values($student); //Reordering array indexes
-
-        return (count($student) > 0) ? $student[0] : null;
+            throw $ex;
+        }
     }
 
-
-    private function RetrieveData()
+    public function GetAll()
     {
-        $this->studentList = array();
+        $studentList = array();
+        try {
 
-        if (file_exists($this->fileName)) {
-            $jsonToDecode = file_get_contents($this->fileName);
+            $query = "SELECT * FROM " . $this->tableName;
 
-            $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
+            $this->connection = Connection::GetInstance();
 
-            foreach ($contentArray as $content) {
+            $resultSet = $this->connection->Execute($query);
 
+            foreach ($resultSet as $row) {
                 $student = new Student();
-                $student->setStudentId($content["studentId"]);
-                $student->setCareerId($content["careerId"]);
-                $student->setName($content["firstName"]);
-                $student->setLastName($content["lastName"]);
-                $student->setDni($content["dni"]);
-                $student->setFileNumber($content["fileNumber"]);
-                $student->setGender($content["gender"]);
-                $student->setBirthDate($content["birthDate"]);
-                $student->setEmail($content["email"]);
-                $student->setPhoneNumber($content["phoneNumber"]);
-                $student->setActive($content["active"]);
-                $student->setUserType("student");
+                $student->setStudentId($row["id"]);
+                $student->setCareerId($row["career_id"]);
+                $student->setFileNumber($row["file_number"]);
+                $student->setActive($row["active"]);
+                $student->setName($row["first_name"]);
+                $student->setLastName($row["last_name"]);
+                $student->setDni($row["dni"]);
+                $student->setGender($row["gender"]);
+                $student->setPhoneNumber($row["phone_number"]);
+                $student->setBirthDate($row["birth_date"]);
+                $student->setUserType($row["user_type"]);
+                $student->setEmail($row["email"]);
 
-                array_push($this->studentList, $student);
+
+
+                array_push($studentList, $student);
             }
+
+            return $studentList;
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
 
-    private function SaveData()
-    {
-        $arrayToEncode = array();
-
-        foreach ($this->studentList as $student) {
-            $valuesArray = array();
-            $valuesArray["studentId"] = $student->getStudentId();
-            $valuesArray["careerId"] = $student->getCareerId();
-            $valuesArray["firstName"] = $student->getName();
-            $valuesArray["lastName"] = $student->getLastName();
-            $valuesArray["dni"] = $student->getDni();
-            $valuesArray["fileNumber"] = $student->getFileNumber();
-            $valuesArray["gender"] = $student->getGender();
-            $valuesArray["birthDate"] = $student->getBirthDate();
-            $valuesArray["email"] = $student->getEmail();
-            $valuesArray["phoneNumber"] = $student->getPhoneNumber();
-            $valuesArray["active"] = $student->getActive();
-            $valuesArray["userType"] = "student";
-            array_push($arrayToEncode, $valuesArray);
-        }
-
-        $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-
-        file_put_contents($this->fileName, $fileContent);
-    }
 }

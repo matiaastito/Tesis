@@ -10,7 +10,7 @@
 }
 
 .logo {
-  background: url("../imagenes/logoNegro.png");
+  background: url("imagenes/logoNegro.png");
   background-size: 100% 100%;
   border: none;
   width: 60px;
@@ -84,27 +84,36 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  position: relative;
-  top: 100px;
+}
+
+.content-wrapper {
+  border: 1px solid #f8f8ff;
+  padding: 50px;
+}
+
+.profile-wrapper {
+  text-align: center;
+  margin-top: -150px;
+}
+
+.cover-image {
+  border: 1px solid #f8f8ff;
+  width: 100%;
+  height: 400px;
 }
 
 .userName {
   font: 50% sans-serif;
 
   margin-top: 14px;
-  font-size: 20px;
+  font-size: 40px;
   color: #f8f8ff;
-  position: relative;
-  top: 100px;
 }
 
 .linea {
-  width: 1000px;
+  width: 1300px;
   height: 1px;
   background: #f8f8ff;
-  position: relative;
-  top: 100px;
-  right: 150px;
 }
 
 .opcionesDePerfil {
@@ -122,97 +131,37 @@
   font-size: 20px;
 }
 
-.caja {
-  font: 50% sans-serif;
-  color: #f8f8ff;
-  font-size: 18px;
-  font-weight: 400;
-  text-align: left;
-
-  margin: 0 0 25px;
-  overflow: hidden;
-  padding-left: 95px;
-  padding-right: 95px;
-  padding-top: 40px;
-  border-radius: 10px 10px 10px 10px;
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border: 1px solid #f8f8ff;
-  width: 1000px;
-  height: 200px;
-  min-height: 3rem;
-
-  position: relative;
-  top: 200px;
-  left: 305px;
-}
-
-.caja:empty::before {
-  position: absolute;
-  content: "Que deseas agregar a tu muro hoy?";
-  color: #f8f8ff;
-}
-
 .description {
   display: none;
   position: relative;
   top: 10px;
 }
 
-.lineaDelMuroDeTexto {
-  width: 800px;
-  height: 1px;
-  background: #f8f8ff;
-  position: relative;
-  top: 100px;
-  left: 370px;
-}
+.button-agregar {
+  justify-content: flex-end;
 
-.agregar {
-  font: 50% sans-serif;
+  background-color: transparent;
+  border: 1px solid #f8f8ff;
+  padding: 10px;
+
+  font: 100% sans-serif;
   color: #f8f8ff;
-  font-size: 18px;
-  font-weight: 400;
-  text-align: center;
 
-  margin: 0 0 25px;
-  overflow: hidden;
-  padding: 0.5rem;
-  background-color: #7b68ee;
   border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
-
-  border: 1px solid #f8f8ff;
-  width: 100px;
-  height: 50px;
-
-  position: relative;
-  top: 100px;
-  left: 1050px;
 }
 
-.cajaMuro {
-  font: 50% sans-serif;
-  color: #f8f8ff;
-  font-size: 18px;
-  font-weight: 400;
-  text-align: left;
-  background: none;
-  margin: 0 0 25px;
-  overflow: hidden;
-  padding: 0.5rem;
-  border-radius: 10px 10px 10px 10px;
-  -moz-border-radius: 10px 10px 10px 10px;
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border: 1px solid #f8f8ff;
-  width: 1000px;
-  height: 1000px;
-  min-height: 3rem;
+.caja_de_texto,
+.caja_de_texto:focus {
+  background-color: transparent;
+  box-shadow: none;
+  border-color: #f8f8ff;
+  padding: 20px;
+  width: 1300px;
 
-  position: relative;
-  top: 100px;
-  left: 270px;
+  font: 100% sans-serif;
+  color: #f8f8ff;
 }
 
 /* Perfil de Administrador */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Classes;
+namespace Classes\Enterprise;
 
 class Company
 {
@@ -11,10 +11,6 @@ class Company
     private $address;
     private $contactNumber;
     private $email;
-
-
-
-
 
     /**
      * Get the value of CUIL

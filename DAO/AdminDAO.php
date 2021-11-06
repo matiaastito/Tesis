@@ -4,54 +4,97 @@ namespace DAO;
 
 use DAO\IAdminDAO as IAdminDAO;
 use Classes\Users\Admin;
+use DAO\Connection as Connection;
+use \Exception as Exception;
 
 class AdminDAO implements IAdminDAO
 {
     private $AdminList = array();
-    private $fileName = ROOT . "Data/admins.json";
+    
+    private $tableName = "admin";
 
     public function GetByEmail($email)
     {
-        $Admin = null;
+        $admin = null;
+        try {
+            $query = "SELECT * FROM $this->tableName WHERE email like '$email%'";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
 
-        $this->RetrieveData();
+            if ($resultSet != null) {
+               $admin = $resultSet;
+                }
+            return $admin;
+        } catch (Exception $ex) {
 
-        $Admins = array_filter($this->AdminList, function ($Admin) use ($email) {
-            return $Admin->getEmail() == $email;
-        });
+            throw $ex;
+        }
+    }
+    
 
-        $Admins = array_values($Admins); //Reordering array indexes
+    public function Add(Admin $admin)
+    {
+        try {
+            $query = "INSERT INTO " . $this->tableName . " (first_name, last_name, dni, gender, birth_date, email, phone_number, user_type) VALUES (:first_name, :last_name, :dni, :gender, :birth_date, :email, :phone_number, :user_type);";
 
-        return (count($Admins) > 0) ? $Admins[0] : null;
+            $parameters["first_name"] = $admin->getName();
+            $parameters["last_name"] = $admin->getLastName();
+            $parameters["dni"] = $admin->getDni();
+            $parameters["gender"] = $admin->getGender();
+            $parameters["birth_date"] = $admin->getBirthDate();
+            $parameters["email"] = $admin->getEmail();
+            $parameters["phone_number"] = $admin->getPhoneNumber();
+            $parameters["user_type"] = $admin->getUserType();
+            $this->connection = Connection::GetInstance();
+            $this->connection->ExecuteNonQuery($query, $parameters);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
     }
 
     public function GetAll()
     {
-        $this->RetrieveData();
+        $adminList = array();
+        try {
 
-        return $this->AdminList;
-    }
+            $query = "SELECT * FROM " . $this->tableName;
 
-    private function RetrieveData()
-    {
-        $this->AdminList = array();
+            $this->connection = Connection::GetInstance();
 
-        if (file_exists($this->fileName)) {
-            $jsonToDecode = file_get_contents($this->fileName);
+            $resultSet = $this->connection->Execute($query);
 
-            $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
+            foreach ($resultSet as $row) {
+                $admin = new Admin();
+                $admin->setIdAdmin($row["id"]);
+                $admin->setName($row["first_name"]);
+                $admin->setLastName($row["last_name"]);
+                $admin->setDni($row["dni"]);
+                $admin->setGender($row["gender"]);
+                $admin->setPhoneNumber($row["phone_number"]);
+                $admin->setBirthDate($row["birth_date"]);
+                $admin->setUserType($row["user_type"]);
+                $admin->setEmail($row["email"]);
 
-            foreach ($contentArray as $content) {
-                $Admin = new Admin();
-                $Admin->setEmail($content["email"]);
-                $Admin->setName($content["firstName"]);
-                $Admin->setLastName($content["lastName"]);
-                $Admin->setIdAdmin($content["idAdmin"]);
-                $Admin->setDni($content["dni"]);
-                $Admin->setBirthDate($content["birthDate"]);
-                $Admin->setUserType("admin");
-                array_push($this->AdminList, $Admin);
+
+
+                array_push($adminList, $admin);
             }
+
+            return $adminList;
+        } catch (Exception $ex) {
+            throw $ex;
         }
     }
+
+    public function Remove($id){
+        try {
+            $query = "DELETE FROM $this->tableName WHERE id = $id";
+            $this->connection = Connection::GetInstance();
+
+            $this->connection->Execute($query);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
 }

@@ -18,7 +18,7 @@ include('nav.php');
         <div class="content">
             <div id="comments">
                 <h2>Añadir nueva empresa</h2>
-                <form action="<?php echo  FRONT_ROOT . "Company/Add " ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
+                <form action="<?php echo  FRONT_ROOT . "/Company/Add " ?>" method="post" style="background-color: #EAEDED;padding: 2rem !important;">
                     <table>
                         <thead>
                             <tr>

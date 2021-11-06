@@ -8,4 +8,6 @@ interface IAdminDAO
 {
     function getByEmail($email);
     function GetAll();
+    function Add(Admin $admin);
+    function Remove($id);
 }

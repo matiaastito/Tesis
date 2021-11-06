@@ -3,7 +3,7 @@
 namespace Controllers;
 
 use DAO\CompanyDAO as CompanyDAO;
-use Classes\Company as Company;
+use Classes\Enterprise\Company as Company;
 
 class CompanyController
 {

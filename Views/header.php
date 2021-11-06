@@ -34,7 +34,7 @@
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                 <use xlink:href="#grid" />
                             </svg>
-                            <a href="<?php echo  FRONT_ROOT . "Home/ShowAdminView" ?>"> Mi cuenta</a>
+                            <a href="<?php echo  FRONT_ROOT . "/Home/ShowAdminView" ?>"> Mi cuenta</a>
                         </a>
                     </li>
                     <li>
@@ -42,7 +42,7 @@
                             <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                 <use xlink:href="#grid" />
                             </svg>
-                            <a href="<?php echo  FRONT_ROOT . "Home/Logout " ?>">LogOut</a>
+                            <a href="<?php echo  FRONT_ROOT . "/Home/Logout " ?>">LogOut</a>
                         </a>
                     </li>
 

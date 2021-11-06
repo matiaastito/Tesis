@@ -34,24 +34,34 @@ class AdminController
         require_once(VIEWS_PATH . "student-list.php");
     }
 
-    public function Add($recordId, $firstName, $lastName)
+    public function ShowAdminListView()
     {
-        $company = new Company();
-        $company->setCUIL($recordId);
-        $company->setLegalName($firstName);
-        $company->setContactNumber($lastName);
-        $company->setEmail($lastName);
-        $company->setEmail($lastName);
+        $adminList = $this->adminDAO->GetAll();
+        require_once(VIEWS_PATH . "admin-list.php");
+    }
 
-        $this->companyDAO->Add($company);
+    public function Add($firstName, $lastName, $dni, $gender, $birhtDate, $email, $phoneNumber, $userType)
+    {
+        $admin = new Admin();
+        $admin->setName($firstName);
+        $admin->setLastName($lastName);
+        $admin->setDni($dni);
+        $admin->setGender($gender);
+        $admin->setBirthDate($birhtDate);
+        $admin->setEmail($email);
+        $admin->setPhoneNumber($phoneNumber);
+        $admin->setUserType($userType);
+
+
+        $this->adminDAO->Add($admin);
 
         $this->ShowCompanyListView();
     }
 
-    public function Remove($cuil)
+    public function Remove($id)
     {
-        $this->companyDAO->Remove($cuil);
+        $this->adminDAO->Remove($id);
 
-        $this->ShowCompanyListView();
+        $this->ShowAdminListView();
     }
 }

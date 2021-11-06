@@ -5,32 +5,22 @@ namespace DAO;
 
 use \Exception as Exception;
 use DAO\ICompanyDAO as ICompanyDAO;
-use Classes\Company as Company;
+use Classes\Enterprise\Company as Company;
 use DAO\Connection as Connection;
 
 class CompanyDAO implements ICompanyDAO
 {
     private $companyList = array();
-    private $fileName = ROOT . "Data/companies.json";
+    
     private $tableName = "company";
 
-    private function checkByCUIL($CUIL)
-    {
-
-        foreach ($this->companyList as $company) {
-            if ($company->getCUIL() == $CUIL) {
-                return FALSE;
-            }
-        }
-        return true;
-    }
 
     public function Add(Company $company)
     {
         try {
-            $query = "INSERT INTO " . $this->tableName . " (id, cuil, legal_name, address, contact_number, email) VALUES (:id, :cuil, :legal_name, :address, :contact_number, :email);";
+            $query = "INSERT INTO " . $this->tableName . " (cuil, legal_name, address, contact_number, email) VALUES (:cuil, :legal_name, :address, :contact_number, :email);";
 
-            $parameters["id"] = $this->GetNextId();
+            
             $parameters["cuil"] = $company->getCUIL();
             $parameters["legal_name"] = $company->getLegalName();
             $parameters["address"] = $company->getAddress();
@@ -65,7 +55,7 @@ class CompanyDAO implements ICompanyDAO
                 $company->setLegalName($row["legal_name"]);
                 $company->setContactNumber($row["contact_number"]);
                 $company->setAddress($row["address"]);
-                $company->setCUIL($row["CUIL"]);
+                $company->setCUIL($row["cuil"]);
                 $company->setEmail($row["email"]);
 
 
@@ -80,20 +70,6 @@ class CompanyDAO implements ICompanyDAO
     }
 
 
-    public function getByCuil($cuil)
-    {
-        $company = null;
-
-        $this->RetrieveData();
-
-        $company = array_filter($this->companyList, function ($company) use ($cuil) {
-            return $company->getLegalName() == $cuil;
-        });
-
-        $company = array_values($company); //Reordering array indexes
-
-        return (count($company) > 0) ? $company[0] : null;
-    }
 
     public function Remove($cuil)
     {
@@ -172,59 +148,5 @@ class CompanyDAO implements ICompanyDAO
         }
     }
 
-    private function RetrieveData()
-    {
-        $this->companyList = array();
 
-        if (file_exists($this->fileName)) {
-            $jsonToDecode = file_get_contents($this->fileName);
-
-            $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
-
-            foreach ($contentArray as $content) {
-                $company = new Company();
-                $company->setId($content["id"]);
-                $company->setCUIL($content["CUIL"]);
-                $company->setlegalName($content["legalName"]);
-                $company->setAddress($content["address"]);
-                $company->setContactNumber($content["contactNumber"]);
-                $company->setEmail($content["email"]);
-
-                array_push($this->companyList, $company);
-            }
-        }
-    }
-
-    private function SaveData()
-    {
-        $arrayToEncode = array();
-
-        foreach ($this->companyList as $company) {
-            $valuesArray = array();
-            $valuesArray["id"] = $company->getId();
-            $valuesArray["CUIL"] = $company->getCUIL();
-            $valuesArray["legalName"] = $company->getLegalName();
-            $valuesArray["address"] = $company->getAddress();
-            $valuesArray["contactNumber"] = $company->getContactNumber();
-            $valuesArray["email"] = $company->getEmail();
-            array_push($arrayToEncode, $valuesArray);
-        }
-
-        $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-
-        file_put_contents($this->fileName, $fileContent);
-    }
-
-    private function GetNextId()
-    {
-        $id = 0;
-
-        $this->companyList = $this->GetAll();
-
-        foreach ($this->companyList as $company) {
-            $id = ($company->getId() > $id) ? $company->getId() : $id;
-        }
-
-        return $id + 1;
-    }
 }

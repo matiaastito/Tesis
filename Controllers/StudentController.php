@@ -24,7 +24,7 @@ class StudentController
     {
         $studentList = $this->studentDAO->GetAll();
 
-        require_once(VIEWS_PATH . "student-list.php");
+      //  require_once(VIEWS_PATH . "/student-list.php");
     }
 
     public function ShowCompanyListView()
@@ -51,8 +51,6 @@ class StudentController
         $student->setPhoneNumber($phoneNumber);
         $student->setActive($active);
         $student->setUserType($userType);
-
-
         $this->studentDAO->Add($student);
 
         $this->ShowListView();
