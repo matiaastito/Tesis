@@ -29,7 +29,7 @@
                                    <header>
                                         <input type="email" class="field field--animate" id="emailadress" placeholder="Email:">
 
-                                        <form action="perfilEmpresa.php">
+                                        <form action="busquedaOfertas.php">
                                              <input type="submit" class="buttonFlecha" value="">
                                         </form>
 

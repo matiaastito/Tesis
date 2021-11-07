@@ -284,3 +284,19 @@ h2 {
   width: 350px;
   height: 102px;
 }
+
+h4 {
+  font: 130% sans-serif;
+  color: #f8f8ff;
+}
+.contactos {
+  font: 130% sans-serif;
+  color: #f8f8ff;
+}
+
+.linea-chiquita {
+  margin-top: 10px;
+  width: 200px;
+  height: 1px;
+  background: #f8f8ff;
+}

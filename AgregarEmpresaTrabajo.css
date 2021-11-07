@@ -73,3 +73,13 @@
 
   width: 200px;
 }
+
+/*lista de empresas*/
+
+.tabla {
+  margin-top: 80px;
+  width: 1500px;
+
+  font: 100% sans-serif;
+  color: #f8f8ff;
+}

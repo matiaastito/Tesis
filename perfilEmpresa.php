@@ -24,17 +24,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Propuestas</a>
+                            <a class="nav-link active" aria-current="page" href="busquedaOfertas.php">Propuestas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Notificaciones</a>
+                            <a class="nav-link active" href="#">Notificaciones</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link">Mi Cuenta</a>
+                            <a href="perfil.php" class="nav-link active">Mi Cuenta</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">LogOut</a>
+                            <a class="nav-link active">LogOut</a>
                         </li>
                     </ul>
                     <form class="d-flex">
@@ -61,7 +61,7 @@
             </div>
             <div class="profile-wrapper">
                 <img class="foto" src="imagenes/foto default de usuario.png" alt="">
-                <h1 class="userName">Empresa</h1>
+                <h1 class="userName">Globant</h1>
 
             </div>
         </div>
@@ -140,11 +140,25 @@
 
             </div>
             <div class="cuadrado3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Contactos</h4>
+                            <p class="linea-chiquita"></p>
+                            <p class="contactos">Globant.com</p>
+                            <p class="contactos">globant@gmail.com</p>
+                            <p class="contactos">45107896</p>
+                        </div>
+                        <div class="col">
+                            <h4>Ubicacion</h4>
+                            <p class="linea-chiquita"></p>
+                            <p class="contactos">Provincia de Buenos Aires</p>
+                            <p class="contactos">Mar del plata</p>
+                            <p class="contactos">4578</p>
+                        </div>
 
-            </div>
-
-        </div>
-
+                    </div>
+                </div>
 
 
 

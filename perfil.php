@@ -24,17 +24,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Propuestas</a>
+              <a class="nav-link active" aria-current="page" href="busquedaOfertas.php">Propuestas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Notificaciones</a>
+              <a class="nav-link active" href="#">Notificaciones</a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link">Mi Cuenta</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">LogOut</a>
+              <a class="nav-link active">LogOut</a>
             </li>
           </ul>
           <form class="d-flex">
