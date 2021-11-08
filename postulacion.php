@@ -58,72 +58,43 @@
 
                     <ul class="nav justify-content-center">
                         <li>
-                            <h1>Nueva Oferta de Trabajo</h1>
+                            <h1>Postularse</h1>
                             <h2 id="linea"></h2>
                         </li>
-                        <li class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Puesto</label>
 
-                        </li>
-                        <li class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Empresa</label>
-
-                        </li>
-                        <li>
-
-                            <select class="form-select" id="margenesb" aria-label="Default select example">
-                                <option selected>Experiencia</option>
-                                <option value="1">Inicial</option>
-                                <option value="2">Intermedio</option>
-                                <option value="3">Avanzado</option>
-                            </select>
-
-                        </li>
-                        <li>
-
-                            <select class="form-select" id="margenesa" aria-label="Default select example">
-                                <option selected>Jornada</option>
-                                <option value="1">Media</option>
-                                <option value="2">Completa</option>
-                                <option value="3">Extendida</option>
-                            </select>
-
-
-
-                        </li>
-                        <li>
-                            <select class="form-select" id="margenesb" aria-label="Default select example">
-                                <option selected>Sueldo</option>
-                                <option value="1">40.000 - 60.000</option>
-                                <option value="2">60.000 - 100.000</option>
-                                <option value="3">100.000 - ... </option>
-                                <option value="4">A hablar en la entrevista </option>
-                            </select>
-
-                        </li>
-                        <li>
-                            <select class="form-select" id="margenesa" aria-label="Default select example">
-                                <option selected>Tipo</option>
-                                <option value="1">Precencial</option>
-                                <option value="2">Remoto</option>
-                            </select>
-
-
-                        </li>
 
                         <li class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Descripcion</label>
+                            <label for="floatingInput">Email</label>
 
+                        </li>
+                        <li class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Nombre</label>
+
+
+                        </li>
+                        <li class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Apellido</label>
+
+
+                        </li>
+                        <li class="col-sm-4">
+                            <input type="text" class="cuadrado-de-opciones" placeholder="Provincia" aria-label="City">
+
+                        </li>
+                        <li class="col-sm">
+                            <input type="text" class="cuadrado-de-opciones" placeholder="Localidad" aria-label="State">
+
+                        </li>
+                        <li class="col-sm">
+
+                            <input type="text" class="cuadrado-de-opciones" placeholder="Altura" aria-label="Zip">
                         </li>
                         <div>
-                            <button type="button" class="btn btn-outline-light">Agregar</button>
+                            <button type="button" class="btn btn-outline-light">Postularse</button>
                         </div>
-
-
-
 
 
 

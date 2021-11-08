@@ -45,92 +45,141 @@
             </div>
         </nav>
 
+
     </header>
 
     <main>
-        <div class="caja-filtros">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Empresa</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Experiencia</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+        <div class="">
+            <div class="row">
+                <div class="col">
+                    <div class="caja-filtros">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Empresa</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Experiencia</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Jornada</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Sueldo</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Tipo</option>
+                                        <option value="1">Remoto</option>
+                                        <option value="2">Presencial</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-                    <div class="col">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Jornada</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Sueldo</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
+
+                    <div class="tabla">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Empresa</th>
+                                    <th scope="col">Experciencia</th>
+                                    <th scope="col">Jornada</th>
+                                    <th scope="col">Sueldo</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Aplicar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row"><a href="perfilEmpresa.php" class="nav-link text-light">Globant</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>badsad</td>
+                                    <td><a href="postulacion.php" class="btn btn-outline-light2">-></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>badsad</td>
+                                    <td><a href="postulacion.php" class="btn btn-outline-light2">-></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>@twitter</td>
+                                    <td>badsad</td>
+                                    <td><a href="postulacion.php" class="btn btn-outline-light2">-></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
                     </div>
-                    <div class="col">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Tipo</option>
-                            <option value="1">Remoto</option>
-                            <option value="2">Presencial</option>
-                        </select>
-                    </div>
+
+
+
+
                 </div>
+                <div class="col" id="columna">
+                    <h1>Algunas de las Empresas</h1>
+                    <p class="linea"></p>
+                    <table class="table">
+
+                        <tbody>
+                            <tr>
+                                <th scope="row"></th>
+                                <td class="text-light">Globant</td>
+                                <td></td>
+                                <td>
+                                <td><a href="perfilEmpresa.php" class="btn btn-outline-light2">Ver</td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td class="text-light">Accenture</td>
+                                <td></td>
+                                <td>
+                                <td><a href="perfilEmpresa.php" class="btn btn-outline-light2">Ver</td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td colspan="2" class="text-light">Nike</td>
+                                <td>
+                                <td><a href="perfilEmpresa.php" class="btn btn-outline-light2">Ver</td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
-
         </div>
-        <div class="tabla">
-            <table class="table table-striped table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Empresa</th>
-                        <th scope="col">Experciencia</th>
-                        <th scope="col">Jornada</th>
-                        <th scope="col">Sueldo</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Aplicar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row"><a href="perfilEmpresa.php" class="nav-link text-dark">Globant</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>badsad</td>
-                        <td><button type="button" class="btn btn-outline-light2">-></button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>badsad</td>
-                        <td><button type="button" class="btn btn-outline-light2">-></button></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>badsad</td>
-                        <td><button type="button" class="btn btn-outline-light2">-></button></td>
-                    </tr>
-                </tbody>
-            </table>
 
 
-        </div>
 
 
 
