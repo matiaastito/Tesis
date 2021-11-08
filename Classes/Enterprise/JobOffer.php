@@ -9,7 +9,6 @@ class JobOffer{
     private $jobOfferId;
     private $companyId;
     private $jobPositionId;
-    private $studentId;
     private $salary;
     private $hours;
     private $turn;
@@ -55,23 +54,6 @@ class JobOffer{
         return $this;
     }
 
-    /**
-     * Get the value of studentId
-     */
-    public function getStudentId()
-    {
-        return $this->studentId;
-    }
-
-    /**
-     * Set the value of studentId
-     */
-    public function setStudentId($studentId): self
-    {
-        $this->studentId = $studentId;
-
-        return $this;
-    }
 
     /**
      * Get the value of salary

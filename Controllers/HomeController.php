@@ -41,34 +41,4 @@ class HomeController
         require_once(VIEWS_PATH . "/student-home.php");
     }
 
-    public function Login($email)
-    {
-
-
-        $user = $this->UserDAO->GetByEmail($email);
-
-        // usar try catch + alert para evitar que el controller haga una tarea que no le compete
-        if (($user != null)) {
-            $_SESSION["loggedUser"] = $user;
-            if ($user->getUserType() == "admin") {
-                $this->ShowAdminView();
-            } else {
-                $this->ShowStudentView();
-            }
-        } else {
-            echo "<script> if(confirm('Verifique que los datos ingresados sean correctos'));";
-            echo "window.location = '../index.php';
-		</script>";
-        }
-    }
-
-    public function Logout()
-    {
-
-        session_destroy();
-
-        echo "<script> if(confirm('Sesion terminada'));";
-        echo "window.location = '../index.php';
-		</script>";
-    }
 }

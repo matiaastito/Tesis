@@ -4,7 +4,7 @@ namespace DAO;
 
 use Classes\Enterprise\Company as Company;
 
-interface IJobPositionDAO
+interface ICompanyDAO
 {
     function Add(Company $company);
     function GetAll();

@@ -32,7 +32,7 @@
                             <header>
 
 
-                                <form action="<?php echo FRONT_ROOT . "/Home/Login" ?>" method="post">
+                                <form action="<?php echo FRONT_ROOT . "/Session/Login" ?>" method="post">
                                     <input class="field field--animate" type="email" name="email" id="emailadress" placeholder="Email" required>
                                     <button class="buttonFlecha" type="submit" name=""></button>
 
@@ -43,7 +43,10 @@
                                 <form action="https://www.instagram.com/utnmardelplata/">
                                     <input type="submit" class="buttonIg" value="">
                                 </form>
-                                <a href="https://twitter.com/UTNMardelPlata"><span class="buttonTwitter"></span></a>
+                                <form action="https://twitter.com/UTNMardelPlata">
+                                    <input type="submit" class="buttonTwitter" value="">
+                                </form>
+                                
 
 
             </div>

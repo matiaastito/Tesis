@@ -2,8 +2,10 @@
 
 namespace Controllers;
 
+use Classes\Alert;
 use DAO\CompanyDAO as CompanyDAO;
 use Classes\Enterprise\Company as Company;
+use Exception;
 
 class CompanyController
 {
@@ -17,38 +19,38 @@ class CompanyController
     public function ShowListView()
     {
         $companyList = $this->companyDAO->GetAll();
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "company-list.php");
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/company-list.php");
     }
 
-    public function ShowAddView()
+    public function ShowAddView(Alert $alert = null)
     {
 
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "add-company.php");
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/add-company.php");
     }
 
     public function Remove($CUIL)
     {
         $this->companyDAO->Remove($CUIL);
         $companyList = $this->companyDAO->GetAll();
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "company-list.php");
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/company-list.php");
     }
 
     public function SearchByName($nombre)
     {
         $companyList = $this->companyDAO->SearchByNombre($nombre);
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "company-list.php");
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/company-list.php");
     }
 
     public function Modify($CUIL)
     {
 
         $companyList = $this->companyDAO->GetAll();
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "modify-company.php");
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/modify-company.php");
     }
 
     public function ModifyAttribute($legalName, $address, $contactNumber, $email, $cuil)
@@ -56,12 +58,16 @@ class CompanyController
 
         $this->companyDAO->Modify();
         $companyList = $this->companyDAO->GetAll();
-        require_once(VIEWS_PATH . "validate-session.php");
-        require_once(VIEWS_PATH . "company-list.php");
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/company-list.php");
     }
 
     public function Add($CUIL, $legalName, $address, $contactNumber, $email)
     {
+        $alert = new Alert("","");
+        try{
+
+        
         $company = new Company();
         $company->setCUIL($CUIL);
         $company->setLegalName($legalName);
@@ -70,7 +76,16 @@ class CompanyController
         $company->setEmail($email);
 
         $this->companyDAO->Add($company);
+        $alert->setType("success");
+        $alert->setMessage("Compañia agregada con exito");
+    }
+    catch(Exception $ex){
+        $alert ->setType("danger");
+        $alert->setMessage($ex->getMessage());
+    }
+    finally{
 
-        $this->ShowListView();
+        $this->ShowAddView($alert);
+    }
     }
 }

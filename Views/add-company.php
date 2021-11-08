@@ -50,7 +50,11 @@ include('nav.php');
                         </tbody>
                     </table>
                     <div>
-                        <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;" />
+                        <input type="submit" class="btn" value="Agregar" style="background-color:#DC8E47;color:white;"/>
+                    </div class="alert alert-<?php echo $alert->getType()?>">
+                    <?php echo $alert->getMessage();?>
+                    <div>
+
                     </div>
                 </form>
             </div>
@@ -58,6 +62,8 @@ include('nav.php');
     </main>
 </div>
 <!-- ################################################################################################ -->
+
+
 
 <?php
 

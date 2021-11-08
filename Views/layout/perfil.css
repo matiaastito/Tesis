@@ -10,7 +10,7 @@
 }
 
 .logo {
-  background: url("imagenes/logoNegro.png");
+  background: url("/Trabajo-Final/Views/assets/img/logoNegro.png");
   background-size: 100% 100%;
   border: none;
   width: 60px;

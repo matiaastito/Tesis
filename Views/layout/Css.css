@@ -1,5 +1,5 @@
 .fondo {
-  background-image: url("imagenes/pasilloBlur.jpg");
+  background-image: url("/Trabajo-Final/Views/assets/img/pasilloBlur.jpg");
   background-position-x: center;
 
   background-size: cover;
@@ -56,7 +56,7 @@ p {
 }
 
 .buttonFlecha {
-  background: url("imagenes/Boton\ Violetaa.png") center;
+  background: url("/Trabajo-Final/Views/assets/img/Boton Violetaa.png") center;
   background-size: 100% 100%;
   border: none;
   width: 150px;
@@ -79,7 +79,7 @@ p {
 }
 
 .buttonCampus {
-  background: url("imagenes/campusBoton.png") center;
+  background: url("/Trabajo-Final/Views/assets/img/campusBoton.png") center;
   background-size: 100% 100%;
   border: none;
   border-radius: 10px 10px 10px 10px;
@@ -94,7 +94,7 @@ p {
 }
 
 .buttonIg {
-  background: url("imagenes/igBoton.png") center;
+  background: url("/Trabajo-Final/Views/assets/img/igBoton.png") center;
   background-size: 100% 100%;
   border: none;
   border-radius: 10px 10px 10px 10px;
@@ -109,7 +109,7 @@ p {
 }
 
 .buttonTwitter {
-  background: url("imagenes/twitterBoton.png") center;
+  background: url("/Trabajo-Final/Views/assets/img/twitterBoton.png") center;
   background-size: 100% 100%;
   border: none;
   border-radius: 10px 10px 10px 10px;

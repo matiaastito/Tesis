@@ -40,8 +40,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 
                     <?php
                     }
-                    ?>
-                    <?php if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
+                    if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
                         <form action="<?php echo FRONT_ROOT . "/Company/Remove" ?>" method="post">
                             <input type="number" name="CUIL" id="CUIL" placeholder="CUIL">
                             <button class="" type="submit" name="">Eliminar</button>
