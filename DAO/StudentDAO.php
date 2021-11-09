@@ -93,4 +93,21 @@ class StudentDAO implements IStudentDAO
         }
     }
 
+    public function MatchByCareerId($name)
+    {
+        try {
+            $query = "SELECT career.id from career WHERE career.description like '$name%'";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+
+            foreach($resultSet as $row){
+                $id=$row['id'];
+             }
+        
+            return $id;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
 }

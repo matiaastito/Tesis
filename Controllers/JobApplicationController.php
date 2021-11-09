@@ -48,6 +48,17 @@ class JobApplicationController
         require_once(VIEWS_PATH . "/jobApplication-list.php");
     }
 
+    public function ShowListApplyView()
+    {
+        $jobApplicationList = $this->jobApplicationDAO->GetAll();
+        $jobOfferList = $this->jobOfferDAO->GetAll();
+        $companyList = $this->companyDAO->GetAll();
+        $careerList = $this->careerDAO->GetAll();
+        $jobPositionList = $this->jobPositionDAO->GetAll();
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/add-jobApplication.php");
+    }
+
     public function SearchByParameters($puesto, $carrera){
         $jobOfferList = $this->jobOfferDAO->SearchByParameters($puesto, $carrera);
         $companyList = $this->companyDAO->GetAll();

@@ -39,6 +39,7 @@ class SessionController
     public function Login($email)
     {
         $user = $this->UserDAO->GetByEmail($email);
+        if($user !=null){
         $logged = $this->sessionDAO->Login($user);
         // usar try catch + alert para evitar que el controller haga una tarea que no le compete
         if ($logged == "admin") {
@@ -48,6 +49,12 @@ class SessionController
                 require_once(VIEWS_PATH . "/validate-session.php"); 
                 require_once(VIEWS_PATH . "/student-home.php");
             }  
+        }else{
+            echo "<script> if(confirm('Acceso incorrecto'));";
+            echo "window.location = '../index.php';
+		</script>";
+
+        }
     }
 
     public function Logout()

@@ -35,7 +35,7 @@ class AdminController
     }
 
     public function ShowAddView(){
-        require_once(VIEWS_PATH . "/add-user.php");
+        require_once(VIEWS_PATH . "/add-admin.php");
     }
 
     public function AddImg()

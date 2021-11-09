@@ -282,8 +282,11 @@ class JobOfferDAO implements IJobOfferDAO
     else if($puesto !="Puesto"){
         return $this->SearchByPuesto($puesto);
     }
-    else{
+    else if ($carrera !="Carrera"){
         return $this->SearchByCarrera($carrera);
+    }
+    else{
+        return $this->GetAll();
     }
     }
 

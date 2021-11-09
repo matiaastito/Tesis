@@ -76,7 +76,7 @@ $company = $companyDAO->SearchById($_POST["company_Id"]);
                                 <a href="" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                     </svg>
-                                    <img class="logoCoca" src="<?php echo IMG_PATH?>/logos/coca-cola-logo-1.png" alt="">
+                                    <img class="logoCoca" src="<?php echo IMG_PATH?>/coca-cola-logo-1.png" alt="">
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -84,20 +84,20 @@ $company = $companyDAO->SearchById($_POST["company_Id"]);
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                         <use xlink:href="#people-circle" />
                                     </svg>
-                                    <img class="logoFOX" src="<?php echo IMG_PATH?>/logos/FOX_ESPAÑA_LOGO.png" alt="">
+                                    <img class="logoFOX" src="<?php echo IMG_PATH?>/FOX_ESPAÑA_LOGO.png" alt="">
                                 </a>
                             <li class="nav-item">
                                 <a href="#" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                     </svg>
-                                    <img class="logoDisney" src="<?php echo IMG_PATH?>/logos/Disney+_logo.svg.png" alt="">
+                                    <img class="logoDisney" src="<?php echo IMG_PATH?>/Disney+_logo.svg.png" alt="">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                     </svg>
-                                    <img class="logoNational" src="<?php echo IMG_PATH?>/logos/national-geographic-logo.png" alt="">
+                                    <img class="logoNational" src="<?php echo IMG_PATH?>/national-geographic-logo.png" alt="">
                                 </a>
                             </li>
                         </ul>

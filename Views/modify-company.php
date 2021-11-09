@@ -70,7 +70,7 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">CUIL</th>
+                            <th scope="col">Descripcion</th>
                             <th scope="col">Email</th>
                             <th scope="col">Contacto</th>
                             <th scope="col">Pagina Web</th>
@@ -82,7 +82,7 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                             <?php foreach ($companyList as $company){if($company->getCUIL()== $_POST['CUIL']){?>
                             <th scope="row"></th>
                             <td><?php echo $company->getLegalName() ?></td>
-                            <td><?php echo $company->getCUIL() ?></td>
+                            <td><?php echo $company->getDescription() ?></td>
                             <td><?php echo $company->getEmail() ?></td>
                             <td><?php echo $company->getContactNumber() ?></td>
                             <td><?php echo $company->getWeb() ?></td>

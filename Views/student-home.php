@@ -40,13 +40,13 @@ include("nav-student.php");
       </div>
       <div class="profile-wrapper">
         <img class="foto" src="<?php echo IMG_PATH?>/foto default de usuario.png" alt="">
-        <h1 class="userName">Nombre Apellido</h1>
+        <h1 class="userName"><?php echo $_SESSION['loggedUser']->getName() .'  ' .$_SESSION['loggedUser']->getLastName();?></h1>
         <h2 class="linea"></h2>
       </div>
       <nav class="mb-5">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a href="<?php echo FRONT_ROOT . "/JobOffer/ShowListApplyView"?>" class="nav-link text-white">
+            <a href="<?php echo FRONT_ROOT . "/JobApplication/ShowListApplyView"?>" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>
