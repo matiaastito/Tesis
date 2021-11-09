@@ -5,12 +5,17 @@ namespace Classes\Enterprise;
 class Company
 {
 
-    private $id;
+    private $company_Id;
     private $CUIL;
     private $legalName;
     private $address;
     private $contactNumber;
     private $email;
+    private $web;
+    private $province;
+    private $location;
+    private $description;
+    private $userType;
 
     /**
      * Get the value of CUIL
@@ -102,20 +107,113 @@ class Company
         return $this;
     }
 
+
     /**
-     * Get the value of id
+     * Get the value of web
      */
-    public function getId()
+    public function getWeb()
     {
-        return $this->id;
+        return $this->web;
     }
 
     /**
-     * Set the value of id
+     * Set the value of web
      */
-    public function setId($id): self
+    public function setWeb($web): self
     {
-        $this->id = $id;
+        $this->web = $web;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of province
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    /**
+     * Set the value of province
+     */
+    public function setProvince($province): self
+    {
+        $this->province = $province;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set the value of location
+     */
+    public function setLocation($location): self
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Get the value of description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set the value of description
+     */
+    public function setDescription($description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userType
+     */
+    public function getUserType()
+    {
+        return $this->userType;
+    }
+
+    /**
+     * Set the value of userType
+     */
+    public function setUserType($userType): self
+    {
+        $this->userType = $userType;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of company_Id
+     */
+    public function getCompanyId()
+    {
+        return $this->company_Id;
+    }
+
+    /**
+     * Set the value of company_Id
+     */
+    public function setCompanyId($company_Id): self
+    {
+        $this->company_Id = $company_Id;
 
         return $this;
     }

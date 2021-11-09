@@ -18,14 +18,19 @@ class CompanyDAO implements ICompanyDAO
     public function Add(Company $company)
     {
         try {
-            $query = "INSERT INTO " . $this->tableName . " (cuil, legal_name, address, contact_number, email) VALUES (:cuil, :legal_name, :address, :contact_number, :email);";
+            $query = "INSERT INTO " . $this->tableName . " (cuil, legal_name, address, contact_number, email, web_Page, province, location, description) VALUES (:cuil, :legal_name, :address, :contact_number, :email, :web_Page, :province, :location, :description);";
 
             
-            $parameters["cuil"] = $company->getCUIL();
+            $parameters["cuil"] = $company->getcuil();
             $parameters["legal_name"] = $company->getLegalName();
             $parameters["address"] = $company->getAddress();
             $parameters["contact_number"] = $company->getContactNumber();
             $parameters["email"] = $company->getEmail();
+            $parameters["web_Page"] = $company->getWeb();
+            $parameters["province"] = $company->getProvince();
+            $parameters["location"] = $company->getLocation();
+            $parameters["description"] = $company->getDescription();
+
 
 
             $this->connection = Connection::GetInstance();
@@ -51,12 +56,16 @@ class CompanyDAO implements ICompanyDAO
 
             foreach ($resultSet as $row) {
                 $company = new Company();
-                $company->setId($row["id"]);
+                $company->setCompanyId($row["company_Id"]);
                 $company->setLegalName($row["legal_name"]);
                 $company->setContactNumber($row["contact_number"]);
                 $company->setAddress($row["address"]);
-                $company->setCUIL($row["cuil"]);
+                $company->setcuil($row["cuil"]);
                 $company->setEmail($row["email"]);
+                $company->setWeb($row["web_Page"]);
+                $company->setProvince($row["province"]);
+                $company->setLocation($row["location"]);
+                $company->setDescription($row["description"]);
 
 
 
@@ -74,7 +83,7 @@ class CompanyDAO implements ICompanyDAO
     public function Remove($cuil)
     {
         try {
-            $query = "DELETE FROM $this->tableName WHERE CUIL = $cuil";
+            $query = "DELETE FROM $this->tableName WHERE cuil = $cuil";
             $this->connection = Connection::GetInstance();
 
             $this->connection->Execute($query);
@@ -88,25 +97,37 @@ class CompanyDAO implements ICompanyDAO
 
         try {
             if ($_POST['legalName']) {
-                $query = "UPDATE $this->tableName SET legal_name = '$_POST[legalName]' WHERE CUIL = $_POST[cuil]";
+                $query = "UPDATE $this->tableName SET legal_name = '$_POST[legalName]' WHERE cuil = $_POST[cuil]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
             if ($_POST['address']) {
-                $query = "UPDATE $this->tableName SET address='$_POST[address]' WHERE CUIL = $_POST[cuil]";
+                $query = "UPDATE $this->tableName SET address='$_POST[address]' WHERE cuil = $_POST[cuil]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
             if ($_POST['contactNumber']) {
-                $query = "UPDATE $this->tableName SET contact_number='$_POST[contactNumber]' WHERE CUIL = $_POST[cuil]";
+                $query = "UPDATE $this->tableName SET contact_number='$_POST[contactNumber]' WHERE cuil = $_POST[cuil]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
             if ($_POST['email']) {
-                $query = "UPDATE $this->tableName SET email='$_POST[email]' WHERE CUIL = $_POST[cuil]";
+                $query = "UPDATE $this->tableName SET email='$_POST[email]' WHERE cuil = $_POST[cuil]";
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->Execute($query);
+            }
+            if ($_POST['web_Page']) {
+                $query = "UPDATE $this->tableName SET web_Page='$_POST[web_Page]' WHERE cuil = $_POST[cuil]";
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->Execute($query);
+            }
+            if ($_POST['description']) {
+                $query = "UPDATE $this->tableName SET description='$_POST[description]' WHERE cuil = $_POST[cuil]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
@@ -129,12 +150,16 @@ class CompanyDAO implements ICompanyDAO
             if ($resultSet != null) {
                 foreach ($resultSet as $row) {
                     $company = new Company();
-                    $company->setId($row["id"]);
+                    $company->setCompanyId($row["company_Id"]);
                     $company->setLegalName($row["legal_name"]);
                     $company->setContactNumber($row["contact_number"]);
                     $company->setAddress($row["address"]);
-                    $company->setCUIL($row["CUIL"]);
+                    $company->setcuil($row["cuil"]);
                     $company->setEmail($row["email"]);
+                    $company->setWeb($row["web_Page"]);
+                    $company->setProvince($row["province"]);
+                    $company->setLocation($row["location"]);
+                    $company->setDescription($row["description"]);
 
 
 
@@ -143,6 +168,39 @@ class CompanyDAO implements ICompanyDAO
             }
 
             return $companyList;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    public function SearchById($id)
+    {
+
+        try {
+            $query = "SELECT * FROM $this->tableName WHERE company_Id = $id";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+            if ($resultSet != null) {
+                foreach ($resultSet as $row) {
+                    $company = new Company();
+                    $company->setCompanyId($row["company_Id"]);
+                    $company->setLegalName($row["legal_name"]);
+                    $company->setContactNumber($row["contact_number"]);
+                    $company->setAddress($row["address"]);
+                    $company->setcuil($row["cuil"]);
+                    $company->setEmail($row["email"]);
+                    $company->setWeb($row["web_Page"]);
+                    $company->setProvince($row["province"]);
+                    $company->setLocation($row["location"]);
+                    $company->setDescription($row["description"]);
+
+
+
+                
+                }
+            }
+
+            return $company;
         } catch (Exception $ex) {
             throw $ex;
         }

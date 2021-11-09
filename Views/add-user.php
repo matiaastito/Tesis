@@ -28,8 +28,8 @@ include('nav.php');
                 <!–– select imagen ––>
                     <ul class="nav justify-content-center">
                         <li>
-                            <h1>Agregar una Empresa</h1>
-                            <form action="<?php echo  FRONT_ROOT . "/Company/Add " ?>" method="post" >
+                            <h1>Agregar un administrador</h1>
+                            <form action="<?php echo  FRONT_ROOT . "/Admin/Add " ?>" method="post" >
                             <h2 id="linea"></h2>
                         </li>
                         <li>
@@ -41,39 +41,33 @@ include('nav.php');
                             <input class="form-control" type="file" id="formFile">
                         </li>
                         <li class="form-floating mb-3">
-                            <input type="number" class="form-control" id="cuil" name="cuil" placeholder="cuil">
-                            <label for="cuil">CUIL</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Nombre..">
+                            <label for="firstName">Nombre</label>
                         </li>
                         <li class="form-floating mb-3">
-                            <input type="text" class="form-control" id="legalName" name="legalName" placeholder="Nombre...">
-                            <label for="legalName">Nombre</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Apellido...">
+                            <label for="lastName">Apellido</label>
                         </li>
                         <li class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                            <input type="number" class="form-control" id="dni" name="dni" placeholder="DNI...">
+                            <label for="dni">DNI</label>
+                        </li>
+                        <li class="form-floating mb-3">
+                            <input type="text" class="form-control" id="gender" name="gender" placeholder="Genero...">
+                            <label for="gender">Genero</label>
+                        </li>
+                        <li class="form-floating mb-3">
+                            <input type="date" class="form-control" id="birhtDate" name="birhtDate" placeholder="Fecha de nacimiento">
+                            <label for="birhtDate">Fecha de Nacimiento</label>
+                        </li>
+                        <li class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="email@email.com">
                             <label for="email">Email</label>
                         </li>
                         <li class="form-floating mb-3">
-                            <input type="number" class="form-control" id="contactNumber" name="contactNumber" placeholder="Numero contacto">
-                            <label for="contactNumber">Numero de Contacto</label>
+                            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="123456">
+                            <label for="phoneNumber">Numero de Telefono</label>
                         </li>
-                        <li class="form-floating mb-3">
-                            <input type="text" class="form-control" id="web_Page" name="web_Page" placeholder="name.com.ar">
-                            <label for="web_Page">Pagina Web</label>
-                        </li>
-                        <li class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="description" name="description"></textarea>
-                            <label for="description">Descripcion</label>
-                        </li>
-                        <li class="col-sm-4">
-                            <input type="text" class="cuadrado-de-opciones" name="province" placeholder="Provincia" aria-label="City">
-                        </li>
-                        <li class="col-sm">
-                            <input type="text" class="cuadrado-de-opciones" name="location" placeholder="Localidad" aria-label="State">
-                        </li>
-                        <li class="col-sm">
-                            <input type="text" class="cuadrado-de-opciones" name="address" placeholder="Direccion" aria-label="Zip">
-                        </li>
-                        <div>
                        
                                 <input type="submit" class="btn btn-outline-light" value="Agregar">
                            

@@ -23,6 +23,18 @@ class SessionController
         $this->sessionDAO = new SessionDAO();
     }
 
+    public function ValidateAdmin(){
+        $this->sessionDAO ->ValidateAdmin();
+    }
+
+    public function ValidateStudent(){
+        $this->sessionDAO ->ValidateStudent();
+    }
+
+    public function ValidateCompany(){
+        $this->sessionDAO ->ValidateCompany;
+    }
+
 
     public function Login($email)
     {
@@ -30,7 +42,7 @@ class SessionController
         $logged = $this->sessionDAO->Login($user);
         // usar try catch + alert para evitar que el controller haga una tarea que no le compete
         if ($logged == "admin") {
-            require_once(VIEWS_PATH . "/validate-session.php");
+            FRONT_ROOT . "/Session/ValidateAdmin.php";
             require_once(VIEWS_PATH . "/admin-home.php");
             } else {
                 require_once(VIEWS_PATH . "/validate-session.php"); 

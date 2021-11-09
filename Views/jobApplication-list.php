@@ -1,11 +1,13 @@
 <?php
 require_once("validate-session.php");
 
-if ($_SESSION['loggedUser']->getUserType() == "admin") {
-    require_once('nav.php');
-} else {
-    require_once('nav-student.php');
-}
+if ($_SESSION['loggedUser']->getUserType() != "student") {
+    echo "<script> if(confirm('Acceso incorrecto'));";
+            echo "window.location = '../index.php';
+		</script>";
+} 
+    include("nav-student.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +72,10 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                             </thead>
                             <tbody>
                                 <?php
-                     foreach ($jobOfferList as $jobOffer) { 
+                                foreach($jobApplicationList as $jobApplication){ if($jobApplication->getStudentId() == $_SESSION['loggedUser']->getStudentId()){
+                     foreach ($jobOfferList as $jobOffer) { if($jobOffer->getJobOfferId() == $jobApplication->getJobOfferId()){ 
                         ?>
-                                
-                                
-                                     
+                                                
                                 <tr>    
                                 <td><?php echo $jobOffer->getCompanyId() ?></td>
                                 <td><?php echo $jobOffer->getJobPositionId()?></td>
@@ -100,7 +101,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                             <button class="btn btn-outline-light3" type="submit" name="">Modificar</button></td>
 
                     </form>
-                    <?php }}?>
+                    <?php }}}}}?>
                                 </tr>
                             </tbody>
                         </table>

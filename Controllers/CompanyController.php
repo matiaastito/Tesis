@@ -13,7 +13,7 @@ class CompanyController
 
     public function __construct()
     {
-        $this->companyDAO = new CompanyDAO();
+      $this->companyDAO = new CompanyDAO();
     }
 
     public function ShowListView()
@@ -21,6 +21,12 @@ class CompanyController
         $companyList = $this->companyDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/company-list.php");
+    }
+
+    public function ShowCompanyProfile($company_Id)
+    {
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/company-profile.php");
     }
 
     public function ShowAddView(Alert $alert = null)
@@ -53,7 +59,7 @@ class CompanyController
         require_once(VIEWS_PATH . "/modify-company.php");
     }
 
-    public function ModifyAttribute($legalName, $address, $contactNumber, $email, $cuil)
+    public function ModifyAttribute($cuil, $legalName, $address, $contactNumber, $email, $web_Page, $description)
     {
 
         $this->companyDAO->Modify();
@@ -62,18 +68,22 @@ class CompanyController
         require_once(VIEWS_PATH . "/company-list.php");
     }
 
-    public function Add($CUIL, $legalName, $address, $contactNumber, $email)
+    public function Add($cuil, $legalName, $email, $contactNumber, $web_Page, $description, $province, $location, $address)
     {
         $alert = new Alert("","");
         try{
 
         
         $company = new Company();
-        $company->setCUIL($CUIL);
+        $company->setCUIL($cuil);
         $company->setLegalName($legalName);
         $company->setAddress($address);
         $company->setContactNumber($contactNumber);
         $company->setEmail($email);
+        $company->setWeb($web_Page);
+        $company->setProvince($province);
+        $company->setLocation($location);
+        $company->setDescription($description);
 
         $this->companyDAO->Add($company);
         $alert->setType("success");
@@ -85,7 +95,7 @@ class CompanyController
     }
     finally{
 
-        $this->ShowAddView($alert);
+        $this->ShowListView($alert);
     }
     }
 }

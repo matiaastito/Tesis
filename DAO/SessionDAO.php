@@ -10,6 +10,39 @@ use DAO\Connection as Connection;
 class SessionDAO implements ISessionDAO
 {
 
+    public function ValidateAdmin(){
+        if ($_SESSION["loggedUser"]->getUserType() == "admin"){
+            return;
+        }
+        else{
+            echo "<script> if(confirm('Acceso incorrecto'));";
+            echo "window.location = '../index.php';
+		</script>";
+        }
+    }
+
+    public function ValidateStudent(){
+        if ($_SESSION["loggedUser"]->getUserType() == "student"){
+            return;
+        }
+        else{
+            echo "<script> if(confirm('Acceso incorrecto'));";
+            echo "window.location = '../index.php';
+		</script>";
+        }
+    }
+
+    public function ValidateCompany(){
+        if ($_SESSION["loggedUser"]->getUserType() == "company"){
+            return;
+        }
+        else{
+            echo "<script> if(confirm('Acceso incorrecto'));";
+            echo "window.location = '../index.php';
+		</script>";
+        }
+    }
+    
     public function Login($user){
         if (($user != null)) {
             $_SESSION["loggedUser"] = $user;

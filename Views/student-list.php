@@ -7,6 +7,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 }
 
 ?>
+<body style = "background-color:#7B68EE">
 <main class="py-5">
     <section id="listado" class="mb-5">
         <div class="container">

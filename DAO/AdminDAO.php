@@ -35,7 +35,7 @@ class AdminDAO implements IAdminDAO
     public function Add(Admin $admin)
     {
         try {
-            $query = "INSERT INTO " . $this->tableName . " (first_name, last_name, dni, gender, birth_date, email, phone_number, user_type) VALUES (:first_name, :last_name, :dni, :gender, :birth_date, :email, :phone_number, :user_type);";
+            $query = "INSERT INTO " . $this->tableName . " (first_name, last_name, dni, gender, birth_date, email, phone_number) VALUES (:first_name, :last_name, :dni, :gender, :birth_date, :email, :phone_number);";
 
             $parameters["first_name"] = $admin->getName();
             $parameters["last_name"] = $admin->getLastName();
@@ -44,7 +44,6 @@ class AdminDAO implements IAdminDAO
             $parameters["birth_date"] = $admin->getBirthDate();
             $parameters["email"] = $admin->getEmail();
             $parameters["phone_number"] = $admin->getPhoneNumber();
-            $parameters["user_type"] = $admin->getUserType();
             $this->connection = Connection::GetInstance();
             $this->connection->ExecuteNonQuery($query, $parameters);
         } catch (Exception $ex) {
@@ -71,9 +70,9 @@ class AdminDAO implements IAdminDAO
                 $admin->setDni($row["dni"]);
                 $admin->setGender($row["gender"]);
                 $admin->setPhoneNumber($row["phone_number"]);
-                $admin->setBirthDate($row["birth_date"]);
-                $admin->setUserType($row["user_type"]);
+                $admin->setBirthDate($row["birth_date"]);               
                 $admin->setEmail($row["email"]);
+                $admin->setUserType($row["user_type"]);
 
 
 

@@ -18,18 +18,19 @@ class JobOfferDAO implements IJobOfferDAO
     public function Add(JobOffer $jobOffer)
     { 
         try {
-            $query = "INSERT INTO " . $this->tableName . "(company_Id, job_Position_Id, salary, hours, turn, experience, language, preference_language, gender) VALUES (:company_Id, :job_Position_Id, :salary, :hours, :turn, :experience, :language, :preference_language, :gender);";
+            $query = "INSERT INTO " . $this->tableName . "(company_Id, job_Position_Id, career_Id, salary, description, turn, experience, language, preference_language, place) VALUES (:company_Id, :job_Position_Id, :career_Id, :salary, :description, :turn, :experience, :language, :preference_language, :place);";
 
             
             $parameters["company_Id"] = $jobOffer->getCompanyId();
             $parameters["job_Position_Id"] = $jobOffer->getJobPositionId();
+            $parameters["career_Id"] = $jobOffer->getCareerId();
             $parameters["salary"] = $jobOffer->getSalary();
-            $parameters["hours"] = $jobOffer->getHours();
+            $parameters["description"] = $jobOffer->getDescription();
             $parameters["turn"] = $jobOffer->getTurn();
             $parameters["experience"] = $jobOffer->getExp();
             $parameters["language"] = $jobOffer->getLang();
             $parameters["preference_language"] = $jobOffer->getPrefLang();
-            $parameters["gender"] = $jobOffer->getGender();
+            $parameters["place"] = $jobOffer->getPlace();
             $this->connection = Connection::GetInstance();
 
             $this->connection->ExecuteNonQuery($query, $parameters);
@@ -45,10 +46,11 @@ class JobOfferDAO implements IJobOfferDAO
         $jobOfferList = array();
         try {
 
-            $query = "SELECT jobOffer.job_Offer_Id, company.legal_name, jobPosition.description, jobOffer.salary, jobOffer.hours, jobOffer.turn, jobOffer.experience,
-             jobOffer.language, jobOffer.preference_language, jobOffer.gender FROM $this->tableName 
-             JOIN company ON jobOffer.company_Id = company.id 
-             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id";
+            $query = "SELECT jobOffer.job_Offer_Id, company.legal_name, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
+             jobOffer.language, jobOffer.preference_language, jobOffer.place FROM $this->tableName 
+             JOIN company ON jobOffer.company_Id = company.company_Id
+             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
+             JOIN career ON jobOffer.career_Id = career.id";
 
             $this->connection = Connection::GetInstance();
 
@@ -58,14 +60,15 @@ class JobOfferDAO implements IJobOfferDAO
                 $jobOffer = new JobOffer();
                 $jobOffer->setJobOfferId($row["job_Offer_Id"]);
                 $jobOffer->setCompanyId($row["legal_name"]);
-                $jobOffer->setJobPositionId($row["description"]);
+                $jobOffer->setCareerId($row["carDes"]);
+                $jobOffer->setJobPositionId($row["jobPos"]);
                 $jobOffer->setSalary($row["salary"]);
-                $jobOffer->setHours($row["hours"]);
+                $jobOffer->setDescription($row["description"]);
                 $jobOffer->setTurn($row["turn"]);
                 $jobOffer->setExp($row["experience"]);
                 $jobOffer->setLang($row["language"]);
                 $jobOffer->setPrefLang($row["preference_language"]);
-                $jobOffer->setGender($row["gender"]);
+                $jobOffer->setPlace($row["place"]);
 
                 array_push($jobOfferList, $jobOffer);
             }
@@ -76,18 +79,46 @@ class JobOfferDAO implements IJobOfferDAO
         }
     }
 
+    public function MatchById($job_Offer_Id){
+        try {
+            $query = "SELECT * FROM $this->tableName WHERE job_Offer_Id = $job_Offer_Id";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+            return $resultSet;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
     public function MatchByName($name)
     {
         try {
-            $query = "SELECT company.id FROM company WHERE company.legal_name like '$name%'";
+            $query = "SELECT company.company_Id FROM company WHERE company.legal_name like '$name%'";
             $this->connection = Connection::GetInstance();
             $resultSet = $this->connection->Execute($query);
 
             foreach($resultSet as $row){
                 
-               $id=$row['id'];
+               $id=$row['company_Id'];
 
             }
+            return $id;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    public function MatchByCareerId($name)
+    {
+        try {
+            $query = "SELECT career.id from career WHERE career.description like '$name%'";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+
+            foreach($resultSet as $row){
+                $id=$row['id'];
+             }
+        
             return $id;
         } catch (Exception $ex) {
             throw $ex;
@@ -144,54 +175,194 @@ class JobOfferDAO implements IJobOfferDAO
     {
 
         try {
-            if ($_POST['puesto']) {
-                $query = "UPDATE $this->tableName SET job_Position_Id = MatchByJobPost('$_POST[puesto]') WHERE job_Offer_Id = $_POST[job_Offer_Id]";
+            if ($_POST['puesto']!="Puesto") {
+                $puesto= $this->MatchByJobPos($_POST['puesto']);
+                $query = "UPDATE $this->tableName SET job_Position_Id = $puesto WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['salary']) {
+            if ($_POST['salary'] !="Sueldo") {
                 $query = "UPDATE $this->tableName SET salary='$_POST[salary]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['hours']) {
-                $query = "UPDATE $this->tableName SET hours='$_POST[hours]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
+            if ($_POST['career_Id'] != "Carrera") {
+                $carrera= $this->MatchByCareerId($_POST['career_Id']);
+                $query = "UPDATE $this->tableName SET career_Id =  $carrera WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['turn']) {
+            if ($_POST['description']!="Descripcion") {
+                $query = "UPDATE $this->tableName SET description='$_POST[description]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->Execute($query);
+            }
+            if ($_POST['turn'] !="Turno") {
                 $query = "UPDATE $this->tableName SET turn='$_POST[turn]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['exp']) {
+            if ($_POST['exp']!="Experiencia") {
                 $query = "UPDATE $this->tableName SET experience='$_POST[exp]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['lang']) {
+            if ($_POST['lang']!="Idioma Principal") {
                 $query = "UPDATE $this->tableName SET language='$_POST[lang]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['pLang']) {
+            if ($_POST['pLang'] != "Idioma Secundario") {
                 $query = "UPDATE $this->tableName SET preference_language='$_POST[pLang]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['gender']) {
-                $query = "UPDATE $this->tableName SET gender='$_POST[gender]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
+            if ($_POST['place'] != "Trabajo") {
+                $query = "UPDATE $this->tableName SET place='$_POST[place]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->Execute($query);
             }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    public function SearchByParameters($puesto, $carrera)
+    {
+
+        $jobOfferList = array();
+        if($puesto!= "Puesto" AND $carrera!="Carrera"){
+        try {
+
+            $puesto = $this->MatchByJobPos($puesto);
+            $carrera = $this->MatchByCareerId($carrera);
+
+            $query= "SELECT jobOffer.job_Offer_Id, company.legal_name, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
+             jobOffer.language, jobOffer.preference_language, jobOffer.place FROM $this->tableName 
+             JOIN company ON jobOffer.company_Id = company.company_Id
+             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
+             JOIN career ON jobOffer.career_Id = career.id WHERE jobOffer.job_Position_Id like '$puesto%' AND jobOffer.career_Id like '$carrera%'";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+
+            if ($resultSet != null) {
+                foreach ($resultSet as $row) {
+                    $jobOffer = new JobOffer();
+                $jobOffer->setJobOfferId($row["job_Offer_Id"]);
+                $jobOffer->setCompanyId($row["legal_name"]);
+                $jobOffer->setCareerId($row["carDes"]);
+                $jobOffer->setJobPositionId($row["jobPos"]);
+                $jobOffer->setSalary($row["salary"]);
+                $jobOffer->setDescription($row["description"]);
+                $jobOffer->setTurn($row["turn"]);
+                $jobOffer->setExp($row["experience"]);
+                $jobOffer->setLang($row["language"]);
+                $jobOffer->setPrefLang($row["preference_language"]);
+                $jobOffer->setPlace($row["place"]);
+
+
+                    array_push($jobOfferList, $jobOffer);
+                }
+            }
+
+            return $jobOfferList;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    else if($puesto !="Puesto"){
+        return $this->SearchByPuesto($puesto);
+    }
+    else{
+        return $this->SearchByCarrera($carrera);
+    }
+    }
+
+    public function SearchByPuesto($puesto)
+    {
+
+        $jobOfferList = array();
+        try {
+            $puesto = $this->MatchByJobPos($puesto);
+            $query= "SELECT jobOffer.job_Offer_Id, company.legal_name, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
+             jobOffer.language, jobOffer.preference_language, jobOffer.place FROM $this->tableName 
+             JOIN company ON jobOffer.company_Id = company.company_Id
+             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
+             JOIN career ON jobOffer.career_Id = career.id WHERE jobOffer.job_Position_Id like '$puesto%'";
+
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+
+            if ($resultSet != null) {
+                foreach ($resultSet as $row) {
+                    $jobOffer = new JobOffer();
+                $jobOffer->setJobOfferId($row["job_Offer_Id"]);
+                $jobOffer->setCompanyId($row["legal_name"]);
+                $jobOffer->setCareerId($row["carDes"]);
+                $jobOffer->setJobPositionId($row["jobPos"]);
+                $jobOffer->setSalary($row["salary"]);
+                $jobOffer->setDescription($row["description"]);
+                $jobOffer->setTurn($row["turn"]);
+                $jobOffer->setExp($row["experience"]);
+                $jobOffer->setLang($row["language"]);
+                $jobOffer->setPrefLang($row["preference_language"]);
+                $jobOffer->setPlace($row["place"]);
+
+
+                    array_push($jobOfferList, $jobOffer);
+                }
+            }
+
+            return $jobOfferList;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    public function SearchByCarrera($carrera)
+    {
+
+        $jobOfferList = array();
+        try {
+            $carrera = $this->MatchByCareerId($carrera);
+            $query= "SELECT jobOffer.job_Offer_Id, company.legal_name, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
+             jobOffer.language, jobOffer.preference_language, jobOffer.place FROM $this->tableName 
+             JOIN company ON jobOffer.company_Id = company.company_Id
+             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
+             JOIN career ON jobOffer.career_Id = career.id WHERE jobOffer.career_Id like '$carrera%'";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+
+            if ($resultSet != null) {
+                foreach ($resultSet as $row) {
+                    $jobOffer = new JobOffer();
+                $jobOffer->setJobOfferId($row["job_Offer_Id"]);
+                $jobOffer->setCompanyId($row["legal_name"]);
+                $jobOffer->setCareerId($row["carDes"]);
+                $jobOffer->setJobPositionId($row["jobPos"]);
+                $jobOffer->setSalary($row["salary"]);
+                $jobOffer->setDescription($row["description"]);
+                $jobOffer->setTurn($row["turn"]);
+                $jobOffer->setExp($row["experience"]);
+                $jobOffer->setLang($row["language"]);
+                $jobOffer->setPrefLang($row["preference_language"]);
+                $jobOffer->setPlace($row["place"]);
+
+
+                    array_push($jobOfferList, $jobOffer);
+                }
+            }
+
+            return $jobOfferList;
         } catch (Exception $ex) {
             throw $ex;
         }

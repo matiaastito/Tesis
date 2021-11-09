@@ -8,14 +8,15 @@ class JobOffer{
 
     private $jobOfferId;
     private $companyId;
+    private $careerId;
     private $jobPositionId;
+    private $description;
     private $salary;
-    private $hours;
     private $turn;
     private $exp;
     private $lang;
     private $prefLang;
-    private $gender;
+    private $place;
 
 
     /**
@@ -73,23 +74,6 @@ class JobOffer{
         return $this;
     }
 
-    /**
-     * Get the value of hours
-     */
-    public function getHours()
-    {
-        return $this->hours;
-    }
-
-    /**
-     * Set the value of hours
-     */
-    public function setHours($hours): self
-    {
-        $this->hours = $hours;
-
-        return $this;
-    }
 
     /**
      * Get the value of turn
@@ -163,23 +147,6 @@ class JobOffer{
         return $this;
     }
 
-    /**
-     * Get the value of gender
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * Set the value of gender
-     */
-    public function setGender($gender): self
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
 
     /**
      * Get the value of jobOfferId
@@ -195,6 +162,60 @@ class JobOffer{
     public function setJobOfferId($jobOfferId): self
     {
         $this->jobOfferId = $jobOfferId;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of place
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set the value of place
+     */
+    public function setPlace($place): self
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set the value of description
+     */
+    public function setDescription($description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of careerId
+     */
+    public function getCareerId()
+    {
+        return $this->careerId;
+    }
+
+    /**
+     * Set the value of careerId
+     */
+    public function setCareerId($careerId): self
+    {
+        $this->careerId = $careerId;
 
         return $this;
     }

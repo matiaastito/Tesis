@@ -16,7 +16,7 @@ class StudentDAO implements IStudentDAO
     public function Add(Student $student)
     {
         try {
-            $query = "INSERT INTO " . $this->tableName . " (id, first_name, career_id, file_number, active, last_name, dni, gender, birth_date, email, phone_number, user_type) VALUES (:id, :first_name, :career_id, :file_number, :active, :last_name, :dni, :gender, :birth_date, :email, :phone_number, :user_type);";
+            $query = "INSERT INTO " . $this->tableName . " (id, first_name, career_id, file_number, active, last_name, dni, gender, birth_date, email, phone_number) VALUES (:id, :first_name, :career_id, :file_number, :active, :last_name, :dni, :gender, :birth_date, :email, :phone_number);";
             $parameters["id"] = $student->getStudentId();
             $parameters["first_name"] = $student->getName();
             $parameters["career_id"] = $student->getCareerId();
@@ -28,7 +28,6 @@ class StudentDAO implements IStudentDAO
             $parameters["birth_date"] = $student->getBirthDate();
             $parameters["email"] = $student->getEmail();
             $parameters["phone_number"] = $student->getPhoneNumber();
-            $parameters["user_type"] = $student->getUserType();
             
             
             $this->connection = Connection::GetInstance();
@@ -80,8 +79,8 @@ class StudentDAO implements IStudentDAO
                 $student->setGender($row["gender"]);
                 $student->setPhoneNumber($row["phone_number"]);
                 $student->setBirthDate($row["birth_date"]);
-                $student->setUserType($row["user_type"]);
                 $student->setEmail($row["email"]);
+                $student->setUserType($row["user_type"]);
 
 
 

@@ -1,4 +1,12 @@
-<?php include("nav.php");
+<?php 
+
+if ($_SESSION["loggedUser"]->getUserType() != "admin"){
+  echo "<script> if(confirm('Acceso incorrecto'));";
+            echo "window.location = '../index.php';
+		</script>";
+}
+include("nav.php");
+ 
 ?>
 
 <!DOCTYPE html>
@@ -50,13 +58,13 @@
           <li class="nav-item">
               <a href="<?php echo FRONT_ROOT . "/Student/ShowListView"?>" class="nav-link text-white">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                  Estudiantes
+                  Ver Listado Estudiantes
             </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link text-white">
+              <a href="<?php echo FRONT_ROOT . "/Admin/ShowAddView"?>" class="nav-link text-white">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                  Videos
+                  Añadir usuario/admin
             </a>
           </li>
           </ul>
