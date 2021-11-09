@@ -36,8 +36,8 @@ include("nav.php");
           <h1 class="userName">Nombre Apellido</h1>
           <h2 class="linea"></h2>
       </div>
-    <nav class="mb-5">
-      <ul class="nav justify-content-center">
+      <nav class="mb-5">
+        <ul class="nav justify-content-center">
           <li class="nav-item">
               <a href="<?php echo FRONT_ROOT . "/Admin/ShowCompanyListView"?>" class="nav-link text-white">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
@@ -54,7 +54,6 @@ include("nav.php");
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
                   Añadir oferta Laboral
             </a>
-          </li>
           <li class="nav-item">
               <a href="<?php echo FRONT_ROOT . "/Student/ShowListView"?>" class="nav-link text-white">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
@@ -67,7 +66,7 @@ include("nav.php");
                   Añadir usuario/admin
             </a>
           </li>
-          </ul>
+        </ul>
       </nav>
       <section >
        
@@ -102,5 +101,5 @@ include("nav.php");
    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-</html>
 
+</html>
