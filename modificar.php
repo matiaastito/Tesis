@@ -3,8 +3,8 @@
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="AgregarEmpresaTrabajo.css" type="text/css">
-    <link rel="stylesheet" href="overides.css" type="text/css">
+    <link rel="stylesheet" href="listaEmpresas.css" type="text/css">
+
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,82 +51,107 @@
     <main>
 
         <div class="container">
-
-            <div id="cuadrado">
-
-                <!–– select imagen ––>
-
-                    <ul class="nav justify-content-center">
-                        <li>
-                            <h1>Agregar una Empresa</h1>
-                            <h2 id="linea"></h2>
-                        </li>
-
-                        <li>
-
-                            <label for="formFile" class="form-label"></label>
-                            <input class="form-control" type="file" id="formFile">
-
-                        </li>
-                        <li>
-
-                            <label for="formFile" class="form-label"></label>
-                            <input class="form-control" type="file" id="formFile">
-
-                        </li>
-                        <li class="form-floating mb-3">
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Nombre</label>
-
-                        </li>
-                        <li class="form-floating mb-3">
+                        </div>
+                        <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">CUIL</label>
-
-                        </li>
-                        <li class="form-floating mb-3">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Email</label>
-
-                        </li>
-                        <li class="form-floating mb-3">
+                        </div>
+                        <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Numero de Contacto</label>
-
-                        </li>
-                        <li class="form-floating mb-3">
+                            <label for="floatingInput">Contacto</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Pagina Web</label>
-
-                        </li>
-                        <li class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Descripcion</label>
-
-
-                        </li>
-                        <li class="col-sm-4">
-                            <input type="text" class="cuadrado-de-opciones" placeholder="Provincia" aria-label="City">
-
-                        </li>
-                        <li class="col-sm">
-                            <input type="text" class="cuadrado-de-opciones" placeholder="Localidad" aria-label="State">
-
-                        </li>
-                        <li class="col-sm">
-
-                            <input type="text" class="cuadrado-de-opciones" placeholder="Direccion" aria-label="Zip">
-                        </li>
-                        <div>
-                            <button type="button" class="btn btn-outline-light">Agregar</button>
                         </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Direccion</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="tabla">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+
+                            <th scope="col"></th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">CUIL</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contacto</th>
+                            <th scope="col">Pagina Web</th>
+                            <th scope="col">Direccion</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="boton">
+            <div class="row">
+                <div class="col">
 
 
 
 
+                </div>
+                <div class="col">
+                    <form action="listaEmpresas.php">
+                        <input type="submit" class="btn btn-outline-light" value="Volver">
+                    </form>
 
+
+                </div>
+                <div class="col">
+                    <form action="#">
+                        <input type="submit" class="btn btn-outline-light" value="Modificar">
+                    </form>
+
+
+                </div>
 
             </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        </div>
         </div>
 
 

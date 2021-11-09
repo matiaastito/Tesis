@@ -84,10 +84,10 @@
                         <li>
 
                             <select class="form-select" id="margenesa" aria-label="Default select example">
-                                <option selected>Jornada</option>
-                                <option value="1">Media</option>
-                                <option value="2">Completa</option>
-                                <option value="3">Extendida</option>
+                                <option selected>Turno</option>
+                                <option value="1">Mañana</option>
+                                <option value="2">Tarde</option>
+                                <option value="3">Noche</option>
                             </select>
 
 
@@ -112,6 +112,27 @@
 
 
                         </li>
+                        <li>
+                            <select class="form-select" id="margenesb" aria-label="Default select example">
+                                <option selected>Idioma</option>
+                                <option value="1">Ingles</option>
+                                <option value="2">Aleman</option>
+                                <option value="3">Español</option>
+                                <option value="4">Frances</option>
+                            </select>
+
+                        </li>
+                        <li>
+                            <select class="form-select" id="margenesa" aria-label="Default select example">
+                                <option selected>Idioma Secundario</option>
+                                <option value="1">Ingles</option>
+                                <option value="2">Aleman</option>
+                                <option value="3">Español</option>
+                                <option value="4">Frances</option>
+                            </select>
+
+                        </li>
+
 
                         <li class="form-floating mb-3">
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">

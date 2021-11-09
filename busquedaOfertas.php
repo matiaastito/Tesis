@@ -31,7 +31,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="perfil.php" class="nav-link active">Mi Cuenta</a>
+                            <a href="perfilAdmin.php" class="nav-link active">Mi Cuenta</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active">LogOut</a>
@@ -57,38 +57,26 @@
                             <div class="row">
                                 <div class="col">
                                     <select class="form-select" aria-label="Default select example">
-                                        <option selected>Empresa</option>
+                                        <option selected>Carrera</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select>
                                     <select class="form-select" aria-label="Default select example">
-                                        <option selected>Experiencia</option>
+                                        <option selected>Job Position</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select>
+
                                 </div>
                                 <div class="col">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Jornada</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Sueldo</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
+
+
                                 </div>
                                 <div class="col">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Tipo</option>
-                                        <option value="1">Remoto</option>
-                                        <option value="2">Presencial</option>
-                                    </select>
+
+
                                 </div>
                             </div>
 
@@ -111,27 +99,19 @@
                             <tbody>
                                 <tr>
                                     <th scope="row"><a href="perfilEmpresa.php" class="nav-link text-light">Globant</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>badsad</td>
-                                    <td><a href="postulacion.php" class="btn btn-outline-light2">-></td>
+                                    <td>Intermedia</td>
+                                    <td>Mañana</td>
+                                    <td>A hablar</td>
+                                    <td>Remoto</td>
+                                    <td>
+                                        <form action="#">
+                                            <input type="submit" class="btn btn-outline-light2" value="->">
+                                        </form>
+
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>badsad</td>
-                                    <td><a href="postulacion.php" class="btn btn-outline-light2">-></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>badsad</td>
-                                    <td><a href="postulacion.php" class="btn btn-outline-light2">-></td>
-                                </tr>
+
+
                             </tbody>
                         </table>
 
@@ -156,21 +136,7 @@
                                 <td><a href="perfilEmpresa.php" class="btn btn-outline-light2">Ver</td>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td class="text-light">Accenture</td>
-                                <td></td>
-                                <td>
-                                <td><a href="perfilEmpresa.php" class="btn btn-outline-light2">Ver</td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td colspan="2" class="text-light">Nike</td>
-                                <td>
-                                <td><a href="perfilEmpresa.php" class="btn btn-outline-light2">Ver</td>
-                                </td>
-                            </tr>
+
                         </tbody>
                     </table>
 

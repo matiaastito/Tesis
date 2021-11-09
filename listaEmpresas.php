@@ -48,40 +48,62 @@
     </header>
 
 
-    <main class="container">
-        <div class="tabla">
-            <table class="table table-striped table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Contacto</th>
-                        <th scope="col">Pagina Web</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
+    <main>
+        <div class="search">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
 
 
         </div>
+        <div class="container">
+            <div class="tabla">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">CUIL</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contacto</th>
+                            <th scope="col">Pagina Web</th>
+                            <th scope="col">Direccion</th>
+                            <th scope="col">Modificar</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"></th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>
+                                <form action="modificar.php">
+                                    <input type="submit" class="btn btn-outline-light2" value=">">
+                                </form>
+                            </td>
+
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+
+
+        </div>
+
 
 
 

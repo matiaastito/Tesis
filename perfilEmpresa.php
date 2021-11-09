@@ -31,7 +31,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="perfil.php" class="nav-link active">Mi Cuenta</a>
+                            <a href="perfilAdmin.php" class="nav-link active">Mi Cuenta</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active">LogOut</a>
@@ -68,8 +68,8 @@
         <div>
             <div class="cuadradoEmpresa">
                 <div>
-                    <h1>Nuestro abordaje único abre paso a la reinvención</h1>
-                    <p>Reinventamos tu empresa, negocio e industria mediante la innovación digital y cognitiva.</p>
+                    <h1>Bienvenido</h1>
+                    <p>Aqui podras encontrar informacion necesaria</p>
 
                     <div class="container">
                         <div class="row">
