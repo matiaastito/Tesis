@@ -61,75 +61,75 @@
                             <h1>Nueva Oferta de Trabajo</h1>
                             <h2 id="linea"></h2>
                         </li>
-                        <li class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Puesto</label>
 
-                        </li>
-                        <li class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Empresa</label>
-
-                        </li>
                         <li>
 
-                            <select class="form-select" id="margenesb" aria-label="Default select example">
-                                <option selected>Experiencia</option>
+                            <select class="form-select" id="margenes" aria-label="Default select example">
+                                <option selected>Puesto</option>
                                 <option value="1">Inicial</option>
                                 <option value="2">Intermedio</option>
                                 <option value="3">Avanzado</option>
                             </select>
-
-                        </li>
-                        <li>
-
-                            <select class="form-select" id="margenesa" aria-label="Default select example">
-                                <option selected>Turno</option>
-                                <option value="1">Mañana</option>
-                                <option value="2">Tarde</option>
-                                <option value="3">Noche</option>
+                            <select class="form-select" id="margenes" aria-label="Default select example">
+                                <option selected>Empresa</option>
+                                <option value="1">Inicial</option>
+                                <option value="2">Intermedio</option>
+                                <option value="3">Avanzado</option>
                             </select>
-
-
-
-                        </li>
-                        <li>
-                            <select class="form-select" id="margenesb" aria-label="Default select example">
+                            <select class="form-select" id="margenes" aria-label="Default select example">
                                 <option selected>Sueldo</option>
                                 <option value="1">40.000 - 60.000</option>
                                 <option value="2">60.000 - 100.000</option>
                                 <option value="3">100.000 - ... </option>
                                 <option value="4">A hablar en la entrevista </option>
                             </select>
-
-                        </li>
-                        <li>
-                            <select class="form-select" id="margenesa" aria-label="Default select example">
-                                <option selected>Tipo</option>
-                                <option value="1">Precencial</option>
-                                <option value="2">Remoto</option>
-                            </select>
-
-
-                        </li>
-                        <li>
-                            <select class="form-select" id="margenesb" aria-label="Default select example">
+                            <select class="form-select" id="margenes" aria-label="Default select example">
                                 <option selected>Idioma</option>
                                 <option value="1">Ingles</option>
                                 <option value="2">Aleman</option>
                                 <option value="3">Español</option>
                                 <option value="4">Frances</option>
                             </select>
+                            <select class="form-select" id="margenes" aria-label="Default select example">
+                                <option selected>Carrera</option>
+                                <option value="1">Ingles</option>
+                                <option value="2">Aleman</option>
+                                <option value="3">Español</option>
+                                <option value="4">Frances</option>
+                            </select>
 
                         </li>
                         <li>
-                            <select class="form-select" id="margenesa" aria-label="Default select example">
+
+                            <select class="form-select" id="margenes" aria-label="Default select example">
+                                <option selected>Turno</option>
+                                <option value="1">Mañana</option>
+                                <option value="2">Tarde</option>
+                                <option value="3">Noche</option>
+                            </select>
+                            <select class="form-select" id="margenes" aria-label="Default select example">
+                                <option selected>Experiencia</option>
+                                <option value="1">Inicial</option>
+                                <option value="2">Intermedio</option>
+                                <option value="3">Avanzado</option>
+                            </select>
+                            <select class="form-select" id="margenes" aria-label="Default select example">
+                                <option selected>Tipo</option>
+                                <option value="1">Precencial</option>
+                                <option value="2">Remoto</option>
+                            </select>
+
+                            <select class="form-select" id="margenes" aria-label="Default select example">
                                 <option selected>Idioma Secundario</option>
                                 <option value="1">Ingles</option>
                                 <option value="2">Aleman</option>
                                 <option value="3">Español</option>
                                 <option value="4">Frances</option>
                             </select>
+
+                        </li>
+                        <li>
+
 
                         </li>
 
@@ -140,7 +140,9 @@
 
                         </li>
                         <div>
-                            <button type="button" class="btn btn-outline-light">Agregar</button>
+                            <form action="#">
+                                <input type="submit" class="btn btn-outline-light" value="Agregar">
+                            </form>
                         </div>
 
 

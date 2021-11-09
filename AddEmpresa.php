@@ -118,7 +118,9 @@
                             <input type="text" class="cuadrado-de-opciones" placeholder="Direccion" aria-label="Zip">
                         </li>
                         <div>
-                            <button type="button" class="btn btn-outline-light">Agregar</button>
+                            <form action="#">
+                                <input type="submit" class="btn btn-outline-light" value="Agregar">
+                            </form>
                         </div>
 
 
