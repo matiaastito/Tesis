@@ -27,7 +27,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                 <div class="container-fluid">
                     <form action="<?php echo FRONT_ROOT . "/Company/SearchByName" ?>" method="post" class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" name="nombre" aria-label="Search">
-                        <button class="btn btn-light" type="submit">Search</button>
+                        <button class="btn btn-light" id="botones" type="submit">Search</button>
                     </form>
                 </div>
             </nav>
@@ -59,7 +59,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                                 <td><?php echo $company->getCUIL() ?></td>
                                 <td><?php echo $company->getEmail() ?></td>
                                 <td><?php echo $company->getContactNumber() ?></td>
-                                <td><a href="https://<?php echo $company->getWeb(); ?>"><?php echo $company->getWeb() ?></a></td>
+                                <td><a href="https://<?php echo $company->getWeb(); ?>"><?php echo $company->getWeb() ?> </a></td>
                                 <td><?php echo $company->getAddress() ?></td>
                                 <form action="<?php echo FRONT_ROOT . "/Company/ShowCompanyProfile" ?>" method="post">
                                     <td> <input name="company_Id" type="hidden" value="<?php echo $company->getCompanyId() ?>" />
