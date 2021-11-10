@@ -1,58 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-     <script href="lib/bootstrap/js/bootstrap.min.js"></script>
-     <link rel="stylesheet" href="Css.css" type="text/css">
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-</head>
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-<body class="fondo">
-     <span><img src="imagenes/logo UTN con UTN.png" class="logo" alt=""></span>
+require "Config/Autoload.php";
+require "Config/Config.php";
 
-     <div class="container">
-          <div class="row align-items-center">
-               <div class="col">
+use Config\Autoload as Autoload;
+use Config\Router     as Router;
+use Config\Request     as Request;
 
-               </div>
-               <div class="col" id="cuadrado">
+Autoload::start();
 
-                    <header>
-                         <p>Iniciar Sesión
-                         <p>
-                         <header>
-                              <header id="linea">
-                                   <header>
-                                        <input type="email" class="field field--animate" id="emailadress" placeholder="Email:">
+//sacr esto, va en otro lado
+session_start();
 
-                                        <form action="busquedaOfertas.php">
-                                             <input type="submit" class="buttonFlecha" value="">
-                                        </form>
-
-
-                                        <form action="https://mdp.utn.edu.ar/">
-                                             <input type="submit" class="buttonCampus" value="">
-                                        </form>
-                                        <form action="https://www.instagram.com/utnmardelplata/">
-                                             <input type="submit" class="buttonIg" value="">
-                                        </form>
-                                        <form action="https://twitter.com/UTNMardelPlata">
-                                             <input type="submit" class="buttonTwitter" value="">
-                                        </form>
-
-
-
-               </div>
-               <div class="col">
-
-
-               </div>
-
-
-</body>
-
-</html>
+Router::Route(new Request());
