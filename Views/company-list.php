@@ -6,7 +6,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 } else {
     require_once('nav-student.php');
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,14 +19,15 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URLdin</title>
 </head>
+
 <body style="background-color:#7B68EE">
-<main>
+    <main>
         <div class="search">
             <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid">
                     <form action="<?php echo FRONT_ROOT . "/Company/SearchByName" ?>" method="post" class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" name="nombre" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                        <button class="btn btn-light" type="submit">Search</button>
                     </form>
                 </div>
             </nav>
@@ -43,41 +45,46 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                             <th scope="col">Pagina Web</th>
                             <th scope="col">Direccion</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    foreach ($companyList as $company) {
-                    ?>
-                    <tr>
-                    <th scope="row"></th>
-                        <td><?php echo $company->getLegalName() ?></td>
-                        <td><?php echo $company->getCUIL() ?></td>
-                        <td><?php echo $company->getEmail() ?></td>
-                        <td><?php echo $company->getContactNumber() ?></td>
-                        <td><a href="https://<?php echo $company->getWeb();?>"><?php echo $company->getWeb() ?></a></td>
-                        <td><?php echo $company->getAddress() ?></td>
-                        <form action="<?php echo FRONT_ROOT . "/Company/ShowCompanyProfile"?>" method ="post">
-                        <td> <input name ="company_Id" type="hidden" value="<?php echo $company->getCompanyId()?>"/>
-                            <button class="btn btn-outline-light3" type="submit" name="">Ver</button>
-                        </td>
-                        </form>
-                    <?php
-                    
-                    if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
-                        <form action="<?php echo FRONT_ROOT . "/Company/Remove" ?>" method="post">
-                            <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL();?>">
-                                <button class="btn btn-outline-light3" type="submit" name="">Eliminar</button></td>
+                        <?php
+                        foreach ($companyList as $company) {
+                        ?>
+                            <tr>
+                                <th scope="row"></th>
+                                <td><?php echo $company->getLegalName() ?></td>
+                                <td><?php echo $company->getCUIL() ?></td>
+                                <td><?php echo $company->getEmail() ?></td>
+                                <td><?php echo $company->getContactNumber() ?></td>
+                                <td><a href="https://<?php echo $company->getWeb(); ?>"><?php echo $company->getWeb() ?></a></td>
+                                <td><?php echo $company->getAddress() ?></td>
+                                <form action="<?php echo FRONT_ROOT . "/Company/ShowCompanyProfile" ?>" method="post">
+                                    <td> <input name="company_Id" type="hidden" value="<?php echo $company->getCompanyId() ?>" />
+                                        <button class="btn btn-outline-light3" type="submit" name="">Ver</button>
+                                    </td>
+                                </form>
+                                <?php
 
-                        </form>
+                                if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
+                                    <form action="<?php echo FRONT_ROOT . "/Company/Remove" ?>" method="post">
+                                        <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL(); ?>">
+                                            <button class="btn btn-outline-light3" type="submit" name="">Eliminar</button>
+                                        </td>
 
-                        <form action="<?php echo FRONT_ROOT . "/Company/Modify" ?>" method="post">
-                            <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL();?>">
-                            <button class="btn btn-outline-light3" type="submit" name="">Modificar</button></td>
+                                    </form>
 
-                    </form>
-                    <?php }}?>
-                    </tr>
+                                    <form action="<?php echo FRONT_ROOT . "/Company/Modify" ?>" method="post">
+                                        <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL(); ?>">
+                                            <button class="btn btn-outline-light3" type="submit" name="">Modificar</button>
+                                        </td>
+
+                                    </form>
+                            <?php }
+                            } ?>
+                            </tr>
                     </tbody>
                 </table>
             </div>
