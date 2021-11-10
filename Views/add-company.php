@@ -88,9 +88,7 @@ include('nav.php');
 
 
                     <div class="form-floating">
-
                         <input type="submit" id="margen-boton" class="btn btn-outline-light" value="Agregar">
-
                     </div>
 
             </div class="alert alert-<?php echo $alert->getType() ?>">
