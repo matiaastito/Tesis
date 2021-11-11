@@ -4,11 +4,14 @@
   box-shadow: none;
   border-color: #f8f8ff;
   width: 400px;
-  margin-top: 30px;
 
   color: #f8f8ff;
 }
 
 .btn-outline-light {
+  margin-top: 20px;
+}
+
+#margenes-filtros {
   margin-top: 20px;
 }

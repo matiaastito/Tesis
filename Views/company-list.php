@@ -71,7 +71,41 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                                 if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
                                     <form action="<?php echo FRONT_ROOT . "/Company/Remove" ?>" method="post">
                                         <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL(); ?>">
-                                            <button class="btn btn-outline-light3" type="submit" name="">Eliminar</button>
+                                            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Esta seguro que desea eliminar esta Compañia?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Si</button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Compañia eliminada con exito
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#exampleModalToggle" role="button">Eliminar</a>
+
                                         </td>
 
                                     </form>
@@ -89,3 +123,6 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                 </table>
             </div>
         </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
