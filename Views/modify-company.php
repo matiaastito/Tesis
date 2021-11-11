@@ -34,6 +34,10 @@ include("nav.php");
                                 <input type="text" class="form-control" id="address" name="address" placeholder="Direccion...">
                                 <label for="address">Direccion</label>
                             </div>
+                            <div class="form-floating mb-3">
+                                <input type="textarea" class="form-control" id="description" name="description" placeholder="Descripcion..">
+                                <label for="description">Activo</label>
+                            </div>
 
 
                         </div>
@@ -56,6 +60,7 @@ include("nav.php");
                                 <input type="textarea" class="form-control" id="description" name="description" placeholder="Descripcion..">
                                 <label for="description">Descripcion</label>
                             </div>
+
 
                         </div>
 
@@ -107,23 +112,29 @@ include("nav.php");
 
                     <div class="col">
                         <form action="<?php echo FRONT_ROOT . "/Admin/ShowCompanyListView" ?>" method="get">
-                            <input type="submit" class="btn btn-outline-light" value="Volver">
+
                         </form>
                     </div>
 
                     <div class="col-4">
 
+
+
                         <input name="cuil" type="hidden" value="<?php echo $_POST['CUIL'] ?>">
                         <button class="btn btn-outline-light" type="submit" name="">Modificar</button>
-
-                    </div>
-
-
-                </div>
-            </div>
-            </div>
-            </div>
         </form>
+        <form action="<?php echo FRONT_ROOT . "/Admin/ShowCompanyListView" ?>" method="get">
+            <input type="submit" class="btn btn-outline-light" value="Volver">
+        </form>
+        </div>
+        </div>
+
+
+        </div>
+        </div>
+        </div>
+
+
     </main>
 </body>
 
