@@ -1,4 +1,7 @@
 <?php
+
+use DAO\JobOfferDAO;
+
 require_once("validate-session.php");
 
 if ($_SESSION['loggedUser']->getUserType() == "admin") {
@@ -6,6 +9,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 } else {
     require_once('nav-student.php');
 }
+
+$jobOfferDAO = new JobOfferDAO();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +23,6 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URLdin</title>
-    <script>
-        src = "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
-    </script>
 </head>
 
 <body style="background-color:#7B68EE">
@@ -78,11 +80,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                                 <?php
                                 foreach ($jobOfferList as $jobOffer) {
                                 ?>
-
-
-
                                     <tr>
-                                        <td><?php echo $jobOffer->getCompanyId() ?></td>
+                                        <td><?php echo $this->jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId() )?></td>
                                         <td><?php echo $jobOffer->getJobPositionId() ?></td>
                                         <td><?php echo $jobOffer->getCareerId() ?></td>
                                         <td><?php echo $jobOffer->getSalary() ?></td>
@@ -97,43 +96,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                                         if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
                                             <form action="<?php echo FRONT_ROOT . "/JobOffer/Remove" ?>" method="post">
                                                 <td><input type="hidden" name="job_Offer_Id" id="job_Offer_Id" value="<?php echo $jobOffer->getJobOfferId(); ?>">
-                                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Esta seguro que desea eliminar esta Propuesta?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Si</button>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-                                                        <div class="modal-dialog modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Propuesta eliminada con exito
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#exampleModalToggle" role="button">Eliminar</a>
-
+                                                    <button class="btn btn-outline-light3" type="submit" name="">Eliminar</button>
                                                 </td>
-
 
                                             </form>
 
@@ -157,7 +121,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                         <table class="table">
 
                             <tbody>
-                                <?php foreach ($companyList as $company) { ?>
+                                <?php foreach ($companyList as $company) {if($company->getActive() == "si"){ ?>
                                     <tr>
                                         <th scope="row"></th>
                                         <td class="text-light"><?php echo $company->getLegalName() ?></td>
@@ -169,7 +133,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 
 
                                     </tr>
-                                <?php } ?>
+                                <?php }
+                                } ?>
                             </tbody>
 
                         </table>
@@ -178,7 +143,5 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
             </div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-
 </html>

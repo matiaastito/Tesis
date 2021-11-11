@@ -97,10 +97,13 @@
   color: #f8f8ff;
 }
 
-.linea {
+.linea1 {
   width: 1300px;
   height: 1px;
   background: #f8f8ff;
+  margin-right: 450px;
+  position: relative;
+  right: 40px;
 }
 
 .opcionesDePerfil {
@@ -231,6 +234,10 @@ p {
   margin-bottom: 1rem;
 
   font: 130% sans-serif;
+}
+
+#company-botones {
+  margin-top: 8px;
 }
 
 .imagenGlobant {
@@ -388,6 +395,16 @@ h4 {
 
   margin-top: 14px;
   font-size: 40px;
+  color: #f8f8ff;
+}
+
+#activo {
+  font: 30% sans-serif;
+  text-align: center;
+
+  margin-top: 14px;
+  margin-bottom: 30px;
+  font-size: 20px;
   color: #f8f8ff;
 }
 

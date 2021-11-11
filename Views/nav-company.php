@@ -20,16 +20,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="busquedaOfertas.php">Propuestas</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo FRONT_ROOT . "/JobOffer/ShowListViewxCompany"?>">Propuestas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Notificaciones</a>
                     </li>
                     <li class="nav-item">
-                        <a href="perfil.php" class="nav-link active">Mi Cuenta</a>
+                        <a href="<?php echo FRONT_ROOT . "/Home/ShowCompanyView" ?>" class="nav-link active">Mi Cuenta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active">LogOut</a>
+                        <a href="<?php echo  FRONT_ROOT . "/Session/Logout" ?>" class="nav-link active">LogOut</a>
                     </li>
                 </ul>
 

@@ -11,11 +11,13 @@ class Company
     private $address;
     private $contactNumber;
     private $email;
+    private $password;
     private $web;
     private $province;
     private $location;
     private $description;
     private $userType;
+    private $active; 
 
     /**
      * Get the value of CUIL
@@ -214,6 +216,42 @@ class Company
     public function setCompanyId($company_Id): self
     {
         $this->company_Id = $company_Id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     */
+    public function setPassword($password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of active
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the value of active
+     */
+    public function setActive($active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

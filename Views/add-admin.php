@@ -1,10 +1,10 @@
 <?php
 
-if ($_SESSION["loggedUser"]->getUserType() != "admin") {
+if ($_SESSION["loggedUser"]->getUserType() != "admin"){
     echo "<script> if(confirm('Acceso incorrecto'));";
-    echo "window.location = '../index.php';
+              echo "window.location = '../index.php';
           </script>";
-}
+  }
 include('nav.php');
 
 ?>
@@ -72,10 +72,6 @@ include('nav.php');
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                     <label for="floatingInput">Email</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">Password</label>
                                 </div>
 
 

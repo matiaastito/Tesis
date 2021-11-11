@@ -1,13 +1,9 @@
 <?php
 
-if ($_SESSION["loggedUser"]->getUserType() != "admin"){
-    echo "<script> if(confirm('Acceso incorrecto'));";
-              echo "window.location = '../index.php';
-          </script>";
-  }
-include('nav.php');
-
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +16,7 @@ include('nav.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URLdin</title>
 </head>
-
-<body style="background-color:#7B68EE">
+<<body style="background-color:#7B68EE">
     <main>
         <div class="container">
             <div id="cuadrado">
@@ -70,10 +65,6 @@ include('nav.php');
                                     <input type="textarea" class="form-control" id="floatingInput" name="description" placeholder="...">
                                     <label for="floatingInput">Descripcion</label>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" name="active" placeholder="si/no">
-                                    <label for="floatingInput">Activo(si/no)</label>
-                                </div>
 
                             </div>
 
@@ -97,6 +88,12 @@ include('nav.php');
 
                     <div class="form-floating">
                         <input type="submit" id="margen-boton" class="btn btn-outline-light" value="Agregar">
+
+                    </div>
+                    <div>
+                        <form action="<?php echo FRONT_ROOT . "/Home/Index" ?>">
+                            <input type="submit" id="botones" class="btn btn-outline-light" value="Volver">
+                        </form>
                     </div>
 
             </div class="alert alert-<?php echo $alert->getType() ?>">
@@ -116,6 +113,6 @@ include('nav.php');
 
 
     </main>
-</body>
+    </body>
 
 </html>

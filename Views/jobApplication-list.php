@@ -1,4 +1,7 @@
 <?php
+
+use DAO\JobOfferDAO;
+
 require_once("validate-session.php");
 
 if ($_SESSION['loggedUser']->getUserType() != "student") {
@@ -7,6 +10,8 @@ if ($_SESSION['loggedUser']->getUserType() != "student") {
 		</script>";
 }
 include("nav-student.php");
+
+$jobOfferDAO = new JobOfferDAO();
 
 ?>
 <!DOCTYPE html>
@@ -27,31 +32,6 @@ include("nav-student.php");
         <div class="">
             <div class="row">
                 <div class="col">
-                    <div class="caja-filtros">
-                        <form action="<?php echo  FRONT_ROOT . "/JobOffer/SearchByParameters " ?>" method="post">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-
-                                        <select class="form-select" id="puesto" name="puesto" aria-label="Default select example">
-                                            <option selected>Puesto</option>
-                                            <?php foreach ($jobPositionList as $jobPosition) { ?>
-                                                <option value="<?php echo $jobPosition->getDescription() ?>"><?php echo $jobPosition->getDescription() ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <select class="form-select" id="carrera" name="carrera" aria-label="Default select example">
-                                            <option selected>Carrera</option>
-                                            <?php foreach ($careerList as $career) { ?>
-                                                <option value="<?php echo $career->getDescription() ?>"><?php echo $career->getDescription() ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <input type="submit" class="btn btn-outline-light" value="Buscar">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <div class="tabla">
                         <table class="table table-striped table-hover">
                             <thead class="table-dark">
@@ -66,9 +46,6 @@ include("nav-student.php");
                                     <th scope="col">Idioma</th>
                                     <th scope="col">Idioma Secundario</th>
                                     <th scope="col">Tipo</th>
-
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,7 +57,7 @@ include("nav-student.php");
                                 ?>
 
                                                 <tr>
-                                                    <td><?php echo $jobOffer->getCompanyId() ?></td>
+                                                    <td><?php echo  $jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId()) ?></td>
                                                     <td><?php echo $jobOffer->getJobPositionId() ?></td>
                                                     <td><?php echo $jobOffer->getCareerId() ?></td>
                                                     <td><?php echo $jobOffer->getSalary() ?></td>
@@ -95,7 +72,7 @@ include("nav-student.php");
                                                     if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
                                                         <form action="<?php echo FRONT_ROOT . "/JobOffer/Remove" ?>" method="post">
                                                             <td><input type="hidden" name="job_Offer_Id" id="job_Offer_Id" value="<?php echo $jobOffer->getJobOfferId(); ?>">
-                                                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                                            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                                                                     <div class="modal-dialog modal-dialog-centered">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -103,7 +80,7 @@ include("nav-student.php");
                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                Esta seguro que desea eliminar esta Compañia?
+                                                                                Esta seguro que desea eliminar esta oferta?
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Si</button>
@@ -120,7 +97,7 @@ include("nav-student.php");
                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                Compañia eliminada con exito
+                                                                                Oferta eliminada
                                                                             </div>
                                                                             <div class="modal-footer">
                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -129,7 +106,6 @@ include("nav-student.php");
                                                                     </div>
                                                                 </div>
                                                                 <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#exampleModalToggle" role="button">Eliminar</a>
-
                                                             </td>
 
                                                         </form>
@@ -157,7 +133,7 @@ include("nav-student.php");
                         <table class="table">
 
                             <tbody>
-                                <?php foreach ($companyList as $company) { ?>
+                                <?php foreach ($companyList as $company) { if($company ->getActive() =="si"){?>
                                     <tr>
                                         <th scope="row"></th>
                                         <td class="text-light"><?php echo $company->getLegalName() ?></td>
@@ -169,7 +145,7 @@ include("nav-student.php");
 
 
                                     </tr>
-                                <?php } ?>
+                                <?php } }?>
                             </tbody>
 
                         </table>
@@ -180,5 +156,4 @@ include("nav-student.php");
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-
 </html>

@@ -7,31 +7,40 @@ use DAO\CompanyDAO as CompanyDAO;
 use DAO\StudentDAO as StudentDAO;
 use Classes\Users\Admin as Admin;
 use Classes\Company as Company;
+use DAO\JobApplicationDAO;
+use DAO\JobOfferDAO;
 
 class AdminController
 {
     private $adminDAO;
     private $companyDAO;
     private $studentDAO;
+    private $jobOfferDAO;
+    private $jobApplicationDAO;
 
     public function __construct()
     {
         $this->adminDAO = new AdminDAO();
         $this->companyDAO = new CompanyDAO();
         $this->studentDAO = new StudentDAO();
+        $this->jobOfferDAO = new JobOfferDAO();
+        $this->jobApplicationDAO = new JobApplicationDAO();
     }
 
-    public function ShowCompanyListView()
-    {
-        $companyList = $this->companyDAO->GetAll();
-
-        require_once(VIEWS_PATH . "/company-list.php");
-    }
 
     public function ShowStudentListView()
     {
         $studentList = $this->studentDAO->GetAll();
         require_once(VIEWS_PATH . "/student-list.php");
+    }
+
+    public function ShowAppView()
+    {
+        $studentList = $this->studentDAO->GetAll();
+        $jobOfferList = $this->jobOfferDAO->GetAll();
+        $jobApplicationList = $this->jobApplicationDAO->GetAll();
+
+        require_once(VIEWS_PATH . "/applicationlist-student.php");
     }
 
     public function ShowAddView(){
@@ -63,7 +72,7 @@ class AdminController
 
         $this->adminDAO->Add($admin);
 
-        $this->ShowCompanyListView();
+        echo FRONT_ROOT.'/Company/ShowListView';
     }
 
     public function Remove($id)

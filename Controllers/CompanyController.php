@@ -38,10 +38,18 @@ class CompanyController
 
     public function Remove($CUIL)
     {
+        try{
         $this->companyDAO->Remove($CUIL);
         $companyList = $this->companyDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/company-list.php");
+        }
+        catch(Exception $ex) {
+            echo "Su compañia no pudo ser eliminada.";
+        }
+        finally{
+            $this->ShowListView();
+        }
     }
 
     public function SearchByName($nombre)
@@ -59,16 +67,25 @@ class CompanyController
         require_once(VIEWS_PATH . "/modify-company.php");
     }
 
-    public function ModifyAttribute($cuil, $legalName, $address, $contactNumber, $email, $web_Page, $description)
+    public function ModifyAttribute($cuil, $legalName, $address, $contactNumber, $email, $password, $web_Page, $description, $active)
+    {
+        
+        $this->companyDAO->Modify();
+        $companyList = $this->companyDAO->GetAll();
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . '/'.$_SESSION['loggedUser']->getUserType().'-home.php');
+    }
+
+    public function Validar($cuil)
     {
 
-        $this->companyDAO->Modify();
+        $this->companyDAO->Validar($cuil);
         $companyList = $this->companyDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/company-list.php");
     }
 
-    public function Add($cuil, $legalName, $email, $contactNumber, $web_Page, $description, $province, $location, $address)
+    public function Add($legalName, $cuil, $web_Page, $contactNumber, $password, $email, $description, $province, $location, $address, $active= 'no')
     {
         $alert = new Alert("","");
         try{
@@ -80,11 +97,12 @@ class CompanyController
         $company->setAddress($address);
         $company->setContactNumber($contactNumber);
         $company->setEmail($email);
+        $company->setPassword($password);
         $company->setWeb($web_Page);
         $company->setProvince($province);
         $company->setLocation($location);
         $company->setDescription($description);
-
+        $company->setActive ($active);
         $this->companyDAO->Add($company);
         $alert->setType("success");
         $alert->setMessage("Compañia agregada con exito");
