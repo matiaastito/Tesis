@@ -45,12 +45,21 @@
   font: 100% sans-serif;
   color: #f8f8ff;
 }
+.form-select {
+  background: transparent;
+  margin-top: 40px;
+
+  padding: 20px;
+  font: 100% sans-serif;
+  color: #f8f8ff;
+}
 
 #linea {
   width: 700px;
   height: 1px;
   background: #f8f8ff;
   margin-top: 40px;
+  margin-right: 320px;
 }
 
 .h1 {
@@ -72,6 +81,7 @@
 .tabla {
   margin-top: 20px;
   width: 1500px;
+  text-align: center;
 
   font: 100% sans-serif;
   color: #f8f8ff;
@@ -84,4 +94,33 @@
   margin-left: 300px;
 }
 
-/*Modificar*/
+h2 {
+  font: 200% sans-serif;
+  color: #f8f8ff;
+
+  text-align: left;
+  margin-left: 320px;
+}
+
+#tamaño {
+  width: 100px;
+}
+
+.form-control,
+.form-control:focus {
+  background-color: transparent;
+  box-shadow: none;
+  border-color: #f8f8ff;
+  width: 300px;
+  color: #f8f8ff;
+  margin-top: 80px;
+}
+
+#margen-boton {
+  margin-top: 80px;
+}
+
+#botones {
+  height: 40px;
+  margin-top: 80px;
+}

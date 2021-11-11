@@ -162,7 +162,7 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                 <div class="col">
                 <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
                         <button class="btn btn-outline-light" type="submit" name="">Modificar</button>
-                        </form>
+    </form>
                 </div>
                 <div class="col">
                    

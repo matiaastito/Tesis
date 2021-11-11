@@ -28,7 +28,7 @@
 }
 
 .btn-outline-light2 {
-  color: #f8f9fa;
+  background-color: #f8f9fa;
   border-color: #f8f9fa;
   width: 70px;
 }
@@ -36,7 +36,7 @@
 .btn-outline-light3 {
   color: #f8f9fa;
   border-color: #f8f9fa;
-  width: 100px;
+  width: 90px;
 }
 
 .form-select {

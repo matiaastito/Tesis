@@ -53,7 +53,6 @@ class JobOfferController
         $jobOffer->setPrefLang($langP);
         $jobOffer->setPlace($place);
         $this->jobOfferDAO->Add($jobOffer);
-
     
         }
         catch(Exception $ex){

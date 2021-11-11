@@ -6,12 +6,12 @@
 }
 
 #cuadrado {
-  width: 400px;
-  height: 550px;
+  width: 450px;
+  height: 700px;
   background: #f8f8ff;
   border: 1px solid #f8f8ff49;
   position: relative;
-  top: 140px;
+  top: 60px;
 }
 
 p {
@@ -51,6 +51,7 @@ p {
   width: 400px;
   height: 70px;
   border: 2px solid #7b68ee;
+  margin-bottom: 20px;
   position: relative;
   top: 40px;
 }
@@ -59,15 +60,16 @@ p {
   background: url("/Trabajo-Final/Views/assets/img/Boton Violetaa.png") center;
   background-size: 100% 100%;
   border: none;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 10px 10px 10px 10px;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
   border-color: #f8f8ff;
   background-color: #f8f8ff;
-  margin-left: 120px;
-  margin-top: 100px;
+  margin-left: 150px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .logo {
