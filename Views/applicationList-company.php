@@ -37,7 +37,7 @@ $jobApplicationDAO = new JobPositionDAO();
                 <div class="container-fluid">
                     <form  class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" name="nombre" aria-label="Search">
-                        <button class="btn btn-light" id="botones" type="submit">Search</button>
+                        <button class="btn btn-light" id="boton" type="submit">Search</button>
                     </form>
                 </div>
             </nav>

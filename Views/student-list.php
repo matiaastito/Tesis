@@ -30,6 +30,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                             <th>Nombre y Apellido</th>
                             <th>Dni</th>
                             <th>Email</th>
+                            <th>Estado Academico</th>
                         </thead>
                         <tbody>
                             <?php
@@ -40,6 +41,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                                     <td><?php echo $student->getName() . ' ' . $student->getLastName() ?></td>
                                     <td><?php echo $student->getDni() ?></td>
                                     <td><?php echo $student->getEmail() ?></td>
+                                    <td><?php  if($student->getActive()){echo "ACTIVO";}else{echo "INACTIVO";} ?></td>
                                 </tr>
                             <?php
                             }

@@ -200,7 +200,7 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                                                                     </div>
                                                                 </div>
                                                                 <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
-                                                                <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#modify" role="button">Modificar</a>
+                                                                <a class="btn btn-outline-light" data-bs-toggle="modal" type="submit" href="#modify" role="button">Modificar</a>
                 </div>
             </div>
         </div>
@@ -250,8 +250,11 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                                                                     </div>
                                                                 </div>
                                                                 <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
-                                                                <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#end" role="button">Terminar</a>
+                                                                <a class="btn btn-outline-light" data-bs-toggle="modal" type="submit" href="#end" role="button">Terminar</a>
                                                                 </form>
+                                                                <form action="<?php echo FRONT_ROOT . '/Home/Show'.$_SESSION['loggedUser']->getUserType().'View'?>" method="get">
+                        <input type="submit" class="btn btn-outline-light" value="Volver al Inicio">
+                    </form>
                     </div>
             </div>
         
@@ -261,14 +264,10 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                 </div>
             </div>
         </div>
-        
-    
                 </div>
                 <div class="col">
                    
-                <form action="<?php echo FRONT_ROOT . '/Home/Show'.$_SESSION['loggedUser']->getUserType().'View'?>" method="get">
-                        <input type="submit" class="btn btn-outline-light" value="Volver">
-                    </form>
+               
                    
                 </div>
             </div>

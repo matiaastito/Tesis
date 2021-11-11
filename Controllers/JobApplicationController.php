@@ -85,6 +85,7 @@ class JobApplicationController
         $companyList = $this->companyDAO->GetAll();
         $careerList = $this->careerDAO->GetAll();
         $jobPositionList = $this->jobPositionDAO->GetAll();
+        $jobApplicationList = $this ->jobApplicationDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/applicationlist-admin.php");
     }
