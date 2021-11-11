@@ -90,6 +90,7 @@ include('nav.php');
                         </li>
                        
                                 <input type="submit" class="btn btn-outline-light" value="Agregar">
+                    </ul>
                            
                         </div>
                         </form>

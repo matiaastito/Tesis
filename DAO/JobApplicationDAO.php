@@ -131,7 +131,7 @@ class JobApplicationDAO implements IJobApplicationDAO
     public function Remove($id)
     {
         try {
-            $query = "DELETE FROM $this->tableName WHERE id = $id";
+            $query = "DELETE FROM $this->tableName WHERE job_Application_Id = $id";
             $this->connection = Connection::GetInstance();
 
             $this->connection->Execute($query);

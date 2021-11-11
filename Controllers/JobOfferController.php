@@ -53,8 +53,7 @@ class JobOfferController
         $jobOffer->setPrefLang($langP);
         $jobOffer->setPlace($place);
         $this->jobOfferDAO->Add($jobOffer);
-        $alert->setType("success");
-        $alert->setMessage("Oferta agregada con exito");
+
     
         }
         catch(Exception $ex){
@@ -86,6 +85,16 @@ class JobOfferController
         $jobPositionList = $this->jobPositionDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/jobOffer-list.php");
+    }
+
+    public function ShowListViewxCompany()
+    {
+        $jobOfferList = $this->jobOfferDAO->GetAll();
+        $companyList = $this->companyDAO->GetAll();
+        $careerList = $this->careerDAO->GetAll();
+        $jobPositionList = $this->jobPositionDAO->GetAll();
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/jobOfferCompany-list.php");
     }
 
 
@@ -120,7 +129,7 @@ class JobOfferController
         $careerList = $this->careerDAO->GetAll();
         $jobPositionList = $this->jobPositionDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
-        require_once(VIEWS_PATH . "/jobOffer-list.php");
+        require_once(VIEWS_PATH . '/'.$_SESSION['loggedUser']->getUserType().'-home.php');
     }
 
     public function Remove($job_Offer_Id)
@@ -132,6 +141,17 @@ class JobOfferController
         $jobPositionList = $this->jobPositionDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/jobOffer-list.php");
+    }
+
+    public function End($job_Offer_Id)
+    {
+        $this->jobOfferDAO->End($job_Offer_Id);
+        $jobOfferList = $this->jobOfferDAO->GetAll();
+        $companyList = $this->companyDAO->GetAll();
+        $careerList = $this->careerDAO->GetAll();
+        $jobPositionList = $this->jobPositionDAO->GetAll();
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/jobOfferCompany-list.php");
     }
 
 

@@ -1,12 +1,5 @@
 <?php
 
-if ($_SESSION["loggedUser"]->getUserType() != "admin"){
-    echo "<script> if(confirm('Acceso incorrecto'));";
-              echo "window.location = '../index.php';
-          </script>";
-  }
-include('nav.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,10 +69,6 @@ include('nav.php');
                         </li>
                         <li class="col-sm">
                             <input type="text" class="cuadrado-de-opciones" name="address" placeholder="Direccion" aria-label="Zip">
-                        </li>
-                        <li class="form-floating mb-3">
-                            <input type="text" class="form-control" id="active" name="active" placeholder="name.com.ar">
-                            <label for="active">Activo(si/no)</label>
                         </li>
                         <div>
                        

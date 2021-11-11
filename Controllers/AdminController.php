@@ -21,12 +21,6 @@ class AdminController
         $this->studentDAO = new StudentDAO();
     }
 
-    public function ShowCompanyListView()
-    {
-        $companyList = $this->companyDAO->GetAll();
-
-        require_once(VIEWS_PATH . "/company-list.php");
-    }
 
     public function ShowStudentListView()
     {
@@ -63,7 +57,7 @@ class AdminController
 
         $this->adminDAO->Add($admin);
 
-        $this->ShowCompanyListView();
+        echo FRONT_ROOT.'/Company/ShowListView';
     }
 
     public function Remove($id)

@@ -1,11 +1,17 @@
 <?php
 
-if ($_SESSION["loggedUser"]->getUserType() != "admin"){
-    echo "<script> if(confirm('Acceso incorrecto'));";
-              echo "window.location = '../index.php';
-          </script>";
+if ($_SESSION["loggedUser"]->getUserType() == "admin"){
+    
+    include("nav.php");
+  }elseif ($_SESSION["loggedUser"]->getUserType() == "company"){
+    include("nav-company.php");
   }
-  include("nav.php");
+  else{
+    echo "<script> if(confirm('Acceso incorrecto'));";
+    echo "window.location = '../index.php';
+</script>";
+  }
+  
 
 ?>
 <!DOCTYPE html>
@@ -100,7 +106,6 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                         <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="description" name ="description" placeholder="name@example.com">
                             <label for="description">Descripcion</label>
-                            </select>
                         </div>
                         
                     </div>
@@ -155,21 +160,22 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                 <div class="col">
                 </div>
                 <div class="col">
-                    <form action="<?php echo FRONT_ROOT . "/JobOffer/ShowListView"?>" method="get">
-                        <input type="submit" class="btn btn-outline-light" value="Volver">
-                    </form>
+                <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
+                        <button class="btn btn-outline-light" type="submit" name="">Modificar</button>
+                        </form>
                 </div>
                 <div class="col">
                    
-                        <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
-                        <button class="btn btn-outline-light" type="submit" name="">Modificar</button>
+                <form action="<?php echo FRONT_ROOT . '/Home/Show'.$_SESSION['loggedUser']->getUserType().'View'?>" method="get">
+                        <input type="submit" class="btn btn-outline-light" value="Volver">
+                    </form>
                    
                 </div>
             </div>
         </div>
         </div>
         </div>
-  </form>
+ 
     </main>
 </body>
 </html>

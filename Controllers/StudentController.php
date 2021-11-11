@@ -44,11 +44,11 @@ class StudentController
     }
 
 
-    public function Add($studentId, $firstName, $lastName, $dni, $gender, $birthDate, $email, $phoneNumber, $careerId, $fileNumber, $active)
+    public function Add($studentId, $firstName, $lastName, $dni, $gender, $birthDate, $email, $password, $phoneNumber, $careerId, $fileNumber, $active)
     {
         $student = new Student();
         $student->setStudentId($studentId);
-        $student->setCareerId($this->studentDAO->MatchByCareerId($careerId));
+        $student->setCareerId($careerId);
         $student->setName($firstName);
         $student->setLastName($lastName);
         $student->setDni($dni);
@@ -56,6 +56,7 @@ class StudentController
         $student->setGender($gender);
         $student->setBirthDate($birthDate);
         $student->setEmail($email);
+        $student->setPassword($password);
         $student->setPhoneNumber($phoneNumber);
         $student->setActive($active);
         $this->studentDAO->Add($student);

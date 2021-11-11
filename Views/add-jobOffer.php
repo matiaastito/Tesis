@@ -1,14 +1,15 @@
 <?php
 
-use DAO\CareerDAO;
-use DAO\CompanyDAO;
-use DAO\JobPositionDAO;
-
-include('nav.php');
-if ($_SESSION["loggedUser"]->getUserType() != "admin"){
+if ($_SESSION["loggedUser"]->getUserType() == "admin"){
+    
+    include("nav.php");
+  }elseif ($_SESSION["loggedUser"]->getUserType() == "company"){
+    include("nav-company.php");
+  }
+  else{
     echo "<script> if(confirm('Acceso incorrecto'));";
-              echo "window.location = '../index.php';
-          </script>";
+    echo "window.location = '../index.php';
+</script>";
   }
 
 ?>
@@ -37,12 +38,18 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                         </li>
                     
                         <li>
+                        <?php if ($_SESSION['loggedUser']->getUserType()=="admin"){?>
                             <select class="form-select" id="company_Id" name ="company_Id" aria-label="Default select example">
+                                
                                 <option selected>Empresa</option>
-                                <?php foreach($companyList as $company){?>
+                                <?php foreach($companyList as $company){ if($company->getActive() =='si'){?>
                                 <option value="<?php echo $company->getLegalName()?>"><?php echo $company->getLegalName()?></option>
+                                <?php }
+                            }
+                            ?></select>
+                            <?php } else{?> <input type="hidden" name="company_Id" value="<?php echo $_SESSION['loggedUser']->getLegalName()?>">
                                 <?php }?>
-                            </select>
+                            
                         </li>
                         <li>
                             <select class="form-select" id="career_Id" name ="career_Id" aria-label="Default select example">
@@ -95,7 +102,7 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                         </li>
                         <li>
                         <select class="form-select" id="langP" name ="langP" aria-label="Default select example">
-                                <option selected>Idioma Principal</option>
+                                <option selected>Idioma Secundario</option>
                                 <option value="Español">Español</option>
                                 <option value="Ingles">Ingles</option>
                                 <option value="Aleman">Aleman</option>

@@ -1,10 +1,17 @@
 <?php
-if ($_SESSION["loggedUser"]->getUserType() != "admin"){
-    echo "<script> if(confirm('Acceso incorrecto'));";
-              echo "window.location = '../index.php';
-          </script>";
+if ($_SESSION["loggedUser"]->getUserType() == "admin"){
+    include("nav.php");
   }
-  include("nav.php");
+  else if ($_SESSION["loggedUser"]->getUserType() == "company"){
+    include("nav-company.php");
+
+  }
+  else{
+    echo "<script> if(confirm('Acceso incorrecto'));";
+    echo "window.location = '../index.php';
+</script>";
+  }
+  
 
 ?>
 <!DOCTYPE html>
@@ -26,8 +33,9 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="legalName" name="legalName" placeholder="Nombre...">
-                            <label for="legalName">Nombre</label>
+                        <input type="number" class="form-control" id="contactNumber" name="contactNumber" placeholder="Numero contacto...">
+                            <label for="contactNumber">Contacto</label>    
+                        
                         </div>
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="address" name="address" placeholder="Direccion...">
@@ -38,8 +46,8 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                     </div>
                     <div class="col">
                     <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="contactNumber" name="contactNumber" placeholder="Numero contacto...">
-                            <label for="contactNumber">Contacto</label>
+                             <input type="text" class="form-control" id="password" name="password" placeholder="123456asd...">
+                            <label for="password">Contraseña</label>
                         </div>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
@@ -69,10 +77,10 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                     <thead class="table-dark">
                         <tr>
                             <th scope="col"></th>
-                            <th scope="col">Nombre</th>
+                            <th scope="col">Contacto</th>
                             <th scope="col">Descripcion</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Contacto</th>
+                            <th scope="col">Contraseña</th>
                             <th scope="col">Pagina Web</th>
                             <th scope="col">Direccion</th>
                         </tr>
@@ -81,10 +89,10 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
                         <tr>
                             <?php foreach ($companyList as $company){if($company->getCUIL()== $_POST['CUIL']){?>
                             <th scope="row"></th>
-                            <td><?php echo $company->getLegalName() ?></td>
+                            <td><?php echo $company->getContactNumber() ?></td>
                             <td><?php echo $company->getDescription() ?></td>
                             <td><?php echo $company->getEmail() ?></td>
-                            <td><?php echo $company->getContactNumber() ?></td>
+                            <td><?php echo $company->getPassword() ?></td>
                             <td><?php echo $company->getWeb() ?></td>
                             <td><?php echo $company->getAddress() ?></td>
                         </tr>
@@ -97,22 +105,25 @@ if ($_SESSION["loggedUser"]->getUserType() != "admin"){
             <div class="row">
                 <div class="col">
                 </div>
-                <div class="col">
-                    <form action="<?php echo FRONT_ROOT . "/Admin/ShowCompanyListView"?>" method="get">
-                        <input type="submit" class="btn btn-outline-light" value="Volver">
-                    </form>
-                </div>
+               
                 <div class="col">
                    
                         <input name="cuil" type="hidden" value="<?php echo $_POST['CUIL'] ?>">
                         <button class="btn btn-outline-light" type="submit" name="">Modificar</button>
-                   
+
+                        
+                        </form>
+                </div>
+                <div class="col">
+                <form action="<?php echo FRONT_ROOT . '/Home/Show'. $_SESSION['loggedUser']->getUserType().'View' ?>" method="post">
+                    <button class="btn btn-outline-light" type="submit" name="">Volver al inicio</button>
+                    </form>
                 </div>
             </div>
         </div>
         </div>
         </div>
-  </form>
+  
     </main>
 </body>
 </html>

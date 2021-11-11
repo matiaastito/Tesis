@@ -13,6 +13,7 @@ class Person
     private $gender;
     private $birthDate;
     private $email;
+    private $password;
     private $phoneNumber;
     private $userType;
 
@@ -120,6 +121,21 @@ class Person
     public function setEmail($email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of email
+     */
+    public function setPassword($password): self
+    {
+        $this->password = $password;
 
         return $this;
     }

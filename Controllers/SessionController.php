@@ -36,25 +36,49 @@ class SessionController
     }
 
 
-    public function Login($email)
+    public function Login($email, $password)
     {
-        $user = $this->UserDAO->GetByEmail($email);
+        $user = $this->sessionDAO->GetUser($email, $password);
         if($user !=null){
         $logged = $this->sessionDAO->Login($user);
-        // usar try catch + alert para evitar que el controller haga una tarea que no le compete
         if ($logged == "admin") {
             FRONT_ROOT . "/Session/ValidateAdmin.php";
             require_once(VIEWS_PATH . "/admin-home.php");
             } else {
-                require_once(VIEWS_PATH . "/validate-session.php"); 
+                FRONT_ROOT . "/Session/ValidateStudent.php";
                 require_once(VIEWS_PATH . "/student-home.php");
             }  
-        }else{
+        }
+        else if($user = $this->sessionDAO->GetCompany($email, $password)){
+            if($user !=null){
+                $_SESSION["loggedUser"] = $user;
+                FRONT_ROOT . "/Session/ValidateCompany.php";
+                require_once(VIEWS_PATH . "/company-home.php");
+        
+        }
+    }
+        else{
             echo "<script> if(confirm('Acceso incorrecto'));";
             echo "window.location = '../index.php';
 		</script>";
 
         }
+    
+    }
+
+    public function RegisterViewStudent()
+    {
+        require_once(VIEWS_PATH . "/register-student.php");
+    }
+
+    public function RegisterViewCompany()
+    {
+        require_once(VIEWS_PATH . "/register-company.php");
+    }
+
+    public function Register($email, $password){
+        $this->sessionDAO->Register($email, $password);
+        FRONT_ROOT . '/Home/Index';
     }
 
     public function Logout()

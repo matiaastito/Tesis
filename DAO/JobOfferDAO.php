@@ -14,6 +14,8 @@ class JobOfferDAO implements IJobOfferDAO
     
     private $tableName = "jobOffer";
 
+    private $jobApplicationDAO;
+
 
     public function Add(JobOffer $jobOffer)
     { 
@@ -46,7 +48,7 @@ class JobOfferDAO implements IJobOfferDAO
         $jobOfferList = array();
         try {
 
-            $query = "SELECT jobOffer.job_Offer_Id, company.legal_name, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
+            $query = "SELECT jobOffer.job_Offer_Id, company.company_Id, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
              jobOffer.language, jobOffer.preference_language, jobOffer.place FROM $this->tableName 
              JOIN company ON jobOffer.company_Id = company.company_Id
              JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
@@ -59,7 +61,7 @@ class JobOfferDAO implements IJobOfferDAO
             foreach ($resultSet as $row) {
                 $jobOffer = new JobOffer();
                 $jobOffer->setJobOfferId($row["job_Offer_Id"]);
-                $jobOffer->setCompanyId($row["legal_name"]);
+                $jobOffer->setCompanyId($row["company_Id"]);
                 $jobOffer->setCareerId($row["carDes"]);
                 $jobOffer->setJobPositionId($row["jobPos"]);
                 $jobOffer->setSalary($row["salary"]);
@@ -195,7 +197,7 @@ class JobOfferDAO implements IJobOfferDAO
 
                 $this->connection->Execute($query);
             }
-            if ($_POST['description']!="Descripcion") {
+            if ($_POST['description']!=null) {
                 $query = "UPDATE $this->tableName SET description='$_POST[description]' WHERE job_Offer_Id = $_POST[job_Offer_Id]";
                 $this->connection = Connection::GetInstance();
 
@@ -391,6 +393,41 @@ class JobOfferDAO implements IJobOfferDAO
             throw $ex;
         }
     }
+
+    public function End($job_Offer_Id)
+    {
+        $jobApplicationDAO = new JobApplicationDAO();
+        try {
+
+            $query = "SELECT student.email as email, jobOffer.job_Offer_Id as idJobOffer, jobApplication.job_Application_Id as jobAppId
+             FROM jobApplication 
+             JOIN $this->tableName ON jobApplication.job_Offer_Id = $job_Offer_Id
+             JOIN student ON jobApplication.student_Id = student.id";
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+            if($resultSet !=null){
+            foreach ($resultSet as $row) {
+                
+                mail($row['email'],"","Este es el cuerpo del mensaje", "From: maticapo27@gmail.com");
+                $jobApplicationDAO->Remove($row['jobAppId']);
+                if($job_Offer_Id != null){
+                    echo "hola";
+                    $this->Remove($job_Offer_Id);
+                    $job_Offer_Id = null;
+                }
+            }
+        }
+        else{
+            $this->Remove($job_Offer_Id);
+        }
+            
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
 
 
 }

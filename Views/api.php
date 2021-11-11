@@ -28,6 +28,12 @@ $response = curl_exec($ch);
 $arrayToDecode = json_decode($response, true);
 
 
+foreach($arrayToDecode as $row){
+    var_dump($row['email']);
+}
+
+
+/*
 for ($i = 0; $i < 200; $i++) {
     $jsonStudents->Add(
         $arrayToDecode[$i]['studentId'],
@@ -46,6 +52,7 @@ for ($i = 0; $i < 200; $i++) {
     
     
 }
+*/
 
 /*
 for ($i = 0; $i < 8; $i++) {
