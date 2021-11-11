@@ -1,16 +1,15 @@
 <?php
 
-if ($_SESSION["loggedUser"]->getUserType() == "admin"){
-    
+if ($_SESSION["loggedUser"]->getUserType() == "admin") {
+
     include("nav.php");
-  }elseif ($_SESSION["loggedUser"]->getUserType() == "company"){
+} elseif ($_SESSION["loggedUser"]->getUserType() == "company") {
     include("nav-company.php");
-  }
-  else{
+} else {
     echo "<script> if(confirm('Acceso incorrecto'));";
     echo "window.location = '../index.php';
 </script>";
-  }
+}
 
 ?>
 <!DOCTYPE html>
@@ -41,17 +40,19 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                            <?php if ($_SESSION['loggedUser']->getUserType()=="admin"){?>
-                                    <select class="form-select" id="company_Id" name ="company_Id" aria-label="Default select example">
-                                        
+                                <?php if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
+                                    <select class="form-select" id="company_Id" name="company_Id" aria-label="Default select example">
+
                                         <option selected>Empresa</option>
-                                        <?php foreach($companyList as $company){ if($company->getActive() =='si'){?>
-                                        <option value="<?php echo $company->getLegalName()?>"><?php echo $company->getLegalName()?></option>
+                                        <?php foreach ($companyList as $company) {
+                                            if ($company->getActive() == 'si') { ?>
+                                                <option value="<?php echo $company->getLegalName() ?>"><?php echo $company->getLegalName() ?></option>
                                         <?php }
-                                    }
-                                    ?></select>
-                                    <?php } else{?> <input type="hidden" name="company_Id" value="<?php echo $_SESSION['loggedUser']->getLegalName()?>">
-                                        <?php }?>
+                                        }
+                                        ?>
+                                    </select>
+                                <?php } else { ?> <input type="hidden" name="company_Id" value="<?php echo $_SESSION['loggedUser']->getLegalName() ?>">
+                                <?php } ?>
                                 </select>
                                 <select class="form-select" id="career_Id" name="career_Id" aria-label="Default select example">
                                     <option selected>Carrera</option>
@@ -115,11 +116,11 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                             </div>
                         </div>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating" id="registro">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description"></textarea>
                         <label for="floatingTextarea">Comments</label>
 
-                        <input type="submit" class="btn btn-outline-light" value="Agregar">
+                        <input type="submit" id="boton-agregar" class="btn btn-outline-light" value="Agregar">
 
                     </div>
 

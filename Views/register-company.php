@@ -88,6 +88,12 @@
 
                     <div class="form-floating">
                         <input type="submit" id="margen-boton" class="btn btn-outline-light" value="Agregar">
+
+                    </div>
+                    <div>
+                        <form action="<?php echo FRONT_ROOT . "/Home/Index" ?>">
+                            <input type="submit" id="botones" class="btn btn-outline-light" value="Volver">
+                        </form>
                     </div>
 
             </div class="alert alert-<?php echo $alert->getType() ?>">
@@ -107,5 +113,6 @@
 
 
     </main>
-</body>
+    </body>
+
 </html>

@@ -16,14 +16,12 @@ class HomeController
     private $companyDAO;
 
 
-
     public function __construct()
     {
         $this->UserDAO = new UserDAO();
         $this->studentDAO = new StudentDAO();
         $this->adminDAO = new AdminDAO();
         $this->companyDAO = new CompanyDAO();
-
     }
 
     public function Index($message = "")

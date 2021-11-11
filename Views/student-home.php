@@ -1,11 +1,9 @@
-<?php 
+<?php
 
-if ($_SESSION["loggedUser"]->getUserType() != "student"){
+if ($_SESSION["loggedUser"]->getUserType() != "student") {
   echo "<script> if(confirm('Acceso incorrecto'));";
-            echo "window.location = '../index.php';
+  echo "window.location = '../index.php';
 		</script>";
-
-    
 }
 
 include("nav-student.php");
@@ -17,17 +15,18 @@ include("nav-student.php");
 <html lang="en">
 
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<link rel="stylesheet" href="<?php echo CSS_PATH?>/overides.css" type="text/css">
-<link rel="stylesheet" href="<?php echo CSS_PATH?>/perfil.css" type="text/css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URLdin</title>
+  <link rel="stylesheet" href="<?php echo CSS_PATH ?>/overides.css" type="text/css">
+  <link rel="stylesheet" href="<?php echo CSS_PATH ?>/perfil.css" type="text/css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URLdin</title>
 </head>
-<body style = "background-color:#7B68EE">
-<main>
+
+<body style="background-color:#7B68EE">
+  <main>
     <div class="container">
       <div class="cover-image">
         <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#update-cover-image-modal">
@@ -39,15 +38,20 @@ include("nav-student.php");
         <!–– Imagen de Portada ––>
       </div>
       <div class="profile-wrapper">
-        <img class="foto" src="<?php echo IMG_PATH?>/foto default de usuario.png" alt="">
-        <h1 class="userName"><?php echo $_SESSION['loggedUser']->getName() .'  ' .$_SESSION['loggedUser']->getLastName();?></h1>
-        ESTADO ACADEMICO -><?php  if($_SESSION['loggedUser']->getActive() ==1){echo "ACTIVO";}else{echo "INACTIVO";} ;?>
-        <h2 class="linea"></h2>
+        <img class="foto" src="<?php echo IMG_PATH ?>/foto default de usuario.png" alt="">
+        <h1 class="userName"><?php echo $_SESSION['loggedUser']->getName() . '  ' . $_SESSION['loggedUser']->getLastName(); ?></h1>
+        <h2 id="activo">ESTADO ACADEMICO: <?php if ($_SESSION['loggedUser']->getActive() == 1) {
+                                            echo "ACTIVO";
+                                          } else {
+                                            echo "INACTIVO";
+                                          }; ?></h2>
+        <h3 class="linea">
+        </h3>
       </div>
       <nav class="mb-5">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a href="<?php echo FRONT_ROOT . "/JobApplication/ShowListApplyView"?>" class="nav-link text-white">
+            <a href="<?php echo FRONT_ROOT . "/JobApplication/ShowListApplyView" ?>" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>
@@ -55,7 +59,7 @@ include("nav-student.php");
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo FRONT_ROOT . "/Company/ShowListView"?>" class="nav-link text-white">
+            <a href="<?php echo FRONT_ROOT . "/Company/ShowListView" ?>" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>
@@ -119,4 +123,5 @@ include("nav-student.php");
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+
 </html>

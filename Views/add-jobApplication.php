@@ -58,20 +58,22 @@ $jobOfferDAO = new JobOfferDAO();
                                         <td><?php echo $jobOffer->getSalary() ?></td>
                                         <td><?php echo $jobOffer->getLang() ?></td>
                                         <td><?php echo $jobOffer->getPrefLang() ?></td>
-                                        
-                                            <td><!--<form action ="<?php //echo FRONT_ROOT."/Archivo/UploadPdf"?>" method="POST"  enctype="multipart/form-data">
-                                               <input type="file" class="" name ="fichero">-->
-                                                <input class="btn btn-light" type="submit" value="Subir">
-                                            
 
-                                                <!--</form>-->
-                                            </td>
-                                        
+                                        <td>
+                                            <!--<form action ="<?php //echo FRONT_ROOT."/Archivo/UploadPdf"
+                                                                ?>" method="POST"  enctype="multipart/form-data">
+                                               <input type="file" class="" name ="fichero">-->
+                                            <input class="btn btn-light" type="submit" value="Subir">
+
+
+                                            <!--</form>-->
+                                        </td>
+
                                         <form action="<?php echo  FRONT_ROOT . "/JobApplication/Add " ?>" method="post">
                                             <td>
                                                 <input type="hidden" name="studentId" value="<?php echo $_SESSION["loggedUser"]->getStudentId(); ?>">
                                                 <input type="hidden" name="jobOfferId" value="<?php echo $jobOffer->getJobOfferId(); ?>">
-                                              <input class="btn btn-outline-light3"  name="" type="submit" value="Aplicar" >
+                                                <input class="btn btn-light" name="" type="submit" value="Aplicar">
                                             </td>
                                         </form>
 
@@ -89,19 +91,21 @@ $jobOfferDAO = new JobOfferDAO();
                         <table class="table">
 
                             <tbody>
-                                <?php foreach ($companyList as $company) { if($company ->getActive()=="si"){ ?>
-                                    <tr>
-                                        <th scope="row"></th>
-                                        <td class="text-light"><?php echo $company->getLegalName() ?></td>
+                                <?php foreach ($companyList as $company) {
+                                    if ($company->getActive() == "si") { ?>
+                                        <tr>
+                                            <th scope="row"></th>
+                                            <td class="text-light"><?php echo $company->getLegalName() ?></td>
 
-                                        <td>
-                                            <input name="company_Id" type="hidden" value="<?php echo $company->getCompanyId() ?>" />
-                                            <button class="btn btn-light" type="submit" name="">Ver</button>
-                                        </td>
+                                            <td>
+                                                <input name="company_Id" type="hidden" value="<?php echo $company->getCompanyId() ?>" />
+                                                <button class="btn btn-light" type="submit" name="">Ver</button>
+                                            </td>
 
 
-                                    </tr>
-                                <?php }} ?>
+                                        </tr>
+                                <?php }
+                                } ?>
                             </tbody>
 
                         </table>

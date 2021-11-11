@@ -1,10 +1,9 @@
 <?php
 
-if ($_SESSION["loggedUser"]->getUserType() != "company"){
+if ($_SESSION["loggedUser"]->getUserType() != "company") {
     echo "<script> if(confirm('Acceso incorrecto'));";
-            echo "window.location = '../index.php';
+    echo "window.location = '../index.php';
 		</script>";
-    
 }
 include("nav-company.php");
 
@@ -66,15 +65,15 @@ include("nav-company.php");
             <div class="cuadradoEmpresa">
                 <div>
                     <h1>Nuestro abordaje único abre paso a la reinvención</h1>
-                    <p><?php echo $_SESSION['loggedUser']->getDescription();?></p>
+                    <p><?php echo $_SESSION['loggedUser']->getDescription(); ?></p>
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <span><img src="<?php echo IMG_PATH?>/Globant place holder.jpg" class="imagenGlobant" alt=""></span>
+                                <span><img src="<?php echo IMG_PATH ?>/Globant place holder.jpg" class="imagenGlobant" alt=""></span>
                             </div>
                             <div class="col">
                                 <h2>Combinamos la ingeniería, la innovación y el diseño</h2>
-                                <p class="texto-imagen"><?php echo $_SESSION['loggedUser']->getDescription();?></p>
+                                <p class="texto-imagen"><?php echo $_SESSION['loggedUser']->getDescription(); ?></p>
                                 <form action="https://www.globant.com/es">
                                     <input type="submit" class="btn btn-outline-secondary" value="Conocer mas">
                                 </form>
@@ -92,7 +91,7 @@ include("nav-company.php");
                                 <a href="" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                     </svg>
-                                    <img class="logoCoca" src="<?php echo IMG_PATH?>/coca-cola-logo-1.png" alt="">
+                                    <img class="logoCoca" src="<?php echo IMG_PATH ?>/coca-cola-logo-1.png" alt="">
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -100,20 +99,20 @@ include("nav-company.php");
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                         <use xlink:href="#people-circle" />
                                     </svg>
-                                    <img class="logoFOX" src="<?php echo IMG_PATH?>/FOX_ESPAÑA_LOGO.png" alt="">
+                                    <img class="logoFOX" src="<?php echo IMG_PATH ?>/FOX_ESPAÑA_LOGO.png" alt="">
                                 </a>
                             <li class="nav-item">
                                 <a href="#" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                     </svg>
-                                    <img class="logoDisney" src="<?php echo IMG_PATH?>/Disney+_logo.svg.png" alt="">
+                                    <img class="logoDisney" src="<?php echo IMG_PATH ?>/Disney+_logo.svg.png" alt="">
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link text-white">
                                     <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                                     </svg>
-                                    <img class="logoNational" src="<?php echo IMG_PATH?>/national-geographic-logo.png" alt="">
+                                    <img class="logoNational" src="<?php echo IMG_PATH ?>/national-geographic-logo.png" alt="">
                                 </a>
                             </li>
                         </ul>
@@ -126,16 +125,18 @@ include("nav-company.php");
                         <div class="col">
                             <h4>Contactos</h4>
                             <p class="linea-chiquita"></p>
-                            <a href="https://<?php echo $_SESSION['loggedUser']->getWeb();?>"><p class="contactos"><?php echo $_SESSION['loggedUser']->getWeb();?></p></a>
-                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getEmail();?></p>
-                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getContactNumber();?></p>
+                            <a href="https://<?php echo $_SESSION['loggedUser']->getWeb(); ?>">
+                                <p class="contactos"><?php echo $_SESSION['loggedUser']->getWeb(); ?></p>
+                            </a>
+                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getEmail(); ?></p>
+                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getContactNumber(); ?></p>
                         </div>
                         <div class="col">
                             <h4>Ubicacion</h4>
                             <p class="linea-chiquita"></p>
-                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getProvince();?></p>
-                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getLocation();?></p>
-                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getAddress();?></p>
+                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getProvince(); ?></p>
+                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getLocation(); ?></p>
+                            <p class="contactos"><?php echo $_SESSION['loggedUser']->getAddress(); ?></p>
                         </div>
                     </div>
                 </div>
