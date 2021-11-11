@@ -68,15 +68,25 @@ class JobApplicationController
         require_once(VIEWS_PATH . "/add-jobApplication.php");
     }
 
-    public function Add($jobApplicationId, $studentId, $jobOfferId)
+    public function Add($studentId, $jobOfferId)
     {
         $jobApplication = new JobApplication();
         $jobApplication->setJobOfferId($jobOfferId);
-        $jobApplication->setJobApplicationId($jobApplicationId);
         $jobApplication->setStudentId($studentId);
         $this->jobApplicationDAO->Add($jobApplication);
             
         $this->ShowListView();
+    }
+
+    public function End($jobApplicationId)
+    {
+        $this->jobApplicationDAO->End($jobApplicationId);
+        $jobOfferList = $this->jobOfferDAO->GetAll();
+        $companyList = $this->companyDAO->GetAll();
+        $careerList = $this->careerDAO->GetAll();
+        $jobPositionList = $this->jobPositionDAO->GetAll();
+        require_once(VIEWS_PATH . "/validate-session.php");
+        require_once(VIEWS_PATH . "/applicationlist-admin.php");
     }
 
    

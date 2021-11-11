@@ -68,7 +68,7 @@ $jobOfferDAO = new JobOfferDAO();
                                             </td>
                                         
                                         <form action="<?php echo  FRONT_ROOT . "/JobApplication/Add " ?>" method="post">
-                                            <td><input type="hidden" name="jobApplicationId" value="<?php echo $jobOffer->getJobOfferId(); ?>">
+                                            <td>
                                                 <input type="hidden" name="studentId" value="<?php echo $_SESSION["loggedUser"]->getStudentId(); ?>">
                                                 <input type="hidden" name="jobOfferId" value="<?php echo $jobOffer->getJobOfferId(); ?>">
                                               <input class="btn btn-outline-light3"  name="" type="submit" value="Aplicar" >

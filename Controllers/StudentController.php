@@ -29,6 +29,13 @@ class StudentController
         require_once(VIEWS_PATH . "/student-list.php");
     }
 
+    public function ViewProfile($name)
+    {
+        $studentList = $this->studentDAO->GetAll();
+
+        require_once(VIEWS_PATH . "/student-profile.php");
+    }
+
     public function ShowCompanyListView()
     {
 

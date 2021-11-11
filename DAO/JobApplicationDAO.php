@@ -177,133 +177,31 @@ class JobApplicationDAO implements IJobApplicationDAO
         } catch (Exception $ex) {
             throw $ex;
         }
-    }/*
+    }
 
-    public function SearchByParameters($puesto, $carrera)
+    public function End($jobApplicationId)
     {
-
-        $jobApplicationList = array();
-        if($puesto!= "Puesto" AND $carrera!="Carrera"){
         try {
 
-            $puesto = $this->MatchByJobPos($puesto);
-            $carrera = $this->MatchByCareerId($carrera);
+            $query = "SELECT student.email as email 
+             FROM $this->tableName 
+             JOIN student ON jobApplication.student_Id = student.id
+             WHERE jobApplication.job_Application_Id = $jobApplicationId";
 
-            $query= "SELECT * FROM $this->tableName 
-            JOIN jobOffer ON jobOffer.job_Offer_Id = jobApplication.job_Offer_Id
-             JOIN company ON jobOffer.company_Id = company.company_Id
-             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
-             JOIN career ON jobOffer.career_Id = career.id WHERE jobOffer.job_Position_Id like '$puesto%' AND jobOffer.career_Id like '$carrera%'";
             $this->connection = Connection::GetInstance();
+
             $resultSet = $this->connection->Execute($query);
-
-            if ($resultSet != null) {
-                foreach ($resultSet as $row) {
-                    $jobApplication = new JobApplication();
-                $jobApplication->setJobOfferId($row["job_Offer_Id"]);
-                $jobApplication->setStudentId($row["legal_name"]);
-                $jobApplication->setJobApplicationId($row["carDes"]);
-
-
-
-                    array_push($jobApplicationList, $jobApplication);
+            if($resultSet !=null){
+            foreach ($resultSet as $row) {
+                mail($row['email'],"Postulacion","Su postulacion ha sido declinada", "From: maticapo27@gmail.com");
+                $this->Remove($jobApplicationId);
                 }
-            }
-
-            return $jobApplicationList;
+        }
+            
         } catch (Exception $ex) {
             throw $ex;
         }
     }
-    else if($puesto !="Puesto"){
-        return $this->SearchByPuesto($puesto);
-    }
-    else{
-        return $this->SearchByCarrera($carrera);
-    }
-    }
-/*
-    public function SearchByPuesto($puesto)
-    {
-
-        $jobOfferList = array();
-        try {
-            $puesto = $this->MatchByJobPos($puesto);
-            $query= "SELECT jobOffer.job_Offer_Id, company.legal_name, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
-             jobOffer.language, jobOffer.preference_language, jobOffer.place FROM $this->tableName 
-             JOIN company ON jobOffer.company_Id = company.company_Id
-             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
-             JOIN career ON jobOffer.career_Id = career.id WHERE jobOffer.job_Position_Id like '$puesto%'";
-
-            $this->connection = Connection::GetInstance();
-            $resultSet = $this->connection->Execute($query);
-
-            if ($resultSet != null) {
-                foreach ($resultSet as $row) {
-                    $jobOffer = new JobOffer();
-                $jobOffer->setJobOfferId($row["job_Offer_Id"]);
-                $jobOffer->setCompanyId($row["legal_name"]);
-                $jobOffer->setCareerId($row["carDes"]);
-                $jobOffer->setJobPositionId($row["jobPos"]);
-                $jobOffer->setSalary($row["salary"]);
-                $jobOffer->setDescription($row["description"]);
-                $jobOffer->setTurn($row["turn"]);
-                $jobOffer->setExp($row["experience"]);
-                $jobOffer->setLang($row["language"]);
-                $jobOffer->setPrefLang($row["preference_language"]);
-                $jobOffer->setPlace($row["place"]);
-
-
-                    array_push($jobOfferList, $jobOffer);
-                }
-            }
-
-            return $jobOfferList;
-        } catch (Exception $ex) {
-            throw $ex;
-        }
-    }
-
-    public function SearchByCarrera($carrera)
-    {
-
-        $jobOfferList = array();
-        try {
-            $carrera = $this->MatchByCareerId($carrera);
-            $query= "SELECT jobOffer.job_Offer_Id, company.legal_name, career.description as carDes, jobOffer.career_Id, jobPosition.description as jobPos, jobOffer.salary, jobOffer.description, jobOffer.turn, jobOffer.experience,
-             jobOffer.language, jobOffer.preference_language, jobOffer.place FROM $this->tableName 
-             JOIN company ON jobOffer.company_Id = company.company_Id
-             JOIN jobPosition ON jobOffer.job_Position_Id = jobPosition.job_Position_Id
-             JOIN career ON jobOffer.career_Id = career.id WHERE jobOffer.career_Id like '$carrera%'";
-            $this->connection = Connection::GetInstance();
-            $resultSet = $this->connection->Execute($query);
-
-            if ($resultSet != null) {
-                foreach ($resultSet as $row) {
-                    $jobOffer = new JobOffer();
-                $jobOffer->setJobOfferId($row["job_Offer_Id"]);
-                $jobOffer->setCompanyId($row["legal_name"]);
-                $jobOffer->setCareerId($row["carDes"]);
-                $jobOffer->setJobPositionId($row["jobPos"]);
-                $jobOffer->setSalary($row["salary"]);
-                $jobOffer->setDescription($row["description"]);
-                $jobOffer->setTurn($row["turn"]);
-                $jobOffer->setExp($row["experience"]);
-                $jobOffer->setLang($row["language"]);
-                $jobOffer->setPrefLang($row["preference_language"]);
-                $jobOffer->setPlace($row["place"]);
-
-
-                    array_push($jobOfferList, $jobOffer);
-                }
-            }
-
-            return $jobOfferList;
-        } catch (Exception $ex) {
-            throw $ex;
-        }
-    }
-    */
 
 
 }

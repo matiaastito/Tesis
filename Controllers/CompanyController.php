@@ -5,15 +5,25 @@ namespace Controllers;
 use Classes\Alert;
 use DAO\CompanyDAO as CompanyDAO;
 use Classes\Enterprise\Company as Company;
+use DAO\JobApplicationDAO;
+use DAO\JobOfferDAO;
+use DAO\StudentDAO;
 use Exception;
 
 class CompanyController
 {
     private $companyDAO;
+    private $studentDAO;
+    private $jobOfferDAO;
+    private $jobApplicationDAO;
 
     public function __construct()
     {
       $this->companyDAO = new CompanyDAO();
+      $this->studentDAO = new StudentDAO();
+      $this->jobOfferDAO = new JobOfferDAO();
+      $this->jobApplicationDAO = new JobApplicationDAO();
+
     }
 
     public function ShowListView()
@@ -34,6 +44,15 @@ class CompanyController
 
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/add-company.php");
+    }
+
+    public function ShowAppView()
+    {
+        $studentList = $this->studentDAO->GetAll();
+        $jobOfferList = $this->jobOfferDAO->GetAll();
+        $jobApplicationList = $this->jobApplicationDAO->GetAll();
+
+        require_once(VIEWS_PATH . "/applicationlist-company.php");
     }
 
     public function Remove($CUIL)

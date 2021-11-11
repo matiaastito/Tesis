@@ -42,14 +42,23 @@ include("nav-company.php");
         <nav class="mb-5">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-              <a href="<?php echo FRONT_ROOT . "/JobOffer/ShowAddView"?>" class="nav-link text-white">
+          <form action="<?php echo FRONT_ROOT . "/JobOffer/ShowAddView"?>" method = "post" class="nav-link text-white ">
                   <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
-                  Añadir oferta Laboral
-            </a>
+                  <button class="btn btn-outline-light" type="submit" name=""> Añadir oferta Laboral</button>
+              </form>
+          </li>
           <li class="nav-item">
-          <form action="<?php echo FRONT_ROOT . "/Company/Modify" ?>" method="post">
-                            <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $_SESSION['loggedUser']->getCUIL();?>">
-                            <button class="btn btn-outline-light3" type="submit" name=""> Modificar datos Empresa</button></td>
+              <form action="<?php echo FRONT_ROOT . "/Company/Modify"?>" method = "post" class="nav-link text-white ">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
+                  <button class="btn btn-outline-light" type="submit" name=""> Modificar datos Empresa</button>
+                  <input type="hidden" name="CUIL" id="CUIL" value="<?php echo $_SESSION['loggedUser']->getCUIL();?>">
+              </form>
+          </li>
+          <li class="nav-item">
+          <form action="<?php echo FRONT_ROOT . "/Company/ShowAppView"?>"  class="nav-link text-white ">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
+                  <button class="btn btn-outline-light" type="submit" name=""> Ver listado aplicantes</button>
+              </form>
           </li>
         </ul>
       </nav>

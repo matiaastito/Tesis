@@ -201,17 +201,22 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                                                                 </div>
                                                                 <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
                                                                 <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#modify" role="button">Modificar</a>
+                </div>
+            </div>
+        </div>
+</form>
                     </div>
             </div>
         </div>
         <div class="boton">
-        <form action="<?php echo FRONT_ROOT . "/JobOffer/End" ?>" method="post">
+        
             <div class="row">
                 <div class="col">
                 </div>
                 <div class="col">
                 
                 <div class="modal fade" id="end" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <form action="<?php echo FRONT_ROOT . "/JobOffer/End" ?>" method="post">
                                                                     <div class="modal-dialog modal-dialog-centered">
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
@@ -246,6 +251,7 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                                                                 </div>
                                                                 <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
                                                                 <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#end" role="button">Terminar</a>
+                                                                </form>
                     </div>
             </div>
         
@@ -256,7 +262,7 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
             </div>
         </div>
         
-    </form>
+    
                 </div>
                 <div class="col">
                    

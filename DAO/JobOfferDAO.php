@@ -423,15 +423,16 @@ class JobOfferDAO implements IJobOfferDAO
 
             $query = "SELECT student.email as email, jobOffer.job_Offer_Id as idJobOffer, jobApplication.job_Application_Id as jobAppId
              FROM jobApplication 
-             JOIN $this->tableName ON jobApplication.job_Offer_Id = $job_Offer_Id
-             JOIN student ON jobApplication.student_Id = student.id";
+             JOIN $this->tableName ON jobOffer.job_Offer_Id = $job_Offer_Id
+             JOIN student ON jobApplication.student_Id = student.id WHERE jobApplication.job_Offer_Id = $job_Offer_Id";
 
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query);
+           
             if($resultSet !=null){
             foreach ($resultSet as $row) {
-                mail($row['email'],"","Este es el cuerpo del mensaje", "From: maticapo27@gmail.com");
+                mail($row['email'],"Postulacion","La postulacion ha finalizado. Gracias por participar", "From: maticapo27@gmail.com");
                 $jobApplicationDAO->Remove($row['jobAppId']);
                 if($job_Offer_Id != null){
                     $this->Remove($job_Offer_Id);

@@ -5,10 +5,13 @@ use DAO\JobPositionDAO;
 
 require_once("validate-session.php");
 
-if ($_SESSION['loggedUser']->getUserType() == "admin") {
-    require_once('nav.php');
-} else {
-    require_once('nav-student.php');
+if ($_SESSION['loggedUser']->getUserType() == "company") {
+    require_once('nav-company.php');
+} 
+else{
+    echo "<script> if(confirm('Acceso incorrecto'));";
+    echo "window.location = '../index.php';
+</script>";
 }
 
 $jobOfferDAO = new JobOfferDAO();
@@ -48,7 +51,7 @@ $jobApplicationDAO = new JobPositionDAO();
                             <th scope="col">Empresa</th>
                             <th scope="col">Puesto</th>
                             <th scope="col">Carrera</th>
-                            <th scope="col">Descargar alumnos</th>
+                            <th scope="col">Descargar CV</th>
 
                         </tr>
                     </thead>
@@ -56,14 +59,22 @@ $jobApplicationDAO = new JobPositionDAO();
                         <?php foreach($jobApplicationList as $jobApplication){
                            
                         foreach ($jobOfferList as $jobOffer) {
-                                            if ($jobOffer->getJobOfferId() == $jobApplication->getJobOfferId()) {
+                                            if ($jobOffer->getJobOfferId() == $jobApplication->getJobOfferId()) { 
+                                                if($_SESSION['loggedUser']->getCompanyId() == $jobOffer->getCompanyId()){
                                 ?>      <tr>
                                                 <td><?php echo $this->jobApplicationDAO->MatchByStudId($jobApplication->getStudentId())?></td>
                                                     <td><?php echo  $jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId()) ?></td>
                                                     <td><?php echo $jobOffer->getJobPositionId() ?></td>
                                                     <td><?php echo $jobOffer->getCareerId() ?></td>
+                                                    <form action="<?php echo FRONT_ROOT . "/Student/ViewProfile" ?>" method="post">
+                                                            <td><input type="hidden" name="name" id="" value="<?php echo $this->jobApplicationDAO->MatchByStudId($jobApplication->getStudentId()) ?>">
+                                                                <button class="btn btn-outline-light3" type="submit" name="">Ver perfil</button>
+                                                            </td>
+
+                                                        </form>
                                                     <?php }
                                                     }
+                                                }
                         }?>
 
                         </tr>
@@ -74,3 +85,4 @@ $jobApplicationDAO = new JobPositionDAO();
         </div>
     </main>
 </body>
+</html>

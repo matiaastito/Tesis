@@ -34,14 +34,7 @@ class AdminController
         require_once(VIEWS_PATH . "/student-list.php");
     }
 
-    public function ShowAppView()
-    {
-        $studentList = $this->studentDAO->GetAll();
-        $jobOfferList = $this->jobOfferDAO->GetAll();
-        $jobApplicationList = $this->jobApplicationDAO->GetAll();
-
-        require_once(VIEWS_PATH . "/applicationlist-student.php");
-    }
+    
 
     public function ShowAddView(){
         require_once(VIEWS_PATH . "/add-admin.php");
@@ -80,5 +73,14 @@ class AdminController
         $this->adminDAO->Remove($id);
 
         $this->ShowAdminListView();
+    }
+
+    public function ShowAppView()
+    {
+        $studentList = $this->studentDAO->GetAll();
+        $jobOfferList = $this->jobOfferDAO->GetAll();
+        $jobApplicationList = $this->jobApplicationDAO->GetAll();
+
+        require_once(VIEWS_PATH . "/applicationlist-admin.php");
     }
 }
