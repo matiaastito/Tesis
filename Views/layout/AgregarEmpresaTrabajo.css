@@ -117,10 +117,15 @@ h2 {
 }
 
 #margen-boton {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 #botones {
   height: 40px;
   margin-top: 80px;
+}
+
+#color-letra {
+  color: #000000;
+  margin-top: 20px;
 }

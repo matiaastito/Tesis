@@ -64,11 +64,7 @@ if ($_SESSION['loggedUser']->getUserType() != "company") {
                                 <?php
                     
                    ?>
-                        <form action="<?php echo FRONT_ROOT . "/JobOffer/End" ?>" method="post">
-                            <td><input type="hidden" name="job_Offer_Id" id="job_Offer_Id" value="<?php echo $jobOffer->getJobOfferId();?>">
-                                <button class="btn btn-outline-light3" type="submit" name="">Terminar</button></td>
 
-                        </form>
 
                         <form action="<?php echo FRONT_ROOT . "/JobOffer/Modify" ?>" method="post">
                             <td><input type="hidden" name="job_Offer_Id" id="job_Offer_Id" value="<?php echo $jobOffer->getJobOfferId();?>">

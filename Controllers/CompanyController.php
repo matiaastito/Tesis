@@ -38,10 +38,18 @@ class CompanyController
 
     public function Remove($CUIL)
     {
+        try{
         $this->companyDAO->Remove($CUIL);
         $companyList = $this->companyDAO->GetAll();
         require_once(VIEWS_PATH . "/validate-session.php");
         require_once(VIEWS_PATH . "/company-list.php");
+        }
+        catch(Exception $ex) {
+            echo "Su compañia no pudo ser eliminada.";
+        }
+        finally{
+            $this->ShowListView();
+        }
     }
 
     public function SearchByName($nombre)
@@ -59,7 +67,7 @@ class CompanyController
         require_once(VIEWS_PATH . "/modify-company.php");
     }
 
-    public function ModifyAttribute($cuil, $address, $contactNumber, $email, $password, $web_Page, $description)
+    public function ModifyAttribute($cuil, $legalName, $address, $contactNumber, $email, $password, $web_Page, $description, $active)
     {
         
         $this->companyDAO->Modify();
@@ -77,7 +85,7 @@ class CompanyController
         require_once(VIEWS_PATH . "/company-list.php");
     }
 
-    public function Add($cuil, $legalName, $email, $password, $contactNumber, $web_Page, $description, $province, $location, $address, $active = 'no')
+    public function Add($legalName, $cuil, $web_Page, $contactNumber, $password, $email, $description, $province, $location, $address, $active= 'no')
     {
         $alert = new Alert("","");
         try{

@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="busquedaOfertas.php">Propuestas</a>
+                        <a class="nav-link active" aria-current="page" href="<?php echo FRONT_ROOT . "/JobOffer/ShowListViewxCompany"?>">Propuestas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Notificaciones</a>

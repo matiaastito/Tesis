@@ -111,6 +111,24 @@ class JobApplicationDAO implements IJobApplicationDAO
         }
     }
 
+    public function MatchByStudId($id)
+    {
+        try {
+            $query = "SELECT student.first_name, student.last_name FROM $this->tableName JOIN student WHERE student.id = $id";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
+
+            if ($resultSet != null) {
+                foreach($resultSet as $row)
+                $name = $row['first_name'] . ' '. $row['last_name'];
+                }
+        
+            return $name;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
     public function MatchByCareerId($name)
     {
         try {
@@ -159,8 +177,8 @@ class JobApplicationDAO implements IJobApplicationDAO
         } catch (Exception $ex) {
             throw $ex;
         }
-    }
-/*
+    }/*
+
     public function SearchByParameters($puesto, $carrera)
     {
 
@@ -204,7 +222,7 @@ class JobApplicationDAO implements IJobApplicationDAO
         return $this->SearchByCarrera($carrera);
     }
     }
-
+/*
     public function SearchByPuesto($puesto)
     {
 
@@ -285,6 +303,7 @@ class JobApplicationDAO implements IJobApplicationDAO
             throw $ex;
         }
     }
-*/
+    */
+
 
 }

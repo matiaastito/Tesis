@@ -1,5 +1,7 @@
 <?php
 
+use DAO\JobOfferDAO;
+
 require_once("validate-session.php");
 
 if ($_SESSION['loggedUser']->getUserType() == "admin") {
@@ -7,6 +9,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 } else {
     require_once('nav-student.php');
 }
+
+$jobOfferDAO = new JobOfferDAO();
 
 ?>
 <!DOCTYPE html>
@@ -26,31 +30,6 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
         <div class="">
             <div class="row">
                 <div class="col">
-                    <div class="caja-filtros">
-                        <form action="<?php echo  FRONT_ROOT . "/JobApplication/SearchByParameters " ?>" method="post">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-
-                                        <select class="form-select" id="puesto" name="puesto" aria-label="Default select example">
-                                            <option selected>Puesto</option>
-                                            <?php foreach ($jobPositionList as $jobPosition) { ?>
-                                                <option value="<?php echo $jobPosition->getDescription() ?>"><?php echo $jobPosition->getDescription() ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <select class="form-select" id="carrera" name="carrera" aria-label="Default select example">
-                                            <option selected>Carrera</option>
-                                            <?php foreach ($careerList as $career) { ?>
-                                                <option value="<?php echo $career->getDescription() ?>"><?php echo $career->getDescription() ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <input type="submit" class="btn btn-outline-light" value="Buscar">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <div class="tabla">
 
                         <table class="table table-striped table-hover">
@@ -71,7 +50,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                             <tbody>
                                 <tr>
                                     <?php foreach ($jobOfferList as $jobOffer) { ?>
-                                        <th scope="row"><a href="" class="nav-link text-dark"><?php echo $jobOffer->getCompanyId() ?></th>
+                                        <th scope="row"><a href="" class="nav-link text-dark"><?php echo $jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId()) ?></th>
                                         <td><?php echo $jobOffer->getJobPositionId() ?></td>
                                         <td><?php echo $jobOffer->getCareerId() ?></td>
                                         <td><?php echo $jobOffer->getExp() ?></td>
@@ -79,20 +58,20 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                                         <td><?php echo $jobOffer->getSalary() ?></td>
                                         <td><?php echo $jobOffer->getLang() ?></td>
                                         <td><?php echo $jobOffer->getPrefLang() ?></td>
-                                        <form action="<?php echo  FRONT_ROOT . "/JobApplication/Add " ?>" method="post">
-                                            <td><input type="hidden" name="jobApplicationId" value="<?php echo $jobOffer->getJobOfferId(); ?>">
-                                                <input type="hidden" name="studentId" value="<?php echo $_SESSION["loggedUser"]->getStudentId(); ?>">
-                                                <input type="hidden" name="jobOfferId" value="<?php echo $jobOffer->getJobOfferId(); ?>">
-                                                <input type="submit" class="btn btn-light" value="CV" />
+                                        
+                                            <td><!--<form action ="<?php //echo FRONT_ROOT."/Archivo/UploadPdf"?>" method="POST"  enctype="multipart/form-data">
+                                               <input type="file" class="" name ="fichero">-->
+                                                <input class="btn btn-light" type="submit" value="Subir">
+                                            
 
-
+                                                <!--</form>-->
                                             </td>
-                                        </form>
+                                        
                                         <form action="<?php echo  FRONT_ROOT . "/JobApplication/Add " ?>" method="post">
                                             <td><input type="hidden" name="jobApplicationId" value="<?php echo $jobOffer->getJobOfferId(); ?>">
                                                 <input type="hidden" name="studentId" value="<?php echo $_SESSION["loggedUser"]->getStudentId(); ?>">
                                                 <input type="hidden" name="jobOfferId" value="<?php echo $jobOffer->getJobOfferId(); ?>">
-                                                <input type="submit" class="btn btn-light" value="Aplicar" />
+                                              <input class="btn btn-outline-light3"  name="" type="submit" value="Aplicar" >
                                             </td>
                                         </form>
 
@@ -110,7 +89,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                         <table class="table">
 
                             <tbody>
-                                <?php foreach ($companyList as $company) { ?>
+                                <?php foreach ($companyList as $company) { if($company ->getActive()=="si"){ ?>
                                     <tr>
                                         <th scope="row"></th>
                                         <td class="text-light"><?php echo $company->getLegalName() ?></td>
@@ -122,7 +101,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 
 
                                     </tr>
-                                <?php } ?>
+                                <?php }} ?>
                             </tbody>
 
                         </table>
@@ -131,10 +110,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-<<<<<<< HEAD
-</html>
-=======
 
 </html>
->>>>>>> upstream/Pilula

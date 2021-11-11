@@ -1,5 +1,7 @@
 <?php
 
+use DAO\JobOfferDAO;
+
 if ($_SESSION["loggedUser"]->getUserType() == "admin"){
     
     include("nav.php");
@@ -11,6 +13,8 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
     echo "window.location = '../index.php';
 </script>";
   }
+
+  $jobOfferDAO = new JobOfferDAO();
   
 
 ?>
@@ -139,7 +143,8 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                      foreach ($jobOfferList as $jobOffer) {if($jobOffer->getJobOfferId() == $_POST["job_Offer_Id"]){
                         ?>
                             <th scope="row"></th>
-                            <td><?php echo $jobOffer->getCompanyId() ?></td>
+                            <td><?php 
+                             echo $jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId()) ?></td>
                                 <td><?php echo $jobOffer->getJobPositionId()?></td>
                                 <td><?php echo $jobOffer->getCareerId()?></td>
                                 <td><?php echo $jobOffer->getSalary() ?></td>
@@ -160,8 +165,97 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                 <div class="col">
                 </div>
                 <div class="col">
-                <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
-                        <button class="btn btn-outline-light" type="submit" name="">Modificar</button>
+                
+                <div class="modal fade" id="modify" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="modify"></h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Aplicar cambios?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button class="btn btn-primary" data-bs-target="#modify2" data-bs-toggle="modal">Si</button>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal fade" id="modify2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="modify2"></h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Oferta modificada con exito
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
+                                                                <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#modify" role="button">Modificar</a>
+                    </div>
+            </div>
+        </div>
+        <div class="boton">
+        <form action="<?php echo FRONT_ROOT . "/JobOffer/End" ?>" method="post">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                
+                <div class="modal fade" id="end" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="end"></h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Terminar postulacion?
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button class="btn btn-primary" data-bs-target="#end2" data-bs-toggle="modal">Si</button>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal fade" id="end2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="end2"></h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Postulacion terminada. Mail enviado a postulantes.
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input name="job_Offer_Id" type="hidden" value="<?php echo $_POST["job_Offer_Id"] ?>">
+                                                                <a class="btn btn-outline-light3" data-bs-toggle="modal" type="submit" href="#end" role="button">Terminar</a>
+                    </div>
+            </div>
+        
+        </div>
+        
+                           
+                </div>
+            </div>
+        </div>
+        
     </form>
                 </div>
                 <div class="col">
@@ -177,6 +271,7 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
         </div>
  
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
 <?php

@@ -42,8 +42,6 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                         <div class="row">
                             <div class="col">
                             <?php if ($_SESSION['loggedUser']->getUserType()=="admin"){?>
-                                <select class="form-select" id="company_Id" name="company_Id" aria-label="Default select example">
-                                
                                     <select class="form-select" id="company_Id" name ="company_Id" aria-label="Default select example">
                                         
                                         <option selected>Empresa</option>
@@ -118,7 +116,7 @@ if ($_SESSION["loggedUser"]->getUserType() == "admin"){
                         </div>
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description"></textarea>
                         <label for="floatingTextarea">Comments</label>
 
                         <input type="submit" class="btn btn-outline-light" value="Agregar">

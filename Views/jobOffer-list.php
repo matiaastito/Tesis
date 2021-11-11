@@ -1,4 +1,7 @@
 <?php
+
+use DAO\JobOfferDAO;
+
 require_once("validate-session.php");
 
 if ($_SESSION['loggedUser']->getUserType() == "admin") {
@@ -6,6 +9,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 } else {
     require_once('nav-student.php');
 }
+
+$jobOfferDAO = new JobOfferDAO();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +81,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                                 foreach ($jobOfferList as $jobOffer) {
                                 ?>
                                     <tr>
-                                        <td><?php echo $jobOffer->getCompanyId() ?></td>
+                                        <td><?php echo $this->jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId() )?></td>
                                         <td><?php echo $jobOffer->getJobPositionId() ?></td>
                                         <td><?php echo $jobOffer->getCareerId() ?></td>
                                         <td><?php echo $jobOffer->getSalary() ?></td>
@@ -116,7 +121,7 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                         <table class="table">
 
                             <tbody>
-                                <?php foreach ($companyList as $company) { ?>
+                                <?php foreach ($companyList as $company) {if($company->getActive() == "si"){ ?>
                                     <tr>
                                         <th scope="row"></th>
                                         <td class="text-light"><?php echo $company->getLegalName() ?></td>
@@ -128,7 +133,8 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
 
 
                                     </tr>
-                                <?php } ?>
+                                <?php }
+                                } ?>
                             </tbody>
 
                         </table>

@@ -36,52 +36,60 @@ include('nav.php');
                     <div class="container">
                         <div class="row">
                             <div class="col">
-
-                                <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="inputGroupFile02">
-
-                                </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="text" class="form-control" id="floatingInput" name="legalName" placeholder="Nombre">
                                     <label for="floatingInput">Nombre</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="number" class="form-control" id="floatingInput" name="cuil" placeholder="201231248">
                                     <label for="floatingInput">CUIL</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="text" class="form-control" id="floatingInput" name="web_Page" placeholder="name.com.ar">
                                     <label for="floatingInput">Pagina Web</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="number" class="form-control" id="floatingInput" name="contactNumber" placeholder="1234567">
                                     <label for="floatingInput">Numero de contacto</label>
                                 </div>
 
                             </div>
 
                             <div class="col">
-                                <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="inputGroupFile02">
-
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" name="password" placeholder="nasdew789">
+                                    <label for="floatingInput">Password</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">CUIL</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
                                     <label for="floatingInput">Email</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input type="textarea" class="form-control" id="floatingInput" name="description" placeholder="...">
                                     <label for="floatingInput">Descripcion</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" name="active" placeholder="si/no">
+                                    <label for="floatingInput">Activo(si/no)</label>
                                 </div>
 
                             </div>
 
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" id="color-letra" class="cuadrado-de-opciones" name="province" placeholder="Provincia" aria-label="City">
+                            </div>
+                            <div class="col">
+                                <input type="text" id="color-letra" class="cuadrado-de-opciones" name="location" placeholder="Localidad" aria-label="State">
+                            </div>
+                            <div class="col">
+                                <input type="text" id="color-letra" class="cuadrado-de-opciones" name="address" placeholder="Direccion" aria-label="Zip">
+                            </div>
                         </div>
                     </div>
 

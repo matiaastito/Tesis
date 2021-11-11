@@ -44,48 +44,46 @@ if ($_SESSION['loggedUser']->getUserType() == "admin") {
                             <th scope="col">Contacto</th>
                             <th scope="col">Pagina Web</th>
                             <th scope="col">Direccion</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
+                            <th scope="col">Activo</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        foreach ($companyList as $company) {
-                        ?>
-                            <tr>
-                                <th scope="row"></th>
-                                <td><?php echo $company->getLegalName() ?></td>
-                                <td><?php echo $company->getCUIL() ?></td>
-                                <td><?php echo $company->getEmail() ?></td>
-                                <td><?php echo $company->getContactNumber() ?></td>
-                                <td><a href="https://<?php echo $company->getWeb(); ?>"><?php echo $company->getWeb() ?> </a></td>
-                                <td><?php echo $company->getAddress() ?></td>
-                                <form action="<?php echo FRONT_ROOT . "/Company/ShowCompanyProfile" ?>" method="post">
-                                    <td> <input name="company_Id" type="hidden" value="<?php echo $company->getCompanyId() ?>" />
-                                        <button class="btn btn-outline-light3" type="submit" name="">Ver</button>
-                                    </td>
-                                </form>
-                                <?php
+                    <?php
+                    foreach ($companyList as $company) {
+                    ?>
+                    <tr>
+                    <th scope="row"></th>
+                        <td><?php echo $company->getLegalName() ?></td>
+                        <td><?php echo $company->getCUIL() ?></td>
+                        <td><?php echo $company->getEmail() ?></td>
+                        <td><?php echo $company->getContactNumber() ?></td>
+                        <td><a href="https://<?php echo $company->getWeb();?>"><?php echo $company->getWeb() ?></a></td>
+                        <td><?php echo $company->getAddress() ?></td>
+                        <td><?php echo $company->getActive() ?></td>
+                        <form action="<?php echo FRONT_ROOT . "/Company/ShowCompanyProfile"?>" method ="post">
+                        <td> <input name ="company_Id" type="hidden" value="<?php echo $company->getCompanyId()?>"/>
+                            <button class="btn btn-outline-light3" type="submit" name="">Ver</button>
+                        </td>
+                        </form>
+                    <?php
+                    
+                    if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
+                        
+                                                            
 
-                                if ($_SESSION['loggedUser']->getUserType() == "admin") { ?>
-                                    <form action="<?php echo FRONT_ROOT . "/Company/Remove" ?>" method="post">
-                                        <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL(); ?>">
-                                            <button class="btn btn-outline-light3" type="submit" name="">Eliminar</button>
-                                        </td>
+                        <form action="<?php echo FRONT_ROOT . "/Company/Modify" ?>" method="post">
+                            <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL();?>">
+                            <button class="btn btn-outline-light3" type="submit" name="">Modificar</button></td>
 
-                                    </form>
-
-                                    <form action="<?php echo FRONT_ROOT . "/Company/Modify" ?>" method="post">
-                                        <td><input type="hidden" name="CUIL" id="CUIL" value="<?php echo $company->getCUIL(); ?>">
-                                            <button class="btn btn-outline-light3" type="submit" name="">Modificar</button>
-                                        </td>
-
-                                    </form>
-                            <?php }
-                            } ?>
-                            </tr>
+                    </form>
+                    <?php }}?>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

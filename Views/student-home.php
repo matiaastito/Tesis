@@ -41,6 +41,7 @@ include("nav-student.php");
       <div class="profile-wrapper">
         <img class="foto" src="<?php echo IMG_PATH?>/foto default de usuario.png" alt="">
         <h1 class="userName"><?php echo $_SESSION['loggedUser']->getName() .'  ' .$_SESSION['loggedUser']->getLastName();?></h1>
+        ESTADO ACADEMICO -><?php  if($_SESSION['loggedUser']->getActive() ==1){echo "ACTIVO";}else{echo "INACTIVO";} ;?>
         <h2 class="linea"></h2>
       </div>
       <nav class="mb-5">

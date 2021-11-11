@@ -43,7 +43,7 @@ include("nav.php");
       <nav class="mb-5">
         <ul class="nav justify-content-center">
           <li class="nav-item">
-            <a href="<?php echo FRONT_ROOT . "/Admin/ShowCompanyListView" ?>" class="nav-link text-white">
+            <a href="<?php echo FRONT_ROOT . "/Company/ShowListView" ?>" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>
@@ -81,7 +81,7 @@ include("nav.php");
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo FRONT_ROOT . "/Student/ShowAddView" ?>" class="nav-link text-white">
+            <a href="<?php echo FRONT_ROOT . "/Admin/ShowAppView" ?>" class="nav-link text-white">
               <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                 <use xlink:href="#people-circle" />
               </svg>

@@ -34,14 +34,14 @@
 
                                 <form action="<?php echo FRONT_ROOT . "/Session/Login" ?>" method="post">
                                     <input class="field field--animate" type="email" name="email" id="emailadress" placeholder="Email" required>
-                                    <input class="field field--animate" type="text" name="password" id="emailadress" placeholder="Password" required>                                    
+                                    <input class="field field--animate" type="password" name="password" id="emailadress" placeholder="Password" required>                                    
                                     <button class="buttonFlecha" type="submit" name=""></button>
                                 </form>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col">
                                         <form action="<?php echo FRONT_ROOT . "/Session/RegisterViewStudent" ?>" method="post">
-                                            <button type="button" class="btn btn-outline-info">Sing In as User</button>
+                                            <button type="submit" class="btn btn-outline-info">Sing In as User</button>
                                         </form>
                                         </div>
                                         <div class="col">
@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="col">
                                         <form action="<?php echo FRONT_ROOT . "/Session/RegisterViewCompany" ?>" method="post">
-                                            <button type="button" class="btn btn-outline-warning">Sing In as Company</button>
+                                            <button type="submit" class="btn btn-outline-warning">Sing In as Company</button>
                                         </form>
                                         </div>
                                     </div>
