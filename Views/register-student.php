@@ -46,9 +46,7 @@
 
             </div>
 
-        </div class="alert alert-<?php echo $alert->getType() ?>">
-        <?php echo $alert->getMessage(); ?>
-        <div>
+        
         </div>
         </div>
     </main>
