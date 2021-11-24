@@ -117,7 +117,7 @@ $jobOfferDAO = new JobOfferDAO();
                 <div class="col" id="columna">
                     <h1 class="tituloColumna">Empresas vinculadas</h1>
                     <p class="linea"></p>
-                    <form action="<?php echo FRONT_ROOT . "/Company/ShowCompanyProfile" ?>" method="post">
+                    
                         <table class="table">
 
                             <tbody>
@@ -125,11 +125,12 @@ $jobOfferDAO = new JobOfferDAO();
                                     <tr>
                                         <th scope="row"></th>
                                         <td class="text-light"><?php echo $company->getLegalName() ?></td>
-
+                                        <form action="<?php echo FRONT_ROOT . "/Company/ShowCompanyProfile" ?>" method="post">
                                         <td>
                                             <input name="company_Id" type="hidden" value="<?php echo $company->getCompanyId() ?>" />
                                             <button class="btn btn-outline-light2" type="submit" name="">Ver</button>
                                         </td>
+                                        </form>
 
 
                                     </tr>
@@ -138,7 +139,7 @@ $jobOfferDAO = new JobOfferDAO();
                             </tbody>
 
                         </table>
-                    </form>
+                    
                 </div>
             </div>
         </div>

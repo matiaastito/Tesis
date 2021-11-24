@@ -48,6 +48,7 @@ $jobApplicationDAO = new JobPositionDAO();
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">Estudiante</th>
+                            <th scope="col">Carrera</th>
                             <th scope="col">Empresa</th>
                             <th scope="col">Puesto</th>
                             <th scope="col">Carrera</th>
@@ -63,6 +64,7 @@ $jobApplicationDAO = new JobPositionDAO();
                                                 if($_SESSION['loggedUser']->getCompanyId() == $jobOffer->getCompanyId()){
                                 ?>      <tr>
                                                 <td><?php echo $this->jobApplicationDAO->MatchByStudId($jobApplication->getStudentId())?></td>
+                                                <td><?php echo $this->jobApplicationDAO->GetCareerById($jobApplication->getStudentId())?></td>
                                                     <td><?php echo  $jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId()) ?></td>
                                                     <td><?php echo $jobOffer->getJobPositionId() ?></td>
                                                     <td><?php echo $jobOffer->getCareerId() ?></td>

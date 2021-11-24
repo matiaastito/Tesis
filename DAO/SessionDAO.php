@@ -39,21 +39,36 @@ class SessionDAO implements ISessionDAO
 
     public function Register($email, $password){
 
-           if($this->ApiStudent($email) == true){
-               $this->RegisterApiStudent($email, $password);
-            echo "<script> if(confirm('Informacion validada'));";
-            echo "window.location = '../index.php';
-		</script>";
-        
-        
-           }
-           else{
-            echo "<script> if(confirm('Usted no se encuentra cargado en el sistema'));";
-            echo "window.location = '../index.php';
-		</script>";
-           }
+        try {
+            $query = "SELECT student.email FROM student";
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query);
 
-    }
+            foreach($resultSet as $row){
+                if($row['email'] == $email){
+                    echo "<script> if(confirm('Usted ya se encuentra cargado en el sistema'));";
+                    echo "window.location = '../index.php';
+                </script>";
+                }
+            }
+        }
+        catch (Exception $ex) {
+            throw $ex;
+        }
+            if($this->ApiStudent($email) == true){
+                    $this->RegisterApiStudent($email, $password);
+                 echo "<script> if(confirm('Informacion validada'));";
+                 echo "window.location = '../index.php';
+             </script>";
+             
+             
+                }
+                else{
+                 echo "<script> if(confirm('Usted no se encuentra cargado en el sistema'));";
+                 echo "window.location = '../index.php';
+             </script>";
+                }
+            }
 
     public function ApiStudent($email){
 
@@ -69,12 +84,15 @@ class SessionDAO implements ISessionDAO
           $response = curl_exec($ch);
   
           $arrayToDecode = json_decode($response, true);
+          if($arrayToDecode != null){
           foreach($arrayToDecode as $row){
               if($email == $row['email']){
                   return true;
               }
           }
+        }
           return false;
+         
           
           
   

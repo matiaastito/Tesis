@@ -51,7 +51,6 @@ $jobApplicationDAO = new JobPositionDAO();
                             <th scope="col">Empresa</th>
                             <th scope="col">Puesto</th>
                             <th scope="col">Carrera</th>
-                            <th scope="col">Descargar alumnos</th>
                             <th scope="col">Eliminar propuesta</th>
 
                         </tr>
@@ -66,7 +65,6 @@ $jobApplicationDAO = new JobPositionDAO();
                                                     <td><?php echo  $jobOfferDAO->MatchByCompanyId($jobOffer->getCompanyId()) ?></td>
                                                     <td><?php echo $jobOffer->getJobPositionId() ?></td>
                                                     <td><?php echo $jobOffer->getCareerId() ?></td>
-                                                    <td>Boton para descargar alumnos</td>
                                                     <form action="<?php echo  FRONT_ROOT . "/JobApplication/End " ?>" method="post"><td>
                                                 <input type="hidden" name="jobApplicationId" value="<?php echo $jobApplication->getJobApplicationId(); ?>">
                                               <input class="btn btn-outline-light3"  name="" type="submit" value="Eliminar " >   
@@ -74,8 +72,12 @@ $jobApplicationDAO = new JobPositionDAO();
                                                     <?php }
                                                     }
                         }?>
-
+                        
                         </tr>
+                        <form action="<?php echo  FRONT_ROOT . "/Admin/printPdf " ?>" method="post"><td>
+                                              <input class="btn btn-outline-light3"  name="" type="submit" value="PDF " >   
+                                              </td>  </form>
+
 
                     </tbody>
                 </table>

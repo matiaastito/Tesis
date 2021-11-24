@@ -75,6 +75,11 @@ class AdminController
         $this->ShowAdminListView();
     }
 
+    public function printPdf(){
+        require_once(VIEWS_PATH . "/fpdf/fpdf.php");
+        $this->jobApplicationDAO->PrintPdf();
+    }
+
     public function ShowAppView()
     {
         $studentList = $this->studentDAO->GetAll();

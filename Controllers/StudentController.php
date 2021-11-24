@@ -2,9 +2,11 @@
 
 namespace Controllers;
 
+use Classes\Alert;
 use DAO\StudentDAO as StudentDAO;
 use Classes\Users\Student as Student;
 use DAO\CareerDAO;
+use Exception;
 
 class StudentController
 {
@@ -53,6 +55,8 @@ class StudentController
 
     public function Add($studentId, $firstName, $lastName, $dni, $gender, $birthDate, $email, $password, $phoneNumber, $careerId, $fileNumber, $active)
     {
+        $alert = new Alert("","");
+       try{
         $student = new Student();
         $student->setStudentId($studentId);
         $student->setCareerId($careerId);
@@ -69,5 +73,11 @@ class StudentController
         $this->studentDAO->Add($student);
 
         $this->ShowListView();
+       }
+    catch(Exception $ex){
+        $alert ->setType("danger");
+        $alert->setMessage($ex->getMessage());
+    }
+
     }
 }
